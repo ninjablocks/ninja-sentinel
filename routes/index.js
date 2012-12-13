@@ -10,9 +10,13 @@ exports.handleNinjaAuthentication = function(req,res,ninja) {
 
 exports.proxy = function(req,res) {
 
+  // Extend the request's query string with the access token
+  var query = req.query;
+  query.access_token = req.session.token;
+  // Make the request
   request({
       url:'https://api.ninja.is'+req.url,
-      qs: { access_token:req.session.token },
+      qs: query,
       json:true
   }).pipe(res);
 };
