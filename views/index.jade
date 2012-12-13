@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome #{ninja.name}
+  h3 Your Devices:
+  ul
+      each device, guid in devices
+        li #{guid} : #{device.shortName}
