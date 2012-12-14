@@ -8,6 +8,7 @@ if (!process.env.NINJA_CLIENT_ID||!process.env.NINJA_CLIENT_SECRET)
 
 var express = require('express')
   , routes = require('./routes/index')
+  , zoneRoutes = require('./routes/zone')
   , http = require('http')
   , path = require('path')
   , redisClient = require('redis-url').connect(process.env.REDISTOGO_URL)
@@ -17,6 +18,7 @@ var app = express();
 var authom = require('authom');
 
 app.configure(function(){
+  app.set('callback_uri','http://50.57.69.4:8000/callback')
   app.set('port', process.env.PORT || 8000);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
@@ -40,13 +42,11 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-
 /**
  * Middleware
  */
 
 var requiresAuthentication = function(req,res,next) {
-
   if (!req.session.token || !req.session.ninja) {
     if (req.accepts('html')) {
       res.redirect('/auth/ninjablocks');
@@ -88,7 +88,18 @@ app.all('/rest/v0/*', requiresAuthentication, routes.proxy);
  */
 
 app.get('/', requiresAuthentication, routes.index);
+app.post('/callback', routes.handleDeviceCallback);
 
+app.put('/override', requiresAuthentication, routes.setGlobalOverride);
+app.delete('/override', requiresAuthentication, routes.removeGlobalOverride);
+
+app.get('/zone', requiresAuthentication, zoneRoutes.fetchAllZones)
+app.post('/zone', requiresAuthentication, zoneRoutes.createZone);
+app.put('/zone/:zoneId', requiresAuthentication, zoneRoutes.updateZone);
+app.get('/zone/:zoneId', requiresAuthentication, zoneRoutes.fetchZone);
+app.delete('/zone/:zoneId', requiresAuthentication, zoneRoutes.deleteZone);
+app.put('/zone/:zoneId/trigger', requiresAuthentication, zoneRoutes.registerTrigger);
+app.delete('/zone/:zoneId/trigger/:triggerData', requiresAuthentication, zoneRoutes.deleteTrigger);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Ninja listening on port " + app.get('port'));
