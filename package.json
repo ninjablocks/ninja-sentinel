@@ -13,7 +13,8 @@
     "moment":"1.7.2",
     "async":"0.1.22",
     "node-uuid":"1.4.0",
-    "tempodb":"latest"
+    "tempodb":"latest",
+    "twilio":"git+https://github.com/StephaneP/node-twilio.git"
   },
   "engines": {
     "node":"0.8.x",

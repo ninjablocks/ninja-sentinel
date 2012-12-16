@@ -17,6 +17,7 @@ var express = require('express')
 var app = express();
 var authom = require('authom');
 
+
 app.configure(function(){
   app.set('callback_uri','http://50.57.69.4:8000/callback')
   app.set('port', process.env.PORT || 8000);
@@ -32,6 +33,17 @@ app.configure(function(){
     res.setHeader( 'X-Powered-By', "A bad-ass mother who don't take no crap off of nobody!" );
     // Share the redis client to all the requests
     req.redisClient = redisClient;
+    // Setup the Twilio callbacks
+
+    var TwilioClient = require('twilio').Client
+      , HOSTNAME = '50.57.69.4:8000'
+      , twilioClient = new TwilioClient(process.env.TWILIO_SID, process.env.TWILIO_TOKEN, HOSTNAME, {express: app})
+      , phone = twilioClient.getPhoneNumber(process.env.TWILIO_PHONE);
+
+
+    req.phone = phone;
+    req.HOSTNAME = HOSTNAME;
+
     next();
   });
   app.use(app.router);
@@ -47,7 +59,7 @@ app.configure('development', function(){
  */
 
 var requiresAuthentication = function(req,res,next) {
-  if (!req.session.token || !req.session.ninja) {
+  if (!req.session || !req.session.token || !req.session.ninja) {
     if (req.accepts('html')) {
       res.redirect('/auth/ninjablocks');
     } else {
@@ -92,6 +104,8 @@ app.post('/callback', routes.handleDeviceCallback);
 
 app.put('/override', requiresAuthentication, routes.setGlobalOverride);
 app.delete('/override', requiresAuthentication, routes.removeGlobalOverride);
+app.get('/call', requiresAuthentication, routes.testCall);
+
 
 app.get('/zone', requiresAuthentication, zoneRoutes.fetchAllZones)
 app.post('/zone', requiresAuthentication, zoneRoutes.createZone);
@@ -100,6 +114,7 @@ app.get('/zone/:zoneId', requiresAuthentication, zoneRoutes.fetchZone);
 app.delete('/zone/:zoneId', requiresAuthentication, zoneRoutes.deleteZone);
 app.put('/zone/:zoneId/trigger', requiresAuthentication, zoneRoutes.registerTrigger);
 app.delete('/zone/:zoneId/trigger/:triggerData', requiresAuthentication, zoneRoutes.deleteTrigger);
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Ninja listening on port " + app.get('port'));

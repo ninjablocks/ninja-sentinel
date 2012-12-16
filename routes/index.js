@@ -27,9 +27,7 @@ exports.handleNinjaAuthentication = function(req,res,ninja) {
     }
 
     Object.keys(devices).forEach(function(guid) {
-      console.log(guid);
-      app.device(guid).subscribe('http://50.57.69.4:8000/callback',true,function(err) {
-        console.log(arguments);
+        app.device(guid).subscribe('http://'+req.HOSTNAME+'/callback',true,function(err) {
       })
     });
     res.redirect('/');
@@ -71,7 +69,7 @@ exports.handleDeviceCallback = function(req,res) {
       req.redisClient.hget(triggerKey,req.body.DA,cb);
     },
 
-    function nonrepudiate(zId,cb) {
+    function nonRepudiate(zId,cb) {
 
       var alertKey = 'user:'+req.body.id+':zone:'+zId+':alerted';
 
@@ -90,7 +88,6 @@ exports.handleDeviceCallback = function(req,res) {
     },
 
     function fetchZoneData(zId,cb) {
-
 
       if (!zId) {
         cb(true)
@@ -212,22 +209,52 @@ exports.setGlobalOverride = function(req,res) {
 
   var globalOverrideKey = 'user:'+req.session.ninja.id+':overrideActive';
   req.redisClient.set(globalOverrideKey,'1',function(err) {
+
     if (err) {
       res.json({error:'Unknown database error'},500);
       return;
     }
     res.send(200);
   });
-}
+};
 
 exports.removeGlobalOverride = function(req,res) {
 
   var globalOverrideKey = 'user:'+req.session.ninja.id+':overrideActive';
   req.redisClient.del(globalOverrideKey,function(err) {
+
     if (err) {
       res.json({error:'Unknown database error'},500);
       return;
     }
     res.send(200);
   });
-}
+};
+
+
+exports.testCall = function(req,res) {
+  req.phone.setup(function() {
+
+    console.log('Phone Setup, making call');
+    // Alright, our phone number is set up. Let's, say, make a call:
+    req.phone.makeCall(process.env.TEST_CALL_NUMBER, null, function(call) {
+
+      var Twiml = require('twilio').Twiml;
+
+      console.log("Waiting for answer");
+
+      call.on('answered', function(reqParams, res) {
+
+          console.log('Call answered');
+          res.append(new Twiml.Say('Hello, there!'));
+          res.send();
+      });
+
+      call.on('ended', function(reqParams) {
+          console.log('Call ended');
+      });
+    });
+
+  });
+
+};
