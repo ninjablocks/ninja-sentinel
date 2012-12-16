@@ -36,7 +36,7 @@ app.configure(function(){
     // Setup the Twilio callbacks
 
     var TwilioClient = require('twilio').Client
-      , HOSTNAME = '50.57.69.4:8000'
+      , HOSTNAME = 'sentinel.ninjaapp.com'
       , twilioClient = new TwilioClient(process.env.TWILIO_SID, process.env.TWILIO_TOKEN, HOSTNAME, {express: app})
       , phone = twilioClient.getPhoneNumber(process.env.TWILIO_PHONE);
 
