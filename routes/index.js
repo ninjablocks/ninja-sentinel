@@ -27,9 +27,7 @@ exports.handleNinjaAuthentication = function(req,res,ninja) {
     }
 
     Object.keys(devices).forEach(function(guid) {
-      console.log(guid);
-      app.device(guid).subscribe('http://50.57.69.4:8000/callback',true,function(err) {
-        console.log(arguments);
+        app.device(guid).subscribe('http://'+process.env.HOSTNAME+'/callback',true,function(err) {
       })
     });
     res.redirect('/');
@@ -71,7 +69,12 @@ exports.handleDeviceCallback = function(req,res) {
       req.redisClient.hget(triggerKey,req.body.DA,cb);
     },
 
-    function nonrepudiate(zId,cb) {
+    function nonRepudiate(zId,cb) {
+
+      if (!zId) {
+        cb(true);
+        return;
+      }
 
       var alertKey = 'user:'+req.body.id+':zone:'+zId+':alerted';
 
@@ -79,24 +82,22 @@ exports.handleDeviceCallback = function(req,res) {
         if (err) throw err;
 
         // Do our best to only send 1 alert per X seconds
-        if (!exists) {
-          cb(null,zId);
-          req.redisClient.setex(alertKey,DEFAULTNONREPUDIATION,'1');
-        } else {
+        if (exists) {
+          console.log("Surpressing alert for user "+req.body.id+" in zone "+zId);
           cb(true);
-          console.log("Surpressing alert for "+req.body.id+" in zone "+zId);
+        } else {
+          req.redisClient.setex(alertKey,DEFAULTNONREPUDIATION,'1');
+          cb(null,zId);
         }
       });
     },
 
     function fetchZoneData(zId,cb) {
 
-
       if (!zId) {
         cb(true)
         return;
       }
-
       zoneId = zId;
       req.redisClient.hget(zoneKey,zoneId,cb);
     },
@@ -109,6 +110,7 @@ exports.handleDeviceCallback = function(req,res) {
       }
       try {
         var zoneDataObj = JSON.parse(zData);
+        zoneDataObj.id = zoneId;
       }
       catch (err) {
         // There is invalid JSON in this key, nuke it.
@@ -126,7 +128,9 @@ exports.handleDeviceCallback = function(req,res) {
       var data = [
         { t: new Date(req.body.timestamp), v: 1 },
       ];
+
       tempodb.write_key(tempoKey, data, function(result) {
+
         if (result.response!==200) console.log(result.body);
       });
 
@@ -149,6 +153,7 @@ exports.handleDeviceCallback = function(req,res) {
           });
 
         },
+
         zoneOverride: function(miniCb) {
 
           miniCb(null,(zoneData.overrideActive=='true'));
@@ -156,8 +161,9 @@ exports.handleDeviceCallback = function(req,res) {
 
         zoneActive: function(miniCb) {
 
-          miniCb(null,helpers.withinActiveTime(userData,zoneData.activeTimes));
-        }
+          miniCb(null,helpers.withinActiveTime(req.body,zoneData));
+        },
+
       },
       function(err,results) {
 
@@ -170,15 +176,34 @@ exports.handleDeviceCallback = function(req,res) {
 
     }
 
-  ],function(err,results) {
+  ], function(err,results) {
+
     if (err) {
+      res.send(200)
       return;
     }
-    helpers.intruderAlert(userData,zoneData);
+
+    var aKey = 'user:'+req.body.id+':alerts';
+    req.redisClient.hgetall(aKey,function(err,alertData) {
+
+      for (var i in alertData) {
+        if (alertData.hasOwnProperty(i)) {
+          try {
+            alertData[i] = JSON.parse(alertData[i]);
+          } catch (err) {
+            console.log({error:"There was an unrecoverable database error, alert "+i+" has been deleted"});
+            req.redisClient.hdel(aKey,i);
+          }
+        }
+      }
+
+      // If we've gotten to this point, we need to alert
+      helpers.intruderAlert(req,zoneData,alertData);
+      res.send(200)
+    });
 
   });
 
-  res.send(200)
 };
 
 
@@ -190,8 +215,9 @@ exports.proxy = function(req,res) {
   // Make the request
   request({
       url:'https://api.ninja.is'+req.url,
+      method:req.method,
       qs:query,
-      json:true
+      json:req.body
   }).pipe(res);
 };
 
@@ -212,22 +238,51 @@ exports.setGlobalOverride = function(req,res) {
 
   var globalOverrideKey = 'user:'+req.session.ninja.id+':overrideActive';
   req.redisClient.set(globalOverrideKey,'1',function(err) {
+
     if (err) {
       res.json({error:'Unknown database error'},500);
       return;
     }
     res.send(200);
   });
-}
+};
 
 exports.removeGlobalOverride = function(req,res) {
 
   var globalOverrideKey = 'user:'+req.session.ninja.id+':overrideActive';
   req.redisClient.del(globalOverrideKey,function(err) {
+
     if (err) {
       res.json({error:'Unknown database error'},500);
       return;
     }
     res.send(200);
   });
-}
+};
+
+exports.testCall = function(req,res) {
+  req.phone.setup(function() {
+
+    console.log('Phone Setup, making call');
+    // Alright, our phone number is set up. Let's, say, make a call:
+    req.phone.makeCall('+14158004811', null, function(call) {
+
+      var Twiml = require('twilio').Twiml;
+
+      console.log("Waiting for answer");
+
+      call.on('answered', function(reqParams, res) {
+
+          console.log('Call answered');
+          res.append(new Twiml.Say('Hello, there!'));
+          res.send();
+      });
+
+      call.on('ended', function(reqParams) {
+          console.log('Call ended');
+      });
+    });
+
+  });
+};
+

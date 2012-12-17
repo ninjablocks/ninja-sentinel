@@ -1,5 +1,6 @@
 var uuid = require('node-uuid')
-  , util = require('util');
+  , util = require('util')
+  , helpers = require('../lib/helpers');
 
 exports.fetchAllZones = function(req,res) {
 
@@ -34,7 +35,6 @@ exports.createZone = function(req,res) {
     , optionalParams = ['activeTimes','overrideActive']
     , forbiddenParams = ['triggers'];
 
-
   // Check they have only given us what we've asked for
   for (var i in req.body) {
     if (req.body.hasOwnProperty(i)) {
@@ -65,6 +65,7 @@ exports.createZone = function(req,res) {
   var zData = JSON.stringify(req.body);
 
   req.redisClient.hmset(zKey,zId,zData,function(err) {
+
     if (err) res.json({error:"There was an unkown database error"},500);
     else res.json({id:zId},200);
   });
@@ -120,6 +121,15 @@ exports.updateZone = function(req,res) {
       }
     }
   }
+
+  if (req.body.activeTimes) {
+    var isValidActiveTimes = helpers.validateActiveTimes(req.body.activeTimes);
+    if (typeof isValidActiveTimes === "string") {
+      res.json({error:"Parameter `activeTimes` is not valid, "+isValidActiveTimes},400);
+      return;
+    }
+  }
+
 
   var zKey = 'user:'+req.session.ninja.id+':zones';
   var zId = req.params.zoneId;
