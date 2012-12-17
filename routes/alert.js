@@ -31,14 +31,14 @@ exports.fetchAllAlerts = function(req,res) {
 exports.createAlert = function(req,res) {
 
   var requiredParams = ['type','alertee']
-    , optionalParams = ['active'];
+  , optionalParams = ['active'];
 
   // Check they have only given us what we've asked for
   for (var i in req.body) {
     if (req.body.hasOwnProperty(i)) {
       if (requiredParams.indexOf(i) === -1 && optionalParams.indexOf(i) === -1) {
-        res.json({error:"Parameter `"+i+"` is not recognised"},400);
-        return;
+      res.json({error:"Parameter `"+i+"` is not recognised"},400);
+      return;
       }
     }
   }
@@ -55,8 +55,8 @@ exports.createAlert = function(req,res) {
   // Returns string if invalid
   var isAlerteeValid = helpers.validateAlert(req.body.type,req.body.alertee);
   if (typeof isAlerteeValid === "string") {
-      res.json({error:"Value of parameter `alertee` and/or `type` is invalid, "+isAlerteeValid},400);
-      return;
+    res.json({error:"Value of parameter `alertee` and/or `type` is invalid, "+isAlerteeValid},400);
+    return;
   }
 
   var aKey = 'user:'+req.session.ninja.id+':alerts';
@@ -67,7 +67,15 @@ exports.createAlert = function(req,res) {
   req.redisClient.hmset(aKey,aId,aData,function(err) {
 
     if (err) res.json({error:"There was an unkown database error"},500);
-    else res.json({id:aId},200);
+    else {
+      res.json({id:aId},200);
+      helpers.logActivity(
+        req.redisClient,
+        req.session.ninja.id,
+        'info',
+        'Alert of type '+req.body.type+' was created'
+      );
+    }
   });
 };
 exports.fetchAlert = function(req,res) {
@@ -108,8 +116,8 @@ exports.updateAlert = function(req,res) {
   for (var i in req.body) {
     if (req.body.hasOwnProperty(i)) {
       if (allowedParams.indexOf(i)===-1) {
-        res.json({error:"Parameter `"+i+"` is not recognised"},400);
-        return;
+      res.json({error:"Parameter `"+i+"` is not recognised"},400);
+      return;
       }
     }
   }
@@ -152,7 +160,17 @@ exports.updateAlert = function(req,res) {
     req.redisClient.hset(aKey,aId,toWrite,function(err) {
 
       if (err) res.json({error:"There was an unkown database error"},500);
-      else res.send(200);
+      else {
+
+        helpers.logActivity(
+          req.redisClient,
+          req.session.ninja.id,
+          'info',
+          'Alert of type '+alertData.type+' was updated'
+        );
+
+        res.send(200);
+      }
     });
   });
 
@@ -171,6 +189,12 @@ exports.deleteAlert = function(req,res) {
       return;
     }
 
+    helpers.logActivity(
+      req.redisClient,
+      req.session.ninja.id,
+      'info',
+      'Alert deleted'
+    );
     res.send(200);
   });
 };

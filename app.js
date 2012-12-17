@@ -128,8 +128,11 @@ app.all('/rest/v0/*', requiresAuthentication, routes.proxy);
 app.get('/', requiresAuthentication, routes.index);
 app.post('/callback', setupTransports, routes.handleDeviceCallback);
 
+app.get('/history', requiresAuthentication, routes.fetchHistory);
+
 app.put('/override', requiresAuthentication, routes.setGlobalOverride);
 app.delete('/override', requiresAuthentication, routes.removeGlobalOverride);
+app.get('/override', requiresAuthentication, routes.getGlobalOverride);
 
 app.get('/alert', requiresAuthentication, alertRoutes.fetchAllAlerts);
 app.post('/alert', requiresAuthentication, alertRoutes.createAlert);
@@ -145,9 +148,6 @@ app.delete('/zone/:zoneId', requiresAuthentication, zoneRoutes.deleteZone);
 
 app.put('/zone/:zoneId/trigger', requiresAuthentication, zoneRoutes.registerTrigger);
 app.delete('/zone/:zoneId/trigger/:triggerData', requiresAuthentication, zoneRoutes.deleteTrigger);
-
-
-app.get('/call', requiresAuthentication, routes.testCall)
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Ninja listening on port " + app.get('port'));

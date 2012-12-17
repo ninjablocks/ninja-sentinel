@@ -67,7 +67,14 @@ exports.createZone = function(req,res) {
   req.redisClient.hmset(zKey,zId,zData,function(err) {
 
     if (err) res.json({error:"There was an unkown database error"},500);
-    else res.json({id:zId},200);
+    else {
+      helpers.logActivity(req.redisClient,
+        req.session.ninja.id,
+        'info',
+        'Zone '+zoneData.name+' was created'
+      );
+      res.json({id:zId},200);
+    }
   });
 
 };
@@ -161,7 +168,14 @@ exports.updateZone = function(req,res) {
 
     req.redisClient.hset(zKey,zId,toWrite,function(err) {
       if (err) res.json({error:"There was an unkown database error"},500);
-      else res.send(200);
+      else {
+        helpers.logActivity(req.redisClient,
+          req.session.ninja.id,
+          'info',
+          'Zone '+zoneData.name+' was updated'
+        );
+        res.send(200);
+      }
     });
   });
 
@@ -179,6 +193,13 @@ exports.deleteZone = function(req,res) {
       res.json({error:"There was an unkown database error"},500);
       return;
     }
+
+
+    helpers.logActivity(req.redisClient,
+      req.session.ninja.id,
+      'info',
+      'Zone '+zoneData.name+' was deleted'
+    );
 
     res.send(200);
   });
@@ -249,6 +270,11 @@ exports.registerTrigger = function(req,res) {
           return;
         }
         res.send(200);
+        helpers.logActivity(req.redisClient,
+          req.session.ninja.id,
+          'info',
+          'Trigger created against zone '+data.name
+        );
       });
     });
   });
@@ -304,6 +330,13 @@ exports.deleteTrigger = function(req,res) {
           req.redisClient.hset(tKey,tData,zId);
           return;
         }
+
+        helpers.logActivity(req.redisClient,
+          req.session.ninja.id,
+          'info',
+          'A trigger in zone '+data.name+' was deleted'
+        );
+
         res.send(200);
       });
     });

@@ -57,7 +57,7 @@ exports.handleDeviceCallback = function(req,res) {
   var userKey = 'user:'+req.body.id
     , triggerKey = 'user:'+req.body.id+':triggers'
     , zoneKey = 'user:'+req.body.id+':zones'
-    , globalOverrideKey = 'user:'+req.body.id+':overrideActive'
+    , globalOverrideKey = 'user:'+req.body.id+':override'
     , userData
     , zoneId
     , zoneData;
@@ -145,11 +145,11 @@ exports.handleDeviceCallback = function(req,res) {
 
         globalOverride: function(miniCb) {
 
-          req.redisClient.exists(globalOverrideKey,function(err,exists) {
+          req.redisClient.get(globalOverrideKey,function(err,data) {
 
             if (err) miniCb(err)
-            else if (exists) miniCb(null,true);
-            else miniCb(null,false);
+            else if (!data) miniCb(null,null)
+            else miniCb(null,data);
           });
 
         },
@@ -167,16 +167,20 @@ exports.handleDeviceCallback = function(req,res) {
       },
       function(err,results) {
 
-        console.log(results);
-
         if (err) cb(err);
-        else if (results.globalOverride || results.zoneOverride || results.zoneActive) cb(null,true);
+        else if (null !== results.globalOverride) {
+            // if globalOverride is true, we must alert
+            // if it is false, we must not alert
+            if (results.globalOverride==='true') cb(null)
+            else cb(true)
+        }
+        else if (results.zoneOverride || results.zoneActive) cb(null);
         else cb(true)
       });
 
     }
 
-  ], function(err,results) {
+  ], function(err) {
 
     if (err) {
       res.send(200)
@@ -199,6 +203,12 @@ exports.handleDeviceCallback = function(req,res) {
 
       // If we've gotten to this point, we need to alert
       helpers.intruderAlert(req,zoneData,alertData);
+
+      helpers.logActivity(req.redisClient,
+        req.body.id,
+        'alert',
+        'Alert in '+zoneData.name
+      );
       res.send(200)
     });
 
@@ -236,20 +246,38 @@ exports.index = function(req, res){
 
 exports.setGlobalOverride = function(req,res) {
 
-  var globalOverrideKey = 'user:'+req.session.ninja.id+':overrideActive';
-  req.redisClient.set(globalOverrideKey,'1',function(err) {
+  var globalOverrideKey = 'user:'+req.session.ninja.id+':override';
+
+  if (!req.body.override) {
+    res.json({error:'Parameter `override` is required'},400);
+    return;
+  }
+
+  if (req.body.override != "false" && req.body.override != "true") {
+    res.json({error:'Parameter `override` must be true or false'},400);
+    return;
+  }
+
+  req.redisClient.set(globalOverrideKey,req.body.override.toString(),function(err) {
 
     if (err) {
       res.json({error:'Unknown database error'},500);
       return;
     }
+
+    helpers.logActivity(req.redisClient,
+      req.session.ninja.id,
+      'info',
+      'Global override was enabled and '+((req.body.override=="true")?'WILL':'WILL NOT')+' alert'
+    );
+
     res.send(200);
   });
 };
 
 exports.removeGlobalOverride = function(req,res) {
 
-  var globalOverrideKey = 'user:'+req.session.ninja.id+':overrideActive';
+  var globalOverrideKey = 'user:'+req.session.ninja.id+':override';
   req.redisClient.del(globalOverrideKey,function(err) {
 
     if (err) {
@@ -260,29 +288,38 @@ exports.removeGlobalOverride = function(req,res) {
   });
 };
 
-exports.testCall = function(req,res) {
-  req.phone.setup(function() {
+exports.getGlobalOverride = function(req,res) {
 
-    console.log('Phone Setup, making call');
-    // Alright, our phone number is set up. Let's, say, make a call:
-    req.phone.makeCall('+14158004811', null, function(call) {
+  var globalOverrideKey = 'user:'+req.session.ninja.id+':override';
+  req.redisClient.get(globalOverrideKey,function(err,data) {
 
-      var Twiml = require('twilio').Twiml;
+    if (err) {
+      res.json({error:'Unknown database error'},500);
+      return;
+    }
 
-      console.log("Waiting for answer");
 
-      call.on('answered', function(reqParams, res) {
-
-          console.log('Call answered');
-          res.append(new Twiml.Say('Hello, there!'));
-          res.send();
-      });
-
-      call.on('ended', function(reqParams) {
-          console.log('Call ended');
-      });
-    });
-
+    res.json({override:(data==='true')},200);
   });
 };
 
+exports.fetchHistory = function(req,res) {
+
+  var userHistoryKey = 'user:'+req.session.ninja.id+':history';
+  req.redisClient.lrange(userHistoryKey,'0','-1',function(err,data) {
+
+    if (err) {
+      res.json({error:'Unknown database error'},500);
+      return;
+    }
+
+    for (var i=0;i<data.length;i++) {
+      try {
+        data[i] = JSON.parse(data[i]);
+      } catch (err) {
+        delete data[i];
+      }
+    }
+    res.json(data,200);
+  });
+}
