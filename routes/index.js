@@ -322,4 +322,57 @@ exports.fetchHistory = function(req,res) {
     }
     res.json(data,200);
   });
-}
+};
+
+exports.nukeUser = function(req,res) {
+  var keys = [
+    'user:'+req.session.ninja.id+':zones',
+    'user:'+req.session.ninja.id+':alerts',
+    'user:'+req.session.ninja.id+':override',
+    'user:'+req.session.ninja.id+':triggers',
+    'user:'+req.session.ninja.id+':history'
+  ];
+
+  var app = ninjaBlocks.app({access_token:req.session.token});
+  app.devices('rf433',function(err,devices) {
+
+    if (err) {
+      res.json({error:err.message},500);
+      return;
+    }
+
+    // First unsubscribe from all callbacks
+    // Then nuke all reference to the user
+    // Destroy the session and go back home
+
+    async.series([
+      function(callback) {
+
+        async.forEach(Object.keys(devices), function(guid,cb) {
+
+          app.device(guid).unsubscribe(function(err) {
+            // We try and ensure we've unsubscribed from all devices, so we ignore a 404
+            if (!err || err.statusCode===404) cb(null);
+            else cb(err);
+          });
+        },callback);
+
+      },
+      function(callback) {
+
+        async.forEach(keys,function(key,cb) {
+          req.redisClient.del(key,cb);
+        },callback);
+      }
+    ],function(err) {
+
+        if (err) {
+          res.json({error:err.message}, 500);
+          return;
+        }
+        req.session.destroy();
+        res.redirect('/?nuked=true');
+    });
+
+  });
+};
