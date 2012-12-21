@@ -50,7 +50,7 @@ app.configure(function(){
     req.redisClient = redisClient;
     // Setup the Twilio callbacks
     req.phone = phone;
-    req.HOSTNAME = HOSTNAME;
+    req.HOSTNAME = process.env.HOSTNAME;
 
     next();
   });
