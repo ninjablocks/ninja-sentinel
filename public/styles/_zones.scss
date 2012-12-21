@@ -1,0 +1,16 @@
+.zones {
+  position: relative;
+
+  .zone {
+    position: relative;
+
+    .actions {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      width: 100px;
+      display: block;
+    }
+  }
+
+}

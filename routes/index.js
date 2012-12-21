@@ -72,14 +72,11 @@ exports.handleDeviceCallback = function(req,res) {
     },
 
     function nonRepudiate(zId,cb) {
-<<<<<<< HEAD
 
       if (!zId) {
         cb(true);
         return;
       }
-=======
->>>>>>> bd218849d4d082dbac3b53ee26827f0cc689a57c
 
       var alertKey = 'user:'+req.body.id+':zone:'+zId+':alerted';
 
@@ -244,7 +241,6 @@ exports.index = function(req, res){
 
 exports.setGlobalOverride = function(req,res) {
 
-<<<<<<< HEAD
   var globalOverrideKey = 'user:'+req.session.ninja.id+':override';
 
   if (!req.body.override) {
@@ -258,10 +254,7 @@ exports.setGlobalOverride = function(req,res) {
   }
 
   req.redisClient.set(globalOverrideKey,req.body.override.toString(),function(err) {
-=======
-  var globalOverrideKey = 'user:'+req.session.ninja.id+':overrideActive';
-  req.redisClient.set(globalOverrideKey,'1',function(err) {
->>>>>>> bd218849d4d082dbac3b53ee26827f0cc689a57c
+
 
     if (err) {
       res.json({error:'Unknown database error'},500);
@@ -291,7 +284,7 @@ exports.removeGlobalOverride = function(req,res) {
   });
 };
 
-<<<<<<< HEAD
+
 exports.getGlobalOverride = function(req,res) {
 
   var globalOverrideKey = 'user:'+req.session.ninja.id+':override';
@@ -379,32 +372,5 @@ exports.nukeUser = function(req,res) {
     });
 
   });
-=======
 
-exports.testCall = function(req,res) {
-  req.phone.setup(function() {
-
-    console.log('Phone Setup, making call');
-    // Alright, our phone number is set up. Let's, say, make a call:
-    req.phone.makeCall(process.env.TEST_CALL_NUMBER, null, function(call) {
-
-      var Twiml = require('twilio').Twiml;
-
-      console.log("Waiting for answer");
-
-      call.on('answered', function(reqParams, res) {
-
-          console.log('Call answered');
-          res.append(new Twiml.Say('Hello, there!'));
-          res.send();
-      });
-
-      call.on('ended', function(reqParams) {
-          console.log('Call ended');
-      });
-    });
-
-  });
-
->>>>>>> bd218849d4d082dbac3b53ee26827f0cc689a57c
 };
