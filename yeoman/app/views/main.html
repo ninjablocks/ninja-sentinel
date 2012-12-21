@@ -1,3 +1,15 @@
-<div class="hero-unit">
+<div class="row">
+  <div class="twelve columns">
+    
+    <a class="button" ng-click="AddZone()" ng-show="ConfigureMode">Add New Zone</a>
 
+    <div class="panel zone" ng-repeat="zone in Zones">
+      
+      <div class="triggers">
+        <div class="trigger" ng-repeat="trigger in Triggers">
+          
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
