@@ -71,7 +71,7 @@ exports.createZone = function(req,res) {
       helpers.logActivity(req.redisClient,
         req.session.ninja.id,
         'info',
-        'Zone '+zoneData.name+' was created'
+        'Zone '+zData.name+' was created'
       );
       res.json({id:zId},200);
     }
