@@ -6,10 +6,35 @@
     <head>
         <meta charset="utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-        <title></title>
+        <title>Ninja Sentinel</title>
         <meta name="description" content=""/>
-        <meta name="viewport" content="width=device-width"/>
-        <link rel="stylesheet" href="styles/main.css"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta http-equiv="cleartype" content="on">
+
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/touch/apple-touch-icon-144x144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/touch/apple-touch-icon-114x114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/touch/apple-touch-icon-72x72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="img/touch/apple-touch-icon-57x57-precomposed.png">
+        <link rel="shortcut icon" href="img/touch/apple-touch-icon.png">
+
+        <!-- Google Fonts -->
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,800,600,700' rel='stylesheet' type='text/css'>
+
+        <!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        
+
+        <!-- This script prevents links from opening in Mobile Safari. https://gist.github.com/1042026 -->
+        
+        <script>(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")</script>
+        
+        <link rel="stylesheet" href="styles/sentinel-app.css"/>
+
+        <script src="scripts/vendor/modernizr-2.6.1.min.js"></script>
+
 
     </head>
     <body ng-app="yeomanApp">
@@ -24,21 +49,67 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
+
+        <!-- Navigation -->
+        <nav class="top-bar fixed" ng-controller="HeaderCtrl">
+            <ul>
+                <li class="name">
+                    <h1 ng-click="setRoute('/')"><a href="#">Ninja Sentinel</a></h1>
+                </li>
+                <li class="toggle-edit">
+                    <a ng-show="LocationIsHome() && !ConfigureMode" ng-click="SetConfigureMode(true)" class="configure">Configure</a>
+                    <a ng-show="LocationIsHome() && ConfigureMode" ng-click="SetConfigureMode(false)" class="configure">Finish</a>
+                </li>
+            </ul>
+            <section>
+                <ul class="left">
+                    
+                </ul>
+                <ul class="right">
+                    
+                </ul>
+            </section>
+        </nav>
+
+
         <div class="container" ng-view></div>
 
-        <script src="scripts/vendor/angular.js"></script>
+
+        <script src="components/jquery/jquery.min.js"></script>
+        <script src="scripts/vendor/angular.min.js"></script>
 
         <!-- build:js scripts/scripts.js -->
+        <script src="components/angular-ui/build/angular-ui.min.js"></script>
+        <script src="components/browser-ninja-blocks/lib/ninja.js"></script>
+
+        <script src="scripts/vendor/pusher.min.js"></script>
+
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/header.js"></script>
+
+        <script src="scripts/services/Config.js"></script>
+        <script src="scripts/services/NinjaService.js"></script>
+        <script src="scripts/services/DeviceService.js"></script>
+        <script src="scripts/services/NinjaUtilities.js"></script>
+        <script src="scripts/services/PusherService.js"></script>
+        <script src="scripts/services/UIEvents.js"></script>
+        <script src="scripts/services/UserService.js"></script>
         <!-- endbuild -->
 
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-            s.parentNode.insertBefore(g,s)}(document,'script'));
+        <!-- Google Analytics: -->
+        <script type="text/javascript">
+
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-37208807-3']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+
         </script>
     </body>
 </html>
