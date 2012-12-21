@@ -51,26 +51,29 @@
         <!-- Add your site or application content here -->
 
         <!-- Navigation -->
-        <nav class="top-bar fixed" ng-controller="HeaderCtrl">
-            <ul>
-                <li class="name">
-                    <h1 ng-click="setRoute('/')"><a href="#">Ninja Sentinel</a></h1>
-                </li>
-                <li class="toggle-edit">
-                    <a ng-show="LocationIsHome() && !ConfigureMode" ng-click="SetConfigureMode(true)" class="configure">Configure</a>
-                    <a ng-show="LocationIsHome() && ConfigureMode" ng-click="SetConfigureMode(false)" class="configure">Finish</a>
-                </li>
-            </ul>
-            <section>
-                <ul class="left">
-                    
+        <div class="fixed">
+            
+            <nav class="top-bar" ng-controller="HeaderCtrl">
+                <ul>
+                    <li class="name">
+                        <h1 ng-click="setRoute('/')"><a href="#">Ninja Sentinel</a></h1>
+                    </li>
+                    <li class="toggle-edit">
+                        <a ng-show="LocationIsHome() && !ConfigureMode" ng-click="SetConfigureMode(true)" class="configure">Configure</a>
+                        <a ng-show="LocationIsHome() && ConfigureMode" ng-click="SetConfigureMode(false)" class="configure">Finish</a>
+                    </li>
                 </ul>
-                <ul class="right">
-                    
-                </ul>
-            </section>
-        </nav>
+                <section>
+                    <ul class="left">
+                        
+                    </ul>
+                    <ul class="right">
+                        
+                    </ul>
+                </section>
+            </nav>
 
+        </div>
 
         <div class="container" ng-view></div>
 
@@ -99,6 +102,7 @@
         <script src="scripts/services/UIEvents.js"></script>
         <script src="scripts/services/UserService.js"></script>
         <script src="scripts/services/ZoneService.js"></script>
+        <script src="scripts/controllers/zone.js"></script>
         <!-- endbuild -->
 
         <!-- Google Analytics: -->

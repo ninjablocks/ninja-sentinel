@@ -4658,11 +4658,39 @@ textarea[contenteditable] {
   /* Style adjustments for viewports that meet the condition */ }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi) {
   /* Style adjustments for viewports that meet the condition */ }
+.zones {
+  position: relative; }
+  .zones .zone {
+    position: relative; }
+    .zones .zone .actions {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      width: 100px;
+      display: block; }
+
 .top-bar .toggle-edit {
   position: absolute;
   top: 0px;
   right: 0px;
   color: white; }
 
+/**
+ * ------------------------------
+ */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400; }
+  h1.subheader, h2.subheader, h3.subheader, h4.subheader, h5.subheader, h6.subheader {
+    font-weight: 100; }
+
 a.button {
   color: white; }
+
+.container {
+  margin-top: 45px; }
+
+.panel {
+  padding: 10px;
+  margin: 0px; }

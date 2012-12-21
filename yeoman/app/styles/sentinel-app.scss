@@ -4,9 +4,37 @@
 
 @import "normalize";
 @import "main";
+@import "zones";
 
 @import "header";
 
+// Media Query overrides
+@import "media";
+
+/**
+ * ------------------------------
+ */
+
+h1,h2,h3,h4,h5,h6 { 
+  margin: 0; 
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  
+  &.subheader {
+    font-weight: 100;
+  }
+}
+
 a.button {
   color: white;
+}
+
+.container {
+  margin-top: 45px;
+}
+
+
+.panel {
+  padding: 10px;
+  margin: 0px;
 }
