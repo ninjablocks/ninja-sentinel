@@ -210,7 +210,7 @@ exports.registerTrigger = function(req,res) {
   // This one got ugly quickly
   // TODO: beat it with a simple stick
 
-  var requiredParams = ['data','type'];
+  var requiredParams = ['data','type','name'];
 
   for (var i=0;i<requiredParams.length;i++) {
     if (!req.body.hasOwnProperty(requiredParams[i])) {
