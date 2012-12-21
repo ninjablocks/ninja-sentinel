@@ -6,6 +6,7 @@ yeomanApp.controller('MainCtrl'
 
     $scope.ConfigureMode = false;
 
+    $scope.Zones = ZoneService.Zones;
 
     /**
      * Handler for Add New Zone button
@@ -14,12 +15,10 @@ yeomanApp.controller('MainCtrl'
       var zone1 = new ZoneFactory({
         name: 'Zone1'
       });
-      zone1.Save();
 
       var zone2 = new ZoneFactory({
         name: 'Zone2'
       });
-      zone2.Save();
       
     };
 
