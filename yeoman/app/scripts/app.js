@@ -21,8 +21,8 @@ var yeomanApp = angular.module('yeomanApp', ['ngResource'])
  * Initialization
  */
 yeomanApp.run([
-  '$rootScope', '$location', 'UIEvents', 'NinjaService', 'UserService', 'PusherService', 'DeviceService'
-  ,function($rootScope, $location, UIEvents, NinjaService, UserService, PusherService,  DeviceService) {
+  '$rootScope', '$location', 'UIEvents', 'NinjaService', 'UserService', 'PusherService', 'DeviceService', 'ZoneService'
+  ,function($rootScope, $location, UIEvents, NinjaService, UserService, PusherService,  DeviceService, ZoneService) {
 
 
   /**
@@ -39,6 +39,8 @@ yeomanApp.run([
    */
   UserService.GetLoginStatus();
   UserService.GetInfo();
+
+  ZoneService.GetZones();
 
   DeviceService.LoadUserDevices(function() {
 
