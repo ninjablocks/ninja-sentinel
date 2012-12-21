@@ -1,6 +1,6 @@
 'use strict';
 
-var yeomanApp = angular.module('yeomanApp', [])
+var yeomanApp = angular.module('yeomanApp', ['ngResource'])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/', {
