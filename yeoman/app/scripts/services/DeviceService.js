@@ -27,7 +27,7 @@ yeomanApp.service('DeviceService'
 		 * @return {[type]}            [description]
 		 */
 		LoadUserDevices: function(callback) {
-			console.log('LoadUserDevices');
+			if (DEBUG) console.log('LoadUserDevices');
 			NinjaService.User.GetDevices(this.SetUserDevices.bind(this));
 			if (callback) {
 				NinjaService.User.GetDevices(callback);

@@ -59,7 +59,7 @@ yeomanApp.factory('UserService'
 
 				$http.post(Config.Server + '/signin', payload).success((function(response) {
 					if (response.result === 1) {
-						console.log('Login()', this);
+						if (DEBUG) console.log('Login()', this);
 						$rootScope.$broadcast(UIEvents.UserLogin);
 						this.IsLoggedIn = true;
 					}
@@ -74,7 +74,7 @@ yeomanApp.factory('UserService'
 			Logout: function() {
 				$http.get(Config.Server + '/signout').success((function(response){
 					$rootScope.$broadcast(UIEvents.UserLogout);
-					console.log("Logout():", this);
+					if (DEBUG) console.log("Logout():", this);
 					this.IsLoggedIn = false;
 				}).bind(this)).error(function(response) {
 					$rootScope.$broadcast(UIEvents.UserLogoutFailed);

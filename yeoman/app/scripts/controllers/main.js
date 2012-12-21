@@ -15,10 +15,7 @@ yeomanApp.controller('MainCtrl'
       var zone1 = new ZoneFactory({
         name: 'Zone1'
       });
-
-      var zone2 = new ZoneFactory({
-        name: 'Zone2'
-      });
+      zone1.Save();
       
     };
 

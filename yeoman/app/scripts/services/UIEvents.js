@@ -54,14 +54,25 @@ yeomanApp.service('UIEvents', function() {
         DeviceRemoved:          'DeviceRemoved',
         DeviceRemoveFailed:     'DeviceRemoveFailed',
 
-        ButtonRemoving:         'ButtonRemoving',
-        ButtonRemoved:          'ButtonRemoved',
-        ButtonRemoveFailed:     'ButtonRemoteFailed',
-
         SetDeviceType:          'SetDeviceType',
 
-        ServiceUpdated:         'ServiceUpdated'
+        ServiceUpdated:         'ServiceUpdated',
 
+        /**
+         * ZONES
+         */
+        
+        ZoneAdding:             'ZoneAdding',
+        ZoneAdded:              'ZoneAdded',
+        ZoneAddFailed:          'ZoneAddFailed',
+
+        ZoneUpdating:           'ZoneUpdating',
+        ZoneUpdated:            'ZoneUpdated',
+        ZoneUpdateFailed:       'ZoneUpdateFailed',
+
+        ZoneRemoving:           'ZoneRemoving',
+        ZoneRemoved:            'ZoneRemoved',
+        ZoneRemoveFailed:       'ZoneRemoveFailed'
 
 
     };

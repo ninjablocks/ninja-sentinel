@@ -1,5 +1,7 @@
 'use strict';
 
+var DEBUG = false;
+
 var yeomanApp = angular.module('yeomanApp', ['ngResource'])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
@@ -14,7 +16,6 @@ var yeomanApp = angular.module('yeomanApp', ['ngResource'])
   .config(['$locationProvider', function($locationProvider) {
     $locationProvider.html5Mode(false);
   }]);
-
 
 
 /**

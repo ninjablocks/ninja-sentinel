@@ -198,7 +198,7 @@ exports.deleteZone = function(req,res) {
     helpers.logActivity(req.redisClient,
       req.session.ninja.id,
       'info',
-      'Zone '+zoneData.name+' was deleted'
+      'Zone '+zId+' was deleted'
     );
 
     res.send(200);
