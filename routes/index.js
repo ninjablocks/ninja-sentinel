@@ -233,15 +233,8 @@ exports.proxy = function(req,res) {
 
 exports.index = function(req, res){
 
-  var ninja = ninjaBlocks.app({access_token:req.session.token});
-  ninja.devices(function(err,devices) {
-
-    res.render('index.jade',{
-      title:'Ninja Sentinel',
-      ninja:req.session.ninja,
-      devices:devices
-    });
-  });
+  res.sendfile('public/index.html');
+  
 };
 
 exports.setGlobalOverride = function(req,res) {
