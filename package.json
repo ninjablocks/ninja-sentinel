@@ -16,6 +16,7 @@
     "tempodb":"latest",
     "twilio":"git+https://github.com/StephaneP/node-twilio.git",
     "nodemailer":"0.3.35"
+
   },
   "engines": {
     "node":"0.8.x",

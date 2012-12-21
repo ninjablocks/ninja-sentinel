@@ -33,6 +33,7 @@ var express = require('express')
 var app = express();
 var authom = require('authom');
 
+
 app.configure(function(){
   app.set('port', process.env.PORT || 8000);
   app.set('views', __dirname + '/views');
@@ -47,6 +48,17 @@ app.configure(function(){
     res.setHeader( 'X-Powered-By', "A bad-ass mother who don't take no crap off of nobody!" );
     req.app = app;
     req.redisClient = redisClient;
+    // Setup the Twilio callbacks
+
+    var TwilioClient = require('twilio').Client
+      , HOSTNAME = 'sentinel.ninjaapp.com'
+      , twilioClient = new TwilioClient(process.env.TWILIO_SID, process.env.TWILIO_TOKEN, HOSTNAME, {express: app})
+      , phone = twilioClient.getPhoneNumber(process.env.TWILIO_PHONE);
+
+
+    req.phone = phone;
+    req.HOSTNAME = HOSTNAME;
+
     next();
   });
   app.use(app.router);
@@ -140,6 +152,7 @@ app.get('/alert/:alertId', requiresAuthentication, alertRoutes.fetchAlert);
 app.put('/alert/:alertId', requiresAuthentication, alertRoutes.updateAlert);
 app.delete('/alert/:alertId', requiresAuthentication, alertRoutes.deleteAlert);
 
+
 app.get('/zone', requiresAuthentication, zoneRoutes.fetchAllZones)
 app.post('/zone', requiresAuthentication, zoneRoutes.createZone);
 app.put('/zone/:zoneId', requiresAuthentication, zoneRoutes.updateZone);
@@ -148,6 +161,7 @@ app.delete('/zone/:zoneId', requiresAuthentication, zoneRoutes.deleteZone);
 
 app.put('/zone/:zoneId/trigger', requiresAuthentication, zoneRoutes.registerTrigger);
 app.delete('/zone/:zoneId/trigger/:triggerData', requiresAuthentication, zoneRoutes.deleteTrigger);
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Ninja listening on port " + app.get('port'));
