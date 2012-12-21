@@ -49,13 +49,6 @@ app.configure(function(){
     req.app = app;
     req.redisClient = redisClient;
     // Setup the Twilio callbacks
-
-    var TwilioClient = require('twilio').Client
-      , HOSTNAME = 'sentinel.ninjaapp.com'
-      , twilioClient = new TwilioClient(process.env.TWILIO_SID, process.env.TWILIO_TOKEN, HOSTNAME, {express: app})
-      , phone = twilioClient.getPhoneNumber(process.env.TWILIO_PHONE);
-
-
     req.phone = phone;
     req.HOSTNAME = HOSTNAME;
 
