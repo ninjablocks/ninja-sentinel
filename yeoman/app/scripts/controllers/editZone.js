@@ -14,20 +14,11 @@ yeomanApp.controller('EditZoneCtrl'
       $scope.Zone.Save();
     };
 
-    /**
-     * Listen for new zones being added
-     */
-    // $rootScope.$on(UIEvents.ZoneAdding, function(event, zone) {
-    //   console.log("ZoneAdding:", zone);
-    //   $scope.Zone = zone;
-    // });
 
-    /**
-     * Listen for editing events
-     */
-    // $rootScope.$on(UIEvents.ZoneEditing, function(event, zone) {
-    //   console.log("ZoneEditing:", zone);
-    //   $scope.Zone = zone;
-    // });
+    $scope.Delete = function() {
+      $scope.Zone.Delete();
+      $scope.setRoute('/');
+    };
+
 
 }]);

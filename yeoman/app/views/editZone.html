@@ -2,8 +2,14 @@
 <div class="panel">
   <input type="text" placeholder="Name this zone" ng-model="Zone.Options.name">
 </div>
+<div class="panel">
+  <h5>Triggers</h5>
+  <a class="button success">Add New Trigger</a>
+</div>
 
 <ul class="button-group radius even two-up">
-  <li><a class="button large alert radius" ng-click="setRoute('/')">Cancel</a></li>
+  <li><a class="button large cancel radius" ng-click="setRoute('/')">Cancel</a></li>
   <li><a class="button large success radius" ng-click="Save()">Save</a></li>
 </ul>
+
+<a class="button alert" ng-click="Delete()">Delete this Zone</a>
