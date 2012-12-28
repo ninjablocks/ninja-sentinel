@@ -1,0 +1,41 @@
+.triggers {
+  margin-top: 10px;
+  position: relative;
+  
+  .actions {
+    position: absolute;
+    top: 7px;
+    right: 0px;
+    width: 100px;
+    display: block;
+    text-align: right;
+    padding-right: 10px;
+  }
+  
+  .trigger {
+    text-align: center;
+    position: relative;
+    
+    .actions {
+      position: absolute;
+      right: 10px;
+      top: 8px;
+      
+    }
+
+    .delete {
+      @include border-radius(20em);
+      border: 1px solid white;
+      background: black;
+      font-weight: 800;
+      text-align: center;
+      color: white;
+      position: absolute;
+      top: 8px;
+      right: -8px;
+      line-height: 1.2em;
+      width: 1.3em;
+      height: 1.3em;
+    }
+  }
+}
