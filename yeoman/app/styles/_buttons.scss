@@ -1,0 +1,12 @@
+/**
+ * Extra Foundation button styles 
+ */
+
+.button {
+  &.cancel {
+    background-color: hsl(0, 86%, 42%);
+    border: 1px solid hsl(0, 86%, 27%);
+  }
+
+
+}
