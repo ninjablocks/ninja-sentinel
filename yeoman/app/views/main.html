@@ -10,9 +10,9 @@
         <a class="button tiny" ng-click="EditZone()">Edit</a>
         
       </div>
-      <div class="triggers">
-        <div class="trigger" ng-repeat="trigger in Triggers">
-          
+      <div class="panel triggers">
+        <div class="trigger" ng-repeat="trigger in zone.Triggers">
+          {{ trigger.Options.type }}: <small>{{ trigger.Options.data }}</small>
         </div>
       </div>
     </div>

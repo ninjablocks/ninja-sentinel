@@ -4,7 +4,12 @@
 </div>
 <div class="panel" ng-show="Zone.id">
   <h5>Triggers</h5>
-  <a class="button success">Add New Trigger</a>
+  <a class="button success" ng-click="AddNewTrigger()">Add New Trigger</a>
+  <div class="trigger" ng-repeat="trigger in Zone.Triggers">
+    {{ trigger.Options.type }}:
+    {{ trigger.Options.name }} 
+    <small>{{ trigger.Options.data }}</small>
+  </div>
 </div>
 
 <ul class="button-group radius even two-up">
@@ -12,4 +17,4 @@
   <li><a class="button large success radius" ng-click="Save()">Save</a></li>
 </ul>
 
-<a class="button alert" ng-click="Delete()">Delete this Zone</a>
+<a class="button alert" ng-click="Delete()" ng-show="Zone.id">Delete this Zone</a>

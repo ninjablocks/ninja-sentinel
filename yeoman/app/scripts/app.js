@@ -13,6 +13,10 @@ var yeomanApp = angular.module('yeomanApp', ['ngResource'])
         templateUrl: 'views/editZone.html',
         controller: 'EditZoneCtrl'
       })
+      .when('/configureTrigger', {
+        templateUrl: 'views/configureTrigger.html',
+        controller: 'ConfigureTriggerCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

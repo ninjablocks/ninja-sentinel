@@ -16,13 +16,6 @@ yeomanApp.controller('ZoneCtrl'
 
 
     /**
-     * Add a new trigger to the zone
-     */
-    $scope.AddNewTrigger = function() {
-
-    };
-
-    /**
      * Delete Zone button
      */
     $scope.Delete = function() {

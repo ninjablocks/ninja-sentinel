@@ -1,8 +1,8 @@
 'use strict';
 
 yeomanApp.factory('ZoneFactory'
-  , [ '$rootScope', '$http', 'UIEvents', 'NinjaUtilities'
-  , function( $rootScope, $http, UIEvents, NinjaUtilities) {
+  , [ '$rootScope', '$http', 'UIEvents', 'NinjaUtilities', 'TriggerFactory'
+  , function( $rootScope, $http, UIEvents, NinjaUtilities, TriggerFactory) {
 
     /**
      * Zone object. Instantiate with new Zone()
@@ -11,8 +11,11 @@ yeomanApp.factory('ZoneFactory'
 
       this.id = null;
 
+      this.Triggers = [];
+
       this.Options = {
-        name: ''
+        name: '',
+        triggers: {}
         // activeTimes: [],
         // overrideActive: null
       };
@@ -24,8 +27,22 @@ yeomanApp.factory('ZoneFactory'
           this.id = this.Options.id;
           delete this.Options.id;
         }
+
+        if (this.Options.triggers) {
+          var triggers = NinjaUtilities.ObjectArrayToArray(this.Options.triggers, 'data');
+
+          for(var i=0; i<triggers.length; i++) {
+            var triggerOptions = triggers[i];
+            var trigger = new TriggerFactory(triggerOptions);
+            this.Triggers.push(trigger);
+          }
+
+          delete this.Options.triggers;
+
+        }
       }.bind(this);
       normalize();
+      console.log(this);
 
       /**
        * Save/Update this zone
