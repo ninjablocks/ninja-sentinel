@@ -83,9 +83,9 @@ yeomanApp.factory('TriggerFactory'
       this.Delete = function(callback) {
         console.log("Trigger.Delete()", this);
 
-
-        $http.delete('/zone/' + this.Zone.id + '/trigger/' + this.Options.data).succes(function(response) {
-          console.log(response);
+        $http.delete('/zone/' + this.Zone.id + '/trigger/' + this.Options.data).success(function(response) {
+          // console.log(response);
+          $rootScope.$broadcast(UIEvents.TriggerRemoved, this);
           if (callback) {
             callback(response);
           }

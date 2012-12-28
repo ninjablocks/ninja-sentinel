@@ -33,6 +33,7 @@ yeomanApp.factory('ZoneFactory'
 
           for(var i=0; i<triggers.length; i++) {
             var triggerOptions = triggers[i];
+            triggerOptions.zone = this;
             var trigger = new TriggerFactory(triggerOptions);
             this.Triggers.push(trigger);
           }

@@ -4701,7 +4701,7 @@ textarea[contenteditable] {
     position: relative; }
     .triggers .trigger .actions {
       position: absolute;
-      right: 10px;
+      right: 20px;
       top: 8px; }
     .triggers .trigger .delete {
       -webkit-border-radius: 20em;
@@ -4716,7 +4716,7 @@ textarea[contenteditable] {
       color: white;
       position: absolute;
       top: 8px;
-      right: -8px;
+      right: 5px;
       line-height: 1.2em;
       width: 1.3em;
       height: 1.3em; }
