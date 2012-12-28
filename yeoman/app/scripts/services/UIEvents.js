@@ -66,9 +66,17 @@ yeomanApp.service('UIEvents', function() {
         ZoneAdded:              'ZoneAdded',
         ZoneAddFailed:          'ZoneAddFailed',
 
+        ZoneEditing:            'ZoneEditing',
+        ZoneEdited:             'ZoneEdited',
+        ZoneEditFailed:         'ZoneEditFailed',
+
         ZoneUpdating:           'ZoneUpdating',
         ZoneUpdated:            'ZoneUpdated',
         ZoneUpdateFailed:       'ZoneUpdateFailed',
+
+        ZoneSaving:             'ZoneSaving',
+        ZoneSaved:              'ZoneSaved',
+        ZoneSaveFailed:         'ZoneSaveFailed',
 
         ZoneRemoving:           'ZoneRemoving',
         ZoneRemoved:            'ZoneRemoved',
