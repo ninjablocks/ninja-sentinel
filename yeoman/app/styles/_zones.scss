@@ -7,10 +7,20 @@
 
     .actions {
       position: absolute;
-      top: 0px;
+      top: 7px;
       right: 0px;
       width: 100px;
       display: block;
+      text-align: right;
+      padding-right: 10px;
+    }
+
+    .triggers {
+      margin-top: 10px;
+      
+      .trigger {
+        text-align: center;
+      }
     }
   }
 

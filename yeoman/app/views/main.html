@@ -4,15 +4,15 @@
     <a class="button success" ng-click="AddZone()" ng-show="ConfigureMode">Add New Zone</a>
 
     <div class="panel zone" ng-repeat="zone in Zones" ng-controller="ZoneCtrl" >
-      <h5>Zone: {{ zone.Options.name }}</h5>
+      <h5>{{ zone.Options.name }}</h5>
       <!-- <small>{{ zone.id }}</small> -->
       <div class="actions">
-        <a class="button tiny" ng-click="EditZone()">Edit</a>
+        <a class="button tiny inline" ng-click="EditZone()">Edit</a>
         
       </div>
-      <div class="panel triggers">
-        <div class="trigger" ng-repeat="trigger in zone.Triggers">
-          {{ trigger.Options.type }}: <small>{{ trigger.Options.data }}</small>
+      <div class="triggers">
+        <div class="panel trigger" ng-repeat="trigger in zone.Triggers">
+          <h6>{{ trigger.Options.name }} <small>({{ trigger.Options.type }})</small></h6>
         </div>
       </div>
     </div>

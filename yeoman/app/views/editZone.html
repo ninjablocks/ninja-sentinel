@@ -2,16 +2,23 @@
 <div class="panel">
   <input type="text" placeholder="Name this zone" ng-model="Zone.Options.name">
 </div>
-<div class="panel" ng-show="Zone.id">
-  <h5>Triggers</h5>
-  <a class="button success" ng-click="AddNewTrigger()">Add New Trigger</a>
-  <div class="trigger" ng-repeat="trigger in Zone.Triggers">
-    {{ trigger.Options.type }}:
-    {{ trigger.Options.name }} 
-    <small>{{ trigger.Options.data }}</small>
-  </div>
-</div>
 
+  <div class="triggers" ng-show="Zone.id">
+    
+    <a class="button success " ng-click="AddNewTrigger()">Add New Trigger</a>
+
+    <div class="panel trigger" ng-repeat="trigger in Zone.Triggers">
+      {{ trigger.Options.name }} 
+      <small>({{ trigger.Options.type }})</small>
+      <div class="actions">
+        <a class="button tiny edit inline" ng-click="EditTrigger(trigger)">Edit</a>
+      </div>
+      <a class="delete" ng-click="trigger.Delete()">&times;</a>
+    </div>
+
+  </div>
+
+<br>
 <ul class="button-group radius even two-up">
   <li><a class="button large cancel radius" ng-click="setRoute('/')">Cancel</a></li>
   <li><a class="button large success radius" ng-click="Save()">Save</a></li>
