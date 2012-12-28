@@ -46,6 +46,4 @@ yeomanApp.controller('EditZoneCtrl'
     };
 
 
-
-
 }]);

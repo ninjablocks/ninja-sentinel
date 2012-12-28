@@ -1,6 +1,11 @@
-<h4>Edit Zone</h4>
+<ul class="breadcrumbs">
+    <li><a ng-click="setRoute('/')">Home</a></li>
+    <li><span class="current">Edit Zone <em>{{ Zone.Options.name }}</em></span></li>
+</ul>
+<h4>Zone</h4>
+<br>
 <div class="panel">
-  <input type="text" placeholder="Name this zone" ng-model="Zone.Options.name">
+  <input type="text" placeholder="Name this zone" ng-model="Zone.Options.name" required>
 </div>
 
   <div class="triggers" ng-show="Zone.id">

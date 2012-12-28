@@ -1,8 +1,14 @@
-<h5>{{ Zone.Options.name }}</h5>
-<h4>Edit Trigger</h4>
+<ul class="breadcrumbs">
+    <li><a ng-click="setRoute('/')">Home</a></li>
+    <li><a ng-click="setRoute('/editZone')">{{ Zone.Options.name }}</a></li>
+    <li><span class="current">Edit Trigger</span></li>
+</ul>
+<h4>Trigger</h4>
+<br>
 <form name="configureTrigger" class="panel">
   <div class="alert-box alert" ng-show="!configureTrigger.$valid">Please fill in all values</div>
   <input type="text" placeholder="Name this Trigger" ng-model="Trigger.Options.name" required>
+  <input type="hidden" ng-model="Trigger.Options.data" required>
   <select name="type" id="type" ng-model="Trigger.Options.type" required>
     <option value="">Choose Type</option>
     <option value="PIR">PIR Sensor</option>
@@ -28,7 +34,7 @@
 </form>
 <br>
 <ul class="button-group radius even two-up">
-  <li><a class="button large cancel radius" ng-click="setRoute('/')">Cancel</a></li>
+  <li><a class="button large cancel radius" ng-click="setRoute('/editZone')">Cancel</a></li>
   <li><a class="button large success radius" ng-click="Save()">Save</a></li>
 </ul>
 

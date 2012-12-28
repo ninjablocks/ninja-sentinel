@@ -15,6 +15,8 @@ yeomanApp.controller('ConfigureTriggerCtrl'
         $scope.Trigger.Save(function() {
           $scope.setRoute('/editZone');
         });
+      } else {
+        
       }
     };
 

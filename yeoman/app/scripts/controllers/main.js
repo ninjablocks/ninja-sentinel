@@ -19,11 +19,17 @@ yeomanApp.controller('MainCtrl'
     };
 
 
+    
     /**
      * Watch for ConfigureMode switches
      */
     $scope.$on(UIEvents.SetConfigureMode, function(event, modeSwitch) {
       $scope.ConfigureMode = modeSwitch;
     });
+
+
+    /** Turn off Configure Mode on first load **/
+    $rootScope.$broadcast(UIEvents.SetConfigureMode, $scope.ConfigureMode);
+
 
 }]);
