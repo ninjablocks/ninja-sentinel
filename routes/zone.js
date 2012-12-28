@@ -250,7 +250,8 @@ exports.registerTrigger = function(req,res) {
     }
 
     data.triggers[tData] = {
-      type:req.body.type
+      type:req.body.type,
+      name:req.body.name
     }
 
     var toSet = JSON.stringify(data);
