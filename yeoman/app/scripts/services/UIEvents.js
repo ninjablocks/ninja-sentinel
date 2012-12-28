@@ -80,8 +80,19 @@ yeomanApp.service('UIEvents', function() {
 
         ZoneRemoving:           'ZoneRemoving',
         ZoneRemoved:            'ZoneRemoved',
-        ZoneRemoveFailed:       'ZoneRemoveFailed'
+        ZoneRemoveFailed:       'ZoneRemoveFailed',
 
+
+        /**
+         * TRIGGERS
+         */
+        TriggerAdding:          'TriggerAdding',
+        TriggerAdded:           'TriggerAdded',
+        TriggerAddFailed:       'TriggerAddFailed',
+
+        TriggerRemoving:        'TriggerRemoving',
+        TriggerRemoved:         'TriggerRemoved',
+        TriggerRemoveFailed:    'TriggerRemoveFailed'
 
     };
 

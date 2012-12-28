@@ -108,6 +108,20 @@ yeomanApp.factory('ZoneFactory'
         }
       };
 
+
+
+      /**
+       * Event Watchers
+       */
+      $rootScope.$on(UIEvents.TriggerRemoved, function(event, trigger) {
+        console.log("TriggerRemoved:", trigger);
+        var removeIndex = this.Triggers.indexOf(trigger);
+        console.log("Removing Trigger ", removeIndex);
+        this.Triggers.slice(removeIndex, 1);
+
+      }.bind(this));
+
+
       return this;
     };
 

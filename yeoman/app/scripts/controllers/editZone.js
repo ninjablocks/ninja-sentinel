@@ -37,4 +37,14 @@ yeomanApp.controller('EditZoneCtrl'
     };
 
 
+    /**
+     * Edits the specified trigger
+     * Redirect user to /configureTrigger
+     * @param {Trigger} trigger Trigger to edit
+     */
+    $scope.EditTrigger = function(trigger) {
+      EditTriggerService.Trigger = trigger;
+      $scope.setRoute('/configureTrigger');
+    }
+
 }]);
