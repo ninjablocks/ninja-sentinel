@@ -4721,6 +4721,11 @@ textarea[contenteditable] {
       width: 1.3em;
       height: 1.3em; }
 
+.signal-actions {
+  display: inline-block;
+  float: right;
+  margin: 0; }
+
 .top-bar .toggle-edit {
   position: absolute;
   top: 0px;

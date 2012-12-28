@@ -28,12 +28,10 @@ yeomanApp.controller('EditZoneCtrl'
      */
     $scope.AddNewTrigger = function() {
       var newTrigger = new TriggerFactory({
-        name: 'My Trigger 2',
-        type: 'PIR',
-        data: '10100101010100100110101010101101',
         zone: $scope.Zone
       });
-      newTrigger.Save();
+      EditTriggerService.Trigger = newTrigger;
+      $scope.setRoute('/configureTrigger');
     };
 
 
@@ -45,6 +43,9 @@ yeomanApp.controller('EditZoneCtrl'
     $scope.EditTrigger = function(trigger) {
       EditTriggerService.Trigger = trigger;
       $scope.setRoute('/configureTrigger');
-    }
+    };
+
+
+
 
 }]);
