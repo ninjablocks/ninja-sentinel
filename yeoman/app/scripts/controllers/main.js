@@ -1,8 +1,8 @@
 'use strict';
 
 yeomanApp.controller('MainCtrl'
-  , ['$scope', '$rootScope', 'UIEvents', 'ZoneFactory', 'ZoneService'
-  , function($scope, $rootScope, UIEvents, ZoneFactory, ZoneService) {
+  , ['$scope', '$rootScope', 'UIEvents', 'ZoneFactory', 'ZoneService', 'EditZoneService'
+  , function($scope, $rootScope, UIEvents, ZoneFactory, ZoneService, EditZoneService) {
 
     $scope.ConfigureMode = false;
 
@@ -12,11 +12,10 @@ yeomanApp.controller('MainCtrl'
      * Handler for Add New Zone button
      */
     $scope.AddZone = function() {
-      var zone1 = new ZoneFactory({
-        name: 'Zone1'
-      });
-      zone1.Save();
-      
+      var newZone = new ZoneFactory({});
+      EditZoneService.Zone = newZone;
+      $rootScope.$broadcast(UIEvents.ZoneAdding, newZone);
+      $scope.setRoute('/editZone');
     };
 
 

@@ -4661,7 +4661,8 @@ textarea[contenteditable] {
 .zones {
   position: relative; }
   .zones .zone {
-    position: relative; }
+    position: relative;
+    min-height: 48px; }
     .zones .zone .actions {
       position: absolute;
       top: 0px;

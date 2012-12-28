@@ -31,6 +31,7 @@ yeomanApp.factory('ZoneFactory'
        * Save/Update this zone
        */
       this.Save = function(callback) {
+        console.log("Zone.Save()");
         if (this.id) {
           // Exists. Update only
           $http.put('/zone/' + this.id, this.Options, { headers: { 'Content-Type': 'application/json', 'Accept': 'application/json'} }).success(function(response) {

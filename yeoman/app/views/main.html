@@ -5,8 +5,10 @@
 
     <div class="panel zone" ng-repeat="zone in Zones" ng-controller="ZoneCtrl" >
       <h5>Zone: {{ zone.Options.name }}</h5>
-      <small>{{ zone.id }}</small>
+      <!-- <small>{{ zone.id }}</small> -->
       <div class="actions">
+        <a class="button tiny" ng-click="EditZone()">Edit</a>
+        <!-- <a class="button tiny success" ng-click="AddNewTrigger()">New Trigger</a> -->
         <a class="button tiny alert" ng-click="Delete()">Delete</a>
       </div>
       <div class="triggers">
