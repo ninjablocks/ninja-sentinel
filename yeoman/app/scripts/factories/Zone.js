@@ -43,7 +43,6 @@ yeomanApp.factory('ZoneFactory'
         }
       }.bind(this);
       normalize();
-      console.log(this);
 
       /**
        * Save/Update this zone
@@ -112,13 +111,46 @@ yeomanApp.factory('ZoneFactory'
 
 
       /**
+       * Determines if a trigger is already in the Triggers array
+       * @param {Trigger} trigger Trigger to search for
+       */
+      this.HasTrigger = function(trigger) {
+        var found = false;
+
+        for(var i=0; i<this.Triggers.length; i++) {
+          var triggerItem = this.Triggers[i];
+          if (triggerItem.Options.data === trigger.Options.data) {
+            found = true;
+            break;
+          }
+        }
+
+        return found;
+      };
+
+
+      /**
        * Event Watchers
        */
       $rootScope.$on(UIEvents.TriggerRemoved, function(event, trigger) {
-        console.log("TriggerRemoved:", trigger);
-        var removeIndex = this.Triggers.indexOf(trigger);
-        console.log("Removing Trigger ", removeIndex);
-        this.Triggers.slice(removeIndex, 1);
+        if (this.id === trigger.Zone.id) {
+          console.log("TriggerRemoved:", trigger);
+          var removeIndex = this.Triggers.indexOf(trigger);
+          console.log("Removing Trigger ", removeIndex);
+          this.Triggers.splice(removeIndex, 1);
+          $rootScope.$watch();
+        }
+
+      }.bind(this));
+
+      $rootScope.$on(UIEvents.TriggerAdded, function(event, trigger) {
+        if (this.id === trigger.Zone.id) {
+          console.log("TriggerAdded:", trigger);
+          if (!this.HasTrigger(trigger)) {
+            this.Triggers.push(trigger);
+            $rootScope.$watch();
+          }
+        }
 
       }.bind(this));
 

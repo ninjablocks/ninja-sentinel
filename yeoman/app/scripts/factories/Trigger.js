@@ -59,10 +59,11 @@ yeomanApp.factory('TriggerFactory'
           var payload = this.Options;
           $http.put('/zone/' + this.Zone.id + '/trigger', payload).success(function(response) {
             console.log(response);
+            $rootScope.$broadcast(UIEvents.TriggerAdded, this);
             if (callback) {
               callback(response);
             }
-          }).error(function(response) {
+          }.bind(this)).error(function(response) {
             console.log("Error:", response);
             if (callback) {
               callback(response);
@@ -83,9 +84,11 @@ yeomanApp.factory('TriggerFactory'
       this.Delete = function(callback) {
         console.log("Trigger.Delete()", this);
 
+        var removedTrigger = this;
+
         $http.delete('/zone/' + this.Zone.id + '/trigger/' + this.Options.data).success(function(response) {
           // console.log(response);
-          $rootScope.$broadcast(UIEvents.TriggerRemoved, this);
+          $rootScope.$broadcast(UIEvents.TriggerRemoved, removedTrigger);
           if (callback) {
             callback(response);
           }
