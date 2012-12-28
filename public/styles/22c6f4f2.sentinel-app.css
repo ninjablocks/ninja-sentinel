@@ -4188,6 +4188,15 @@ table.hide-for-medium {
 
   .top-bar ul > li.has-button a.button {
     margin: 0; } }
+/**
+ * Extra Foundation button styles 
+ */
+.button.inline {
+  display: inline; }
+.button.cancel {
+  background-color: #c70f0f;
+  border: 1px solid #800a0a; }
+
 /* normalize.css v2.0.1 | MIT License | git.io/normalize */
 /* ==========================================================================
    HTML5 display definitions
@@ -4661,13 +4670,61 @@ textarea[contenteditable] {
 .zones {
   position: relative; }
   .zones .zone {
-    position: relative; }
+    position: relative;
+    min-height: 48px; }
     .zones .zone .actions {
       position: absolute;
-      top: 0px;
+      top: 7px;
       right: 0px;
       width: 100px;
-      display: block; }
+      display: block;
+      text-align: right;
+      padding-right: 10px; }
+    .zones .zone .triggers {
+      margin-top: 10px; }
+      .zones .zone .triggers .trigger {
+        text-align: center; }
+
+.triggers {
+  margin-top: 10px;
+  position: relative; }
+  .triggers .actions {
+    position: absolute;
+    top: 7px;
+    right: 0px;
+    width: 100px;
+    display: block;
+    text-align: right;
+    padding-right: 10px; }
+  .triggers .trigger {
+    text-align: center;
+    position: relative; }
+    .triggers .trigger .actions {
+      position: absolute;
+      right: 20px;
+      top: 8px; }
+    .triggers .trigger .delete {
+      -webkit-border-radius: 20em;
+      -moz-border-radius: 20em;
+      -ms-border-radius: 20em;
+      -o-border-radius: 20em;
+      border-radius: 20em;
+      border: 1px solid white;
+      background: black;
+      font-weight: 800;
+      text-align: center;
+      color: white;
+      position: absolute;
+      top: 8px;
+      right: 5px;
+      line-height: 1.2em;
+      width: 1.3em;
+      height: 1.3em; }
+
+.signal-actions {
+  display: inline-block;
+  float: right;
+  margin: 0; }
 
 .top-bar .toggle-edit {
   position: absolute;

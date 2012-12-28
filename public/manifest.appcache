@@ -1,6 +1,10 @@
+# XMLHttpRequest cannot load http://localhost:8000/rest/v0/user. Origin http://localhost:3501 is not allowed by Access-Control-Allow-Origin. (undefined, #undefined)
+# XMLHttpRequest cannot load http://localhost:8000/rest/v0/user. Origin http://localhost:3501 is not allowed by Access-Control-Allow-Origin. (undefined, #undefined)
+# XMLHttpRequest cannot load http://localhost:8000/rest/v0/devices. Origin http://localhost:3501 is not allowed by Access-Control-Allow-Origin. (undefined, #undefined)
+# XMLHttpRequest cannot load http://localhost:8000/rest/v0/devices. Origin http://localhost:3501 is not allowed by Access-Control-Allow-Origin. (undefined, #undefined)
 CACHE MANIFEST
 
-# Time: Fri Dec 21 2012 18:00:56 GMT+1100 (EST)
+# Time: Fri Dec 28 2012 18:02:23 GMT+1100 (EST)
 # This manifest was created by confess.js, http://github.com/jamesgpearce/confess
 #
 # Retrieved URL: http://localhost:3501/#/
@@ -32,10 +36,10 @@ http://localhost:3501/images/foundation/orbit/b7bdc9d0.left-arrow-small.png
 http://localhost:3501/images/foundation/orbit/ba0fce87.right-arrow.png
 http://localhost:3501/images/foundation/orbit/bee4c225.timer-black.png
 http://www.google-analytics.com/ga.js
-scripts/fc11d926.scripts.js
+scripts/edf73401.scripts.js
 scripts/vendor/9337e323.angular.min.js
 scripts/vendor/cf69c6f2.modernizr-2.6.1.min.js
-styles/8bf5a88d.sentinel-app.css
+styles/22c6f4f2.sentinel-app.css
 
 NETWORK:
 *

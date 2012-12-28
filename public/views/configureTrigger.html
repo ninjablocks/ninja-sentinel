@@ -1,0 +1,41 @@
+<ul class="breadcrumbs">
+    <li><a ng-click="setRoute('/')">Home</a></li>
+    <li><a ng-click="setRoute('/editZone')">{{ Zone.Options.name }}</a></li>
+    <li><span class="current">Edit Trigger</span></li>
+</ul>
+<h4>Trigger</h4>
+<br>
+<form name="configureTrigger" class="panel">
+  <div class="alert-box alert" ng-show="!configureTrigger.$valid">Please fill in all values</div>
+  <input type="text" placeholder="Name this Trigger" ng-model="Trigger.Options.name" required>
+  <input type="hidden" ng-model="Trigger.Options.data" required>
+  <select name="type" id="type" ng-model="Trigger.Options.type" required>
+    <option value="">Choose Type</option>
+    <option value="PIR">PIR Sensor</option>
+    <option value="Door">Door Sensor</option>
+  </select>
+
+  <div class="panel">
+    <h6 class="subheader">Click 'listen' and actuate the trigger sensor 3 times to pair</h6>
+    <h5 class="three"> <span class="label success" ng-show="Trigger.Options.data">{{ Trigger.Options.data | rfHex }}</span> </h5>
+
+    <div class="button-bar nine">
+      <span class="signal-actions" ng-show="!Trigger.Options.data">
+        <a class="button listen" ng-click="Listen()" ng-show="!IsListening">Listen</a>
+        <a class="button alert" ng-click="Stop()" ng-show="IsListening">Stop</a>
+      </span>
+      <ul class="button-group signal-actions" ng-show="Trigger.Options.data">
+        <li><a class="button alert" ng-click="Clear()">Clear</a></li>
+        <li><a class="button">Test</a></li>
+      </ul>
+    </div>
+  </div>
+
+</form>
+<br>
+<ul class="button-group radius even two-up">
+  <li><a class="button large cancel radius" ng-click="setRoute('/editZone')">Cancel</a></li>
+  <li><a class="button large success radius" ng-click="Save()">Save</a></li>
+</ul>
+
+<a class="button alert" ng-click="Delete()" ng-show="Trigger.IsValid()">Delete this Zone</a>

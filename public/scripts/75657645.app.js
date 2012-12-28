@@ -9,6 +9,14 @@ var yeomanApp = angular.module('yeomanApp', ['ngResource'])
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .when('/editZone', {
+        templateUrl: 'views/editZone.html',
+        controller: 'EditZoneCtrl'
+      })
+      .when('/configureTrigger', {
+        templateUrl: 'views/configureTrigger.html',
+        controller: 'ConfigureTriggerCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

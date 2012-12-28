@@ -66,14 +66,33 @@ yeomanApp.service('UIEvents', function() {
         ZoneAdded:              'ZoneAdded',
         ZoneAddFailed:          'ZoneAddFailed',
 
+        ZoneEditing:            'ZoneEditing',
+        ZoneEdited:             'ZoneEdited',
+        ZoneEditFailed:         'ZoneEditFailed',
+
         ZoneUpdating:           'ZoneUpdating',
         ZoneUpdated:            'ZoneUpdated',
         ZoneUpdateFailed:       'ZoneUpdateFailed',
 
+        ZoneSaving:             'ZoneSaving',
+        ZoneSaved:              'ZoneSaved',
+        ZoneSaveFailed:         'ZoneSaveFailed',
+
         ZoneRemoving:           'ZoneRemoving',
         ZoneRemoved:            'ZoneRemoved',
-        ZoneRemoveFailed:       'ZoneRemoveFailed'
+        ZoneRemoveFailed:       'ZoneRemoveFailed',
 
+
+        /**
+         * TRIGGERS
+         */
+        TriggerAdding:          'TriggerAdding',
+        TriggerAdded:           'TriggerAdded',
+        TriggerAddFailed:       'TriggerAddFailed',
+
+        TriggerRemoving:        'TriggerRemoving',
+        TriggerRemoved:         'TriggerRemoved',
+        TriggerRemoveFailed:    'TriggerRemoveFailed'
 
     };
 
