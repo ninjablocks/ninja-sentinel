@@ -22,4 +22,7 @@ yeomanApp.controller('ZoneCtrl'
       $scope.zone.Delete();
     };
 
+
+    
+
 }]);

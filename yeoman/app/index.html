@@ -65,7 +65,9 @@
                 </ul>
                 <section>
                     <ul class="left">
-                        
+                        <li>
+                            <a ng-click="Override(true)">On</a>
+                        </li>
                     </ul>
                     <ul class="right">
                         
@@ -77,6 +79,13 @@
 
         <div class="container" ng-view></div>
 
+        <div class="fixed bottom">
+            <ul class="nav-bar" ng-controller="UtilitybarCtrl">
+                <li>
+                    <a ng-click="Override(true)">All On</a>
+                </li>
+            </ul>
+        </div>
 
         <script src="components/jquery/jquery.min.js"></script>
         <script src="scripts/vendor/angular.min.js"></script>
@@ -111,6 +120,7 @@
 
         <script src="scripts/filters/rfHex.js"></script>
 
+        <script src="scripts/controllers/utilitybar.js"></script>
         <!-- endbuild -->
 
         <!-- Google Analytics: -->

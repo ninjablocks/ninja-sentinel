@@ -40,3 +40,12 @@ a.button {
   padding: 10px;
   margin: 0px;
 }
+
+.fixed.bottom {
+  bottom: 0px !important;
+  top: auto;
+  
+  .nav-bar {
+    margin: 0px;
+  }
+}

@@ -92,7 +92,13 @@ yeomanApp.service('UIEvents', function() {
 
         TriggerRemoving:        'TriggerRemoving',
         TriggerRemoved:         'TriggerRemoved',
-        TriggerRemoveFailed:    'TriggerRemoveFailed'
+        TriggerRemoveFailed:    'TriggerRemoveFailed',
+
+
+        /**
+         * OVERRIDES
+         */
+        OverrideUpdate:         'OverrideUpdate'
 
     };
 
