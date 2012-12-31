@@ -16,6 +16,14 @@ yeomanApp.controller('ZoneCtrl'
 
 
     /**
+     * Sets the override value for the Zone
+     * @param {bool|null} value Override value
+     */
+    $scope.SetOverride = function(value) {
+        $scope.zone.SetOverride(value);
+    };
+
+    /**
      * Delete Zone button
      */
     $scope.Delete = function() {
