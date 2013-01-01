@@ -2,9 +2,14 @@
 .top-bar {
 
   .toggle-edit {
+    display: block;
     position: absolute;
     top: 0px;
     right: 0px;
     color: white;
+    
+    a {
+      display: inline-block;
+    }
   }  
 }

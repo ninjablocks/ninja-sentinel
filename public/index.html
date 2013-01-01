@@ -31,7 +31,7 @@
         
         <script>(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")</script>
         
-        <link rel="stylesheet" href="styles/22c6f4f2.sentinel-app.css"/>
+        <link rel="stylesheet" href="styles/d063d455.sentinel-app.css"/>
 
         <script src="scripts/vendor/cf69c6f2.modernizr-2.6.1.min.js"></script>
 
@@ -65,7 +65,9 @@
                 </ul>
                 <section>
                     <ul class="left">
-                        
+                        <li>
+                            <a ng-click="Override(true)">On</a>
+                        </li>
                     </ul>
                     <ul class="right">
                         
@@ -77,11 +79,18 @@
 
         <div class="container" ng-view></div>
 
+        <div class="fixed bottom">
+            <ul class="nav-bar" ng-controller="UtilitybarCtrl">
+                <li><a ng-click="SetOverride(true)" ng-show="!Override">Override On</a></li>
+                <li><a ng-click="SetOverride(false)" ng-show="Override">Override Off</a></li>
+                <!-- <li><a ng-click="SetOverride(null)">Use Schedule</a></li> -->
+            </ul>
+        </div>
 
         <script src="components/jquery/jquery.min.js"></script>
         <script src="scripts/vendor/9337e323.angular.min.js"></script>
 
-        <script src="scripts/edf73401.scripts.js"></script>
+        <script src="scripts/7637b7a1.scripts.js"></script>
 
         <!-- Google Analytics: -->
         <script type="text/javascript">
