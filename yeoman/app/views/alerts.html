@@ -1,4 +1,7 @@
 <a class="button success" ng-click="AddAlert()">Add New Alert</a>
 <h4>Alerts</h4>
 <br>
-<div class="panel" ng-repeat="alert in Alerts"></div>
+<div class="panel" ng-repeat="alert in Alerts">
+  {{ alert.type }}: {{ alert.alertee }}
+  <a class="button alert" ng-click="Delete(alert)">Delete</a>
+</div>

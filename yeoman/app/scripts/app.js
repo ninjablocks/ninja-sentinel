@@ -21,6 +21,10 @@ var yeomanApp = angular.module('yeomanApp', ['ngResource'])
         templateUrl: 'views/alerts.html',
         controller: 'AlertsCtrl'
       })
+      .when('/configureAlert', {
+        templateUrl: 'views/configureAlert.html',
+        controller: 'ConfigureAlertCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
