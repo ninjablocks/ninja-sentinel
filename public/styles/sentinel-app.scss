@@ -33,12 +33,18 @@ a.button {
 
 .container {
   margin-top: 45px;
+  margin-bottom: 45px;
 }
 
 
 .panel {
   padding: 10px;
   margin: 0px;
+  border-top-color: #FAFAFA;
+  
+  &:first-of-type {
+    border-top-color: auto;
+  }
 }
 
 .fixed.bottom {

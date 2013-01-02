@@ -4676,7 +4676,7 @@ textarea[contenteditable] {
       position: absolute;
       top: 7px;
       right: 0px;
-      width: 100px;
+      width: 120px;
       display: block;
       text-align: right;
       padding-right: 10px; }
@@ -4749,11 +4749,15 @@ a.button {
   color: white; }
 
 .container {
-  margin-top: 45px; }
+  margin-top: 45px;
+  margin-bottom: 45px; }
 
 .panel {
   padding: 10px;
-  margin: 0px; }
+  margin: 0px;
+  border-top-color: #FAFAFA; }
+  .panel:first-of-type {
+    border-top-color: auto; }
 
 .fixed.bottom {
   bottom: 0px !important;

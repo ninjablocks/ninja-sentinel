@@ -2,6 +2,7 @@
   <div class="twelve zones">
     
     <a class="button success" ng-click="AddZone()" ng-show="ConfigureMode">Add New Zone</a>
+    <a class="button mediary" ng-click="setRoute('/alerts')" ng-show="ConfigureMode">Configure Alerts</a>
 
     <div class="panel zone" ng-repeat="zone in Zones" ng-controller="ZoneCtrl">
       <h5>{{ zone.Options.name }}</h5>
@@ -9,7 +10,7 @@
       <div class="actions">
         <a class="button tiny inline" ng-click="EditZone()" ng-show="ConfigureMode">Edit</a>
         <a class="button tiny inline success" ng-click="SetOverride(true)" ng-show="!zone.Options.overrideActive" ng-show="!ConfigureMode">Arm</a>
-        <a class="button tiny inline alert" ng-click="SetOverride(false)" ng-show="zone.Options.overrideActive" ng-show="ConfigureMode">Disarm</a>
+        <a class="button tiny inline alert" ng-click="SetOverride(false)" ng-show="zone.Options.overrideActive" ng-show="!ConfigureMode">Disarm</a>
       </div>
       <div class="triggers">
         <div class="panel trigger" ng-repeat="trigger in zone.Triggers">
