@@ -10,12 +10,9 @@ yeomanApp.controller('AlertsCtrl'
      * Creates a new alert
      */
     $scope.AddAlert = function() {
-      var newAlert = new AlertFactory({
-        type: 'sms',
-        alertee: '+61405058148'
-      });
+      var newAlert = new AlertFactory();
       EditAlertService.Alert = newAlert;
-      newAlert.Save();
+      $scope.setRoute('/configureAlert');
     };
 
 
@@ -24,7 +21,8 @@ yeomanApp.controller('AlertsCtrl'
      * @param {Alert} alert Alert object to delete
      */
     $scope.Delete = function(alert) {
+      console.log("Deleting Alert", alert);
       alert.Delete();
-    }
+    };
 
 }]);

@@ -1,8 +1,8 @@
 'use strict';
 
 yeomanApp.factory('AlertService'
-  , ['$rootScope', '$http', 'UIEvents'
-  , function($rootScope, $http, UIEvents) {
+  , ['$rootScope', '$http', 'UIEvents', 'NinjaUtilities', 'AlertFactory'
+  , function($rootScope, $http, UIEvents, NinjaUtilities, AlertFactory) {
 
     var alertService = {
 
@@ -17,8 +17,8 @@ yeomanApp.factory('AlertService'
         $http.get('/alert').success(function(response) {
           if (DEBUG) console.log('GetAlerts:', response);
 
-          this.Alerts = response;
-
+          var alertOptionsArray = NinjaUtilities.ObjectArrayToArray(response);
+          this.Alerts = this.InstantiateAlerts(alertOptionsArray);
           if (callback) {
             callback(response);
           }
@@ -36,11 +36,20 @@ yeomanApp.factory('AlertService'
        * @param {object} alertOptionsArray Options object array
        */
       InstantiateAlerts: function(alertOptionsArray) {
+        var alerts = [];
 
+        for (var i=0; i<alertOptionsArray.length; i++) {
+          var alertOptions = alertOptionsArray[i];
+          var alert = this.InstantiateAlert(alertOptions);
+          alerts.push(alert);
+        }
+
+        return alerts;
       },
 
       InstantiateAlert: function(alertOptions) {
-
+        var alert = new AlertFactory(alertOptions);
+        return alert;
       }
     };
 

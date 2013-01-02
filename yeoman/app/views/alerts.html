@@ -1,7 +1,11 @@
+<ul class="breadcrumbs">
+    <li><a ng-click="setRoute('/')">Home</a></li>
+    <li><span class="current">Alerts</span></li>
+</ul>
 <a class="button success" ng-click="AddAlert()">Add New Alert</a>
 <h4>Alerts</h4>
 <br>
 <div class="panel" ng-repeat="alert in Alerts">
-  {{ alert.type }}: {{ alert.alertee }}
+  {{ alert.Options.type }}: {{ alert.Options.alertee }}
   <a class="button alert" ng-click="Delete(alert)">Delete</a>
 </div>

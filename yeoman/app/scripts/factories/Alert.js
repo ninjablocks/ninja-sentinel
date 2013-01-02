@@ -15,6 +15,29 @@ yeomanApp.factory('AlertFactory'
 
       this.Options = NinjaUtilities.ObjectMerge(this.Options, options);
 
+
+      var normalize = function() {
+        if (this.Options.id) {
+          this.id = this.Options.id;
+          delete this.Options.id;
+        }
+
+        if (this.Options.triggers) {
+          var triggers = NinjaUtilities.ObjectArrayToArray(this.Options.triggers, 'data');
+
+          for(var i=0; i<triggers.length; i++) {
+            var triggerOptions = triggers[i];
+            triggerOptions.zone = this;
+            var trigger = new TriggerFactory(triggerOptions);
+            this.Triggers.push(trigger);
+          }
+
+          delete this.Options.triggers;
+
+        }
+      }.bind(this);
+      normalize();
+
       /**
        * Saves the alert
        * @param {Function} callback Optional callback function
