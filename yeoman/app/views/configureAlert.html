@@ -14,7 +14,7 @@
     <option value="email">Email</option>
   </select>
   <br><br>
-  <input type="text" ng-model="Alert.Options.alertee" placeholder="Sent {{ Alert.Options.type }} to">
+  <input type="text" ng-model="Alert.Options.alertee" placeholder="{{ Alert.Options.type | propercase }} recipient">
 </form>
 <br>
 <ul class="button-group radius even two-up">

@@ -40,6 +40,11 @@ a.button {
 .panel {
   padding: 10px;
   margin: 0px;
+  border-top-color: #FAFAFA;
+  
+  &:first-of-type {
+    border-top-color: auto;
+  }
 }
 
 .fixed.bottom {

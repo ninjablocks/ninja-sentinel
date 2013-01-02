@@ -15,6 +15,11 @@ yeomanApp.controller('AlertsCtrl'
       $scope.setRoute('/configureAlert');
     };
 
+    $scope.EditAlert = function(alert) {
+      EditAlertService.Alert = alert;
+      $scope.setRoute('/configureAlert');
+    };
+
 
     /**
      * Deletes an alert

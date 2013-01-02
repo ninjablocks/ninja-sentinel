@@ -12,7 +12,6 @@ yeomanApp.controller('ConfigureAlertCtrl'
       $scope.Alert.Save(function() {
         $scope.setRoute('/alerts'); 
       });
-
       
     }
   };
