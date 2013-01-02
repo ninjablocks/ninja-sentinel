@@ -31,6 +31,5 @@ yeomanApp.controller('ZoneCtrl'
     };
 
 
-    
 
 }]);

@@ -1,6 +1,6 @@
 'use strict';
 
-var DEBUG = false;
+var DEBUG = true;
 
 var yeomanApp = angular.module('yeomanApp', ['ngResource'])
   .config(['$routeProvider', function($routeProvider) {
@@ -34,8 +34,8 @@ var yeomanApp = angular.module('yeomanApp', ['ngResource'])
  * Initialization
  */
 yeomanApp.run([
-  '$rootScope', '$location', 'UIEvents', 'NinjaService', 'UserService', 'PusherService', 'DeviceService', 'ZoneService'
-  ,function($rootScope, $location, UIEvents, NinjaService, UserService, PusherService,  DeviceService, ZoneService) {
+  '$rootScope', '$location', 'UIEvents', 'NinjaService', 'UserService', 'PusherService', 'DeviceService', 'ZoneService', 'AlertService'
+  ,function($rootScope, $location, UIEvents, NinjaService, UserService, PusherService,  DeviceService, ZoneService, AlertService) {
 
 
   /**
@@ -54,6 +54,7 @@ yeomanApp.run([
   UserService.GetInfo();
 
   ZoneService.GetZones();
+  AlertService.GetAlerts();
 
   DeviceService.LoadUserDevices(function() {
 

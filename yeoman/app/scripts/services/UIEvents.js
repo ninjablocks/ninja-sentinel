@@ -98,7 +98,23 @@ yeomanApp.service('UIEvents', function() {
         /**
          * OVERRIDES
          */
-        OverrideUpdate:         'OverrideUpdate'
+        OverrideUpdate:         'OverrideUpdate',
+
+
+        /**
+         * ALERTS
+         */
+        AlertAdding:            'AlertAdding',
+        AlertAdded:             'AlertAdded',
+        AlertAddFailed:         'AlertAddFailed',
+
+        AlertUpdating:          'AlertUpdating',
+        AlertUpdated:           'AlertUpdated',
+        AlertUpdateFailed:      'AlertUpdateFailed',
+
+        AlertRemoving:          'AlertRemoving',
+        AlertRemoved:           'AlertRemoved',
+        AlertRemoveFailed:      'AlertRemoveFailed'
 
     };
 
