@@ -1,13 +1,13 @@
 # LoadUserDevices (undefined, #undefined)
 # XMLHttpRequest cannot load http://localhost:8000/rest/v0/user. Origin http://localhost:3501 is not allowed by Access-Control-Allow-Origin. (undefined, #undefined)
 # XMLHttpRequest cannot load http://localhost:8000/rest/v0/user. Origin http://localhost:3501 is not allowed by Access-Control-Allow-Origin. (undefined, #undefined)
+# XMLHttpRequest cannot load http://localhost:8000/rest/v0/devices. Origin http://localhost:3501 is not allowed by Access-Control-Allow-Origin. (undefined, #undefined)
+# XMLHttpRequest cannot load http://localhost:8000/rest/v0/devices. Origin http://localhost:3501 is not allowed by Access-Control-Allow-Origin. (undefined, #undefined)
 # GetZones (FAILED): [object Object] (undefined, #undefined)
-# XMLHttpRequest cannot load http://localhost:8000/rest/v0/devices. Origin http://localhost:3501 is not allowed by Access-Control-Allow-Origin. (undefined, #undefined)
 # GetAlerts (FAILED) [object Object] (undefined, #undefined)
-# XMLHttpRequest cannot load http://localhost:8000/rest/v0/devices. Origin http://localhost:3501 is not allowed by Access-Control-Allow-Origin. (undefined, #undefined)
 CACHE MANIFEST
 
-# Time: Thu Jan 03 2013 13:54:32 GMT+1100 (EST)
+# Time: Thu Jan 03 2013 14:07:44 GMT+1100 (EST)
 # This manifest was created by confess.js, http://github.com/jamesgpearce/confess
 #
 # Retrieved URL: http://localhost:3501/#/
@@ -42,7 +42,7 @@ http://www.google-analytics.com/ga.js
 javascripts/foundation/modernizr.foundation.js
 scripts/0f224561.scripts.js
 scripts/vendor/9337e323.angular.min.js
-styles/def3d1e8.sentinel-app.css
+styles/988a0d2a.sentinel-app.css
 
 NETWORK:
 *
