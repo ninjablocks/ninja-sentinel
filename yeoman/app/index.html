@@ -66,12 +66,14 @@
                             <a ng-show="!ConfigureMode" ng-click="SetConfigureMode(true)" class="configure">Configure Mode</a>
                             <a ng-show="ConfigureMode" ng-click="SetConfigureMode(false)" class="configure">Normal Mode</a>
                         </li>
+                        <li class="divider"></li>
                     </ul>
                     <ul class="right">
                         <li class="has-dropdown">
                             <a href="#">Settings</a>
 
                             <ul class="dropdown">
+
                                 <li><a ng-click="AddZone()">Add New Zone</a></li>
                                 <li><a ng-click="ConfigureAlerts()">Configure Alerts</a></li>
                                 <li><a ng-click="GoHistory()">History</a></li>
@@ -105,6 +107,10 @@
         <script src="javascripts/foundation/jquery.foundation.topbar.js"></script>
         <script src="javascripts/foundation/app.js"></script>
 
+        <script src="components/jquery-ui/ui/jquery.ui.core.js"></script>
+        <script src="components/jquery-ui/ui/jquery.ui.effect.js"></script>
+        <script src="components/jquery-ui/ui/jquery.ui.effect-highlight.js"></script>
+        <script src="components/moment/min/moment.min.js"></script>
         <script src="components/angular-ui/build/angular-ui.min.js"></script>
         <script src="components/angular-complete/angular-resource.js"></script>
         <script src="components/browser-ninja-blocks/lib/ninja.js"></script>
@@ -143,6 +149,8 @@
         <script src="scripts/controllers/configureAlert.js"></script>
         <script src="scripts/directives/foundationHeader.js"></script>
         <script src="scripts/controllers/history.js"></script>
+        <script src="scripts/controllers/trigger.js"></script>
+        <script src="scripts/directives/triggerListen.js"></script>
         <!-- endbuild -->
 
         <!-- Google Analytics: -->

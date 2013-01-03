@@ -8,6 +8,7 @@ yeomanApp.controller('HistoryCtrl'
 
     $http.get('/history').success(function(response) {
       $scope.History = response;
+      console.log(response);
     });
 
 }]);
