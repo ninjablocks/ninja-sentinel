@@ -111,6 +111,7 @@ exports.handleDeviceCallback = function(req,res) {
         cb(true)
         return;
       }
+
       try {
         var zoneDataObj = JSON.parse(zData);
         zoneDataObj.id = zoneId;
@@ -119,6 +120,7 @@ exports.handleDeviceCallback = function(req,res) {
         // There is invalid JSON in this key, nuke it.
         req.redisClient.hdel(zoneKey,zoneId);
         cb(true)
+        return;
       }
 
       cb(null,zoneDataObj);
