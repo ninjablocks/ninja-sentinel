@@ -33,7 +33,7 @@
         
         <link rel="stylesheet" href="styles/sentinel-app.css"/>
 
-        <script src="scripts/vendor/modernizr-2.6.1.min.js"></script>
+        <script src="javascripts/foundation/modernizr.foundation.js"></script>
 
 
     </head>
@@ -53,24 +53,30 @@
         <!-- Navigation -->
         <div class="fixed">
             
-            <nav class="top-bar" ng-controller="HeaderCtrl">
+            <nav class="top-bar" ng-controller="HeaderCtrl" foundation-header>
                 <ul>
                     <li class="name">
-                        <h1 ng-click="setRoute('/')"><a href="#">Ninja Sentinel</a></h1>
+                        <h1 ng-click="GoHome()"><a href="#">Ninja Sentinel</a></h1>
                     </li>
-                    <li class="toggle-edit">
-                        <a ng-show="LocationIsHome() && !ConfigureMode" ng-click="SetConfigureMode(true)" class="configure">Configure</a>
-                        <a ng-show="LocationIsHome() && ConfigureMode" ng-click="SetConfigureMode(false)" class="configure">Finish</a>
-                    </li>
+                    <li class="toggle-topbar"><a href="#"></a></li>
                 </ul>
                 <section>
                     <ul class="left">
                         <li>
-                            <a ng-click="Override(true)">On</a>
+                            <a ng-show="!ConfigureMode" ng-click="SetConfigureMode(true)" class="configure">Configure Mode</a>
+                            <a ng-show="ConfigureMode" ng-click="SetConfigureMode(false)" class="configure">Normal Mode</a>
                         </li>
                     </ul>
                     <ul class="right">
-                        
+                        <li class="has-dropdown">
+                            <a href="#">Settings</a>
+
+                            <ul class="dropdown">
+                                <li><a ng-click="AddZone()">Add New Zone</a></li>
+                                <li><a ng-click="ConfigureAlerts()">Configure Alerts</a></li>
+                                <li><a>History</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </section>
             </nav>
@@ -80,6 +86,7 @@
         <div class="container" ng-view></div>
 
         <div class="fixed bottom">
+
             <ul class="nav-bar" ng-controller="UtilitybarCtrl">
                 <li><a ng-click="SetOverride(true)" ng-show="!Override">Override On</a></li>
                 <li><a ng-click="SetOverride(false)" ng-show="Override">Override Off</a></li>
@@ -91,6 +98,12 @@
         <script src="scripts/vendor/angular.min.js"></script>
 
         <!-- build:js scripts/scripts.js -->
+        <script src="javascripts/foundation/jquery.event.move.js"></script>
+        <script src="javascripts/foundation/jquery.event.swipe.js"></script>
+        <script src="javascripts/foundation/jquery.foundation.navigation.js"></script>
+        <script src="javascripts/foundation/jquery.foundation.topbar.js"></script>
+        <script src="javascripts/foundation/app.js"></script>
+
         <script src="components/angular-ui/build/angular-ui.min.js"></script>
         <script src="components/angular-complete/angular-resource.js"></script>
         <script src="components/browser-ninja-blocks/lib/ninja.js"></script>
@@ -127,6 +140,7 @@
         <script src="scripts/services/AlertService.js"></script>
         <script src="scripts/services/EditAlertService.js"></script>
         <script src="scripts/controllers/configureAlert.js"></script>
+        <script src="scripts/directives/foundationHeader.js"></script>
         <!-- endbuild -->
 
         <!-- Google Analytics: -->
