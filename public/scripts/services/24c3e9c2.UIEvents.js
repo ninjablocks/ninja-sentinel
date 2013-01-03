@@ -38,6 +38,12 @@ yeomanApp.service('UIEvents', function() {
 
 
         /**
+         * HEADER
+         */
+        TopBarOpen:             'TopBarOpen',
+        TopBarClose:            'TopBarClose',
+
+        /**
          * DEVICES
          */
 
@@ -92,7 +98,29 @@ yeomanApp.service('UIEvents', function() {
 
         TriggerRemoving:        'TriggerRemoving',
         TriggerRemoved:         'TriggerRemoved',
-        TriggerRemoveFailed:    'TriggerRemoveFailed'
+        TriggerRemoveFailed:    'TriggerRemoveFailed',
+
+
+        /**
+         * OVERRIDES
+         */
+        OverrideUpdate:         'OverrideUpdate',
+
+
+        /**
+         * ALERTS
+         */
+        AlertAdding:            'AlertAdding',
+        AlertAdded:             'AlertAdded',
+        AlertAddFailed:         'AlertAddFailed',
+
+        AlertUpdating:          'AlertUpdating',
+        AlertUpdated:           'AlertUpdated',
+        AlertUpdateFailed:      'AlertUpdateFailed',
+
+        AlertRemoving:          'AlertRemoving',
+        AlertRemoved:           'AlertRemoved',
+        AlertRemoveFailed:      'AlertRemoveFailed'
 
     };
 

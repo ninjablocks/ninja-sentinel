@@ -17,6 +17,13 @@
     },
 
     methods = {
+      reset : function() {
+        settings.$topbar.find(".moved").removeClass("moved");
+        settings.$section.removeAttr("style");
+        settings.index = 0;
+        return true;
+      },
+
       init : function (options) {
         return this.each(function () {
           settings = $.extend(settings, options);

@@ -1,6 +1,6 @@
 'use strict';
 
-var DEBUG = false;
+var DEBUG = true;
 
 var yeomanApp = angular.module('yeomanApp', ['ngResource'])
   .config(['$routeProvider', function($routeProvider) {
@@ -17,6 +17,14 @@ var yeomanApp = angular.module('yeomanApp', ['ngResource'])
         templateUrl: 'views/configureTrigger.html',
         controller: 'ConfigureTriggerCtrl'
       })
+      .when('/alerts', {
+        templateUrl: 'views/alerts.html',
+        controller: 'AlertsCtrl'
+      })
+      .when('/configureAlert', {
+        templateUrl: 'views/configureAlert.html',
+        controller: 'ConfigureAlertCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
@@ -30,8 +38,8 @@ var yeomanApp = angular.module('yeomanApp', ['ngResource'])
  * Initialization
  */
 yeomanApp.run([
-  '$rootScope', '$location', 'UIEvents', 'NinjaService', 'UserService', 'PusherService', 'DeviceService', 'ZoneService'
-  ,function($rootScope, $location, UIEvents, NinjaService, UserService, PusherService,  DeviceService, ZoneService) {
+  '$rootScope', '$location', 'UIEvents', 'NinjaService', 'UserService', 'PusherService', 'DeviceService', 'ZoneService', 'AlertService'
+  ,function($rootScope, $location, UIEvents, NinjaService, UserService, PusherService,  DeviceService, ZoneService, AlertService) {
 
 
   /**
@@ -50,21 +58,12 @@ yeomanApp.run([
   UserService.GetInfo();
 
   ZoneService.GetZones();
+  AlertService.GetAlerts();
 
   DeviceService.LoadUserDevices(function() {
 
   });
 
-
-
-  
-
-  // UserStore.SetData({ buttons: [ {name: 'button1'}, {name: 'button2'}] });
-
-
-  $rootScope.$on(UIEvents.SetDeviceType, function(event, deviceType) {
-    
-  });
 
 
 

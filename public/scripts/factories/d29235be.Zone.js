@@ -15,9 +15,9 @@ yeomanApp.factory('ZoneFactory'
 
       this.Options = {
         name: '',
-        triggers: {}
+        triggers: {},
         // activeTimes: [],
-        // overrideActive: null
+        overrideActive: null
       };
 
       this.Options = NinjaUtilities.ObjectMerge(this.Options, options);
@@ -128,6 +128,21 @@ yeomanApp.factory('ZoneFactory'
         return found;
       };
 
+      /**
+       * Sets the arm override for this zone
+       * @param {bool|null} value Override value to set
+       */
+      this.SetOverride = function(value) {
+
+        var data = {
+          overrideActive: value
+        };
+
+        $http.put('/zone/' + this.id, data).success(function(response) {
+          this.Options.overrideActive = value;
+          console.log("Zone.SetOverride", value);
+        }.bind(this));
+      };
 
       /**
        * Event Watchers
