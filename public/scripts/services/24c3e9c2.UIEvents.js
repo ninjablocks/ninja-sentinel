@@ -38,6 +38,12 @@ yeomanApp.service('UIEvents', function() {
 
 
         /**
+         * HEADER
+         */
+        TopBarOpen:             'TopBarOpen',
+        TopBarClose:            'TopBarClose',
+
+        /**
          * DEVICES
          */
 
