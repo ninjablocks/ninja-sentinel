@@ -8,6 +8,8 @@
 <div class="panel" ng-repeat="alert in Alerts">
   {{ alert.Options.type }} {{ alert.Options.alertee }}
   <div class="actions">
+    <a class="button tiny success inline" ng-click="Activate(alert)" ng-show="!alert.Options.active">Activate</a>
+    <a class="button tiny alert inline" ng-click="Deactivate(alert)" ng-show="alert.Options.active">Deactivate</a>
     <a class="button tiny inline" ng-click="EditAlert(alert)">Edit</a>
     <a class="button alert tiny inline" ng-click="Delete(alert)">Delete</a>
   </div>
