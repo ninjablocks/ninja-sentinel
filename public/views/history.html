@@ -6,9 +6,12 @@
 <br>
 <div class="row">
   <div class="panel" ng-repeat="history in History">
-    <div class="icon"></div>
+    <div class="icon {{history.type}}"></div>
     <div class="date">
       {{ history.timestamp | date}}
+    </div>
+    <div class="message">
+      {{ history.message }}
     </div>
   </div>
 </div>

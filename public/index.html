@@ -66,17 +66,12 @@
                             <a ng-show="!ConfigureMode" ng-click="SetConfigureMode(true)" class="configure">Configure Mode</a>
                             <a ng-show="ConfigureMode" ng-click="SetConfigureMode(false)" class="configure">Normal Mode</a>
                         </li>
+                                <li><a ng-click="AddZone()">Create New Zones</a></li>
+                                <li><a ng-click="ConfigureAlerts()">Alerts</a></li>
+                                <li><a ng-click="GoHistory()">History</a></li>
                     </ul>
                     <ul class="right">
-                        <li class="has-dropdown">
-                            <a href="#">Settings</a>
 
-                            <ul class="dropdown">
-                                <li><a ng-click="AddZone()">Add New Zone</a></li>
-                                <li><a ng-click="ConfigureAlerts()">Configure Alerts</a></li>
-                                <li><a ng-click="GoHistory()">History</a></li>
-                            </ul>
-                        </li>
                     </ul>
                 </section>
             </nav>
@@ -94,10 +89,8 @@
             </ul>
         </div>
 
-        <script src="components/jquery/jquery.min.js"></script>
-        <script src="scripts/vendor/9337e323.angular.min.js"></script>
 
-        <script src="scripts/36b69d95.scripts.js"></script>
+        <script src="scripts/9fb0ffd6.scripts.js"></script>
 
         <!-- Google Analytics: -->
         <script type="text/javascript">

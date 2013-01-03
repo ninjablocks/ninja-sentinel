@@ -66,19 +66,12 @@
                             <a ng-show="!ConfigureMode" ng-click="SetConfigureMode(true)" class="configure">Configure Mode</a>
                             <a ng-show="ConfigureMode" ng-click="SetConfigureMode(false)" class="configure">Normal Mode</a>
                         </li>
-                        <li class="divider"></li>
+                                <li><a ng-click="AddZone()">Create New Zones</a></li>
+                                <li><a ng-click="ConfigureAlerts()">Alerts</a></li>
+                                <li><a ng-click="GoHistory()">History</a></li>
                     </ul>
                     <ul class="right">
-                        <li class="has-dropdown">
-                            <a href="#">Settings</a>
 
-                            <ul class="dropdown">
-
-                                <li><a ng-click="AddZone()">Add New Zone</a></li>
-                                <li><a ng-click="ConfigureAlerts()">Configure Alerts</a></li>
-                                <li><a ng-click="GoHistory()">History</a></li>
-                            </ul>
-                        </li>
                     </ul>
                 </section>
             </nav>
@@ -96,10 +89,10 @@
             </ul>
         </div>
 
-        <script src="components/jquery/jquery.min.js"></script>
-        <script src="scripts/vendor/angular.min.js"></script>
 
         <!-- build:js scripts/scripts.js -->
+        <script src="components/jquery/jquery.min.js"></script>
+        <script src="scripts/vendor/angular.min.js"></script>
         <script src="javascripts/foundation/jquery.event.move.js"></script>
         <script src="javascripts/foundation/jquery.event.swipe.js"></script>
         <script src="javascripts/foundation/jquery.placeholder.js"></script>
