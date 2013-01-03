@@ -49,6 +49,11 @@ yeomanApp.controller('HeaderCtrl'
       $rootScope.setRoute('/');
     };
 
+    $scope.GoHistory = function() {
+      $rootScope.$broadcast(UIEvents.TopBarClose);
+      $rootScope.setRoute('/history');
+    };
+
     /**
      * Adds a new Zone, forwarding  user to editZone
      */
