@@ -61,8 +61,8 @@ exports.createAlert = function(req,res) {
 
   var aKey = 'user:'+req.session.ninja.id+':alerts';
   var aId = uuid.v4();
+  req.body.active = req.body.active || false;
   var aData = JSON.stringify(req.body);
-  aData.active = req.body.active || false;
 
   req.redisClient.hmset(aKey,aId,aData,function(err) {
 
