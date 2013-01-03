@@ -27,9 +27,10 @@ exports.handleNinjaAuthentication = function(req,res,ninja) {
     }
 
     Object.keys(devices).forEach(function(guid) {
-        app.device(guid).subscribe('http://'+process.env.HOSTNAME+'/callback',true,function(err) {
-        // app.device(guid).subscribe('http://'+req.HOSTNAME+'/callback',true,function(err) {
-
+      app.device(guid).subscribe('http://'+process.env.HOSTNAME+'/callback',true,function(err) {
+        if (err) {
+          console.log(err);
+        }
       })
     });
     res.redirect('/');
@@ -236,7 +237,7 @@ exports.proxy = function(req,res) {
 exports.index = function(req, res){
 
   res.sendfile('public/index.html');
-  
+
 };
 
 exports.setGlobalOverride = function(req,res) {
