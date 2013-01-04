@@ -31,7 +31,7 @@
         
         <script>(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")</script>
         
-        <link rel="stylesheet" href="styles/f86981f8.sentinel-app.css"/>
+        <link rel="stylesheet" href="styles/b1feb715.sentinel-app.css"/>
 
         <script src="javascripts/foundation/modernizr.foundation.js"></script>
 
@@ -83,8 +83,8 @@
         <div class="fixed bottom panel">
             <dl class="sub-nav" ng-controller="UtilitybarCtrl" foundation-sub-nav>
                 <dt>Override</dt>
-                <dd ng-class="{active:Override}"><a ng-click="SetOverride(true)">All On</a></dd>
-                <dd ng-class="{active:IsOverrideFalse()}"><a ng-click="SetOverride(false)">All Off</a></dd>
+                <dd class="success" ng-class="{active:Override}"><a ng-click="SetOverride(true)">All On</a></dd>
+                <dd class="alert" ng-class="{active:IsOverrideFalse()}"><a ng-click="SetOverride(false)">All Off</a></dd>
                 <dd ng-class="{active:IsOverrideNull()}"><a ng-click="SetOverride(null)">Use Zone Setting</a></dd>
             </dl>
         </div>

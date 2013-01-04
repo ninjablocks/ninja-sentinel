@@ -59,6 +59,21 @@ a.button {
       padding: 3px 9px;
       font-weight: bold;
     }
+
+    &.active {
+      
+      &.success {
+        a {
+          background-color: hsl(93,65%,39%);
+        }
+      }
+
+      &.alert {
+        a {
+          background-color: hsl(359,86%,42%);
+        }
+      }
+    }
    
   }
 
