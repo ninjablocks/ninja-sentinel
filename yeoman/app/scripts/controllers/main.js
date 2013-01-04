@@ -19,6 +19,19 @@ yeomanApp.controller('MainCtrl'
     };
 
 
+    /**
+     * Sets the configuration mode button. Broadcasting a system wide event
+     * @param {bool} modeSwitch true|false
+     */
+    $scope.SetConfigureMode = function(modeSwitch) {
+      $scope.ConfigureMode = modeSwitch;
+      $rootScope.$broadcast(UIEvents.SetConfigureMode, $scope.ConfigureMode);
+      $rootScope.$broadcast(UIEvents.TopBarClose);
+      if (!modeSwitch) {
+        $rootScope.setRoute('/');
+      }
+    };
+
     
     /**
      * Watch for ConfigureMode switches

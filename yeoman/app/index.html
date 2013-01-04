@@ -62,13 +62,8 @@
                 </ul>
                 <section>
                     <ul class="left">
-                        <li>
-                            <a ng-show="!ConfigureMode" ng-click="SetConfigureMode(true)" class="configure">Configure Mode</a>
-                            <a ng-show="ConfigureMode" ng-click="SetConfigureMode(false)" class="configure">Normal Mode</a>
-                        </li>
-                                <li><a ng-click="AddZone()">Create New Zones</a></li>
-                                <li><a ng-click="ConfigureAlerts()">Alerts</a></li>
-                                <li><a ng-click="GoHistory()">History</a></li>
+                        <li><a ng-click="ConfigureAlerts()">Alerts</a></li>
+                        <li><a ng-click="GoHistory()">History</a></li>
                     </ul>
                     <ul class="right">
 
@@ -135,6 +130,7 @@
 
         <script src="scripts/filters/rfHex.js"></script>
         <script src="scripts/filters/propercase.js"></script>
+        <script src="scripts/filters/moment.js"></script>
 
         <script src="scripts/controllers/utilitybar.js"></script>
         <script src="scripts/controllers/alerts.js"></script>
