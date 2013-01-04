@@ -8,7 +8,7 @@
     <h4>Zone</h4>
     <br>
     <div class="panel">
-      <input type="text" placeholder="Name this zone" ng-model="Zone.Options.name" required>
+      <input type="text" placeholder="Name this zone" ng-model="Zone.Options.name" ui-keydown="{'enter': 'Save()'}" required>
 
       <div class="triggers" ng-show="Zone.id">
         

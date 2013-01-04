@@ -11,7 +11,7 @@
     <br>
     <form name="configureTrigger" class="panel">
       <div class="alert-box alert" ng-show="!configureTrigger.$valid">Please fill in all values</div>
-      <input type="text" placeholder="Name this Trigger" ng-model="Trigger.Options.name" required>
+      <input type="text" placeholder="Name this Trigger" ng-model="Trigger.Options.name" ui-keydown="{'enter': 'Save()'}" required>
       <input type="hidden" ng-model="Trigger.Options.data" required>
       <select name="type" id="type" ng-model="Trigger.Options.type" required>
         <option value="">Choose Type</option>

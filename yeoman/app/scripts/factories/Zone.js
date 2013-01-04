@@ -48,7 +48,7 @@ yeomanApp.factory('ZoneFactory'
        * Save/Update this zone
        */
       this.Save = function(callback) {
-        console.log("Zone.Save()");
+        if (DEBUG) console.log("Zone.Save()");
         if (this.id) {
           // Exists. Update only
           $http.put('/zone/' + this.id, this.Options, { headers: { 'Content-Type': 'application/json', 'Accept': 'application/json'} }).success(function(response) {
@@ -140,7 +140,7 @@ yeomanApp.factory('ZoneFactory'
 
         $http.put('/zone/' + this.id, data).success(function(response) {
           this.Options.overrideActive = value;
-          console.log("Zone.SetOverride", value);
+          if (DEBUG) console.log("Zone.SetOverride", value);
         }.bind(this));
       };
 
@@ -149,7 +149,7 @@ yeomanApp.factory('ZoneFactory'
        */
       $rootScope.$on(UIEvents.TriggerRemoved, function(event, trigger) {
         if (this.id === trigger.Zone.id) {
-          console.log("TriggerRemoved:", trigger);
+          if (DEBUG) console.log("TriggerRemoved:", trigger);
           var removeIndex = this.Triggers.indexOf(trigger);
           console.log("Removing Trigger ", removeIndex);
           this.Triggers.splice(removeIndex, 1);
@@ -160,7 +160,7 @@ yeomanApp.factory('ZoneFactory'
 
       $rootScope.$on(UIEvents.TriggerAdded, function(event, trigger) {
         if (this.id === trigger.Zone.id) {
-          console.log("TriggerAdded:", trigger);
+          if (DEBUG) console.log("TriggerAdded:", trigger);
           if (!this.HasTrigger(trigger)) {
             this.Triggers.push(trigger);
             $rootScope.$watch();
