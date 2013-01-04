@@ -6,7 +6,7 @@
   <div class="twelve columns">
     <h4>Alerts</h4>
     <br>
-    <a class="button success" nb-click="AddAlert()">Add New Alert</a>
+    
     <div class="panel" ng-repeat="alert in Alerts">
       {{ alert.Options.type }} {{ alert.Options.alertee }}
       <div class="actions">
@@ -16,5 +16,7 @@
         <a class="button alert tiny inline" nb-click="Delete(alert)">Delete</a>
       </div>
     </div>
+
+    <a class="button success" nb-click="AddAlert()">Add New Alert</a>
   </div>
 </div>
