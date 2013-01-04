@@ -3,8 +3,10 @@
     <li><a ng-click="setRoute('/alerts')">Alerts</a></li>
     <li><span class="current">Edit Alert</span></li>
 </ul>
-<h4>Alert <span class="label success round" ng-show="Alert.Options.active">Active</span></h4>
-<br>
+<div class="columns">
+  <h4>Alert <span class="label success round" ng-show="Alert.Options.active">Active</span></h4>
+  <br>
+</div>
 <form name="configureAlert" class="panel">
 
   <select name="" id="" ng-model="Alert.Options.type" required>

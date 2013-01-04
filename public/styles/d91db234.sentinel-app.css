@@ -4669,6 +4669,11 @@ textarea[contenteditable] {
   /* Style adjustments for viewports that meet the condition */ }
 .zones {
   position: relative; }
+  .zones .utility-actions .sub-nav {
+    margin: 0;
+    padding: 10px; }
+    .zones .utility-actions .sub-nav dd {
+      margin-bottom: 0px; }
   .zones .zone {
     position: relative;
     min-height: 48px; }
@@ -4751,6 +4756,11 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 100; }
 
 a.button {
+  -webkit-transition: none;
+  -moz-transition: none;
+  -ms-transition: none;
+  -o-transition: none;
+  transition: none;
   color: white; }
 
 .container {

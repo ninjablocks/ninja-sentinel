@@ -1,6 +1,18 @@
 .zones {
   position: relative;
 
+
+  .utility-actions {
+    .sub-nav {
+      margin: 0;
+      padding: 10px;
+      
+      dd {
+        margin-bottom: 0px;
+      }
+    }
+  }
+
   .zone {
     position: relative;
     min-height: 48px;
