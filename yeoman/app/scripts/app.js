@@ -42,31 +42,52 @@ var yeomanApp = angular.module('yeomanApp', ['ngResource'])
  * Initialization
  */
 yeomanApp.run([
-  '$rootScope', '$location', 'UIEvents', 'NinjaService', 'UserService', 'PusherService', 'DeviceService', 'ZoneService', 'AlertService'
-  ,function($rootScope, $location, UIEvents, NinjaService, UserService, PusherService,  DeviceService, ZoneService, AlertService) {
+  '$rootScope', '$http', '$location', 'UIEvents', 'NinjaService', 'UserService', 'PusherService', 'DeviceService', 'ZoneService', 'AlertService'
+  ,function($rootScope, $http, $location, UIEvents, NinjaService, UserService, PusherService,  DeviceService, ZoneService, AlertService) {
 
 
-  /**
-   * Global Set Route routine. Used by nav.
-   * Sets the location to the specified route
-   * @param {string} route Location route as specified in $routeProvider
-   */
-  $rootScope.setRoute = function(route) {
-    $location.path(route);
-  };
+    $rootScope.Override = null;
 
-  /**
-   * Automatically get the user login status
-   */
-  UserService.GetLoginStatus();
-  UserService.GetInfo();
+    /**
+     * Global Set Route routine. Used by nav.
+     * Sets the location to the specified route
+     * @param {string} route Location route as specified in $routeProvider
+     */
+    $rootScope.setRoute = function(route) {
+      $location.path(route);
+    };
 
-  ZoneService.GetZones();
-  AlertService.GetAlerts();
+    /**
+     * Gets the override value from the system
+     */
+    $rootScope.GetOverride = function() {
 
-  DeviceService.LoadUserDevices(function() {
+      $http.get('/override').success(function(response) {
+        if (DEBUG) console.log("GET /override", response);
 
-  });
+        $rootScope.$broadcast(UIEvents.OverrideUpdate, response.override);
+        $rootScope.Override = response.override;
+
+      }).error(function(response) {
+        if (DEBUG) console.log("GET /override", response);
+
+      });
+    };
+
+    $rootScope.GetOverride();
+
+    /**
+     * Automatically get the user login status
+     */
+    UserService.GetLoginStatus();
+    UserService.GetInfo();
+
+    ZoneService.GetZones();
+    AlertService.GetAlerts();
+
+    DeviceService.LoadUserDevices(function() {
+
+    });
 
 
 

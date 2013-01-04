@@ -1,6 +1,6 @@
 <div id="main" class="row">
   <div class="twelve zones">
-    <div class="row utility-actions">
+    <div class="utility-actions">
       <dl class="sub-nav panel">
         <dd><a class="button success" nb-click="AddZone()">Add New Zone</a></dd>
         <dd><a class="button mediary" nb-click="SetConfigureMode(true)" ng-show="!ConfigureMode">Configure Mode</a></dd>
@@ -8,20 +8,24 @@
       </dl>
     </div>
 
-    <div class="panel zone" ng-repeat="zone in Zones" ng-controller="ZoneCtrl">
-      <h5>{{ zone.Options.name }}</h5>
-      <!-- <small>{{ zone.id }}</small> -->
-      <div class="actions">
-        <a class="button tiny inline" nb-click="EditZone()" ng-show="ConfigureMode">Edit</a>
-        <a class="button tiny inline success" nb-click="SetOverride(true)" ng-show="!zone.Options.overrideActive" ng-show="!ConfigureMode">Arm</a>
-        <a class="button tiny inline alert" nb-click="SetOverride(false)" ng-show="zone.Options.overrideActive" ng-show="!ConfigureMode">Disarm</a>
-      </div>
-      <div class="triggers">
-        <div class="panel trigger" ng-repeat="trigger in zone.Triggers" ng-controller="TriggerCtrl" trigger-listen>
-          <h6>{{ trigger.Options.name }}</h6>
-          <h6><small>({{ trigger.Options.type }})</small>
-                    <small class="lastActuated"></small></h6>
-          
+    <div class="twelve columns">
+      
+      <div class="panel zone" ng-repeat="zone in Zones" ng-controller="ZoneCtrl" ng-class="{armed:IsArmed()}">
+        <h5>{{ zone.Options.name }}</h5>
+        <!-- <small>{{ zone.id }}</small> -->
+        <div class="actions">
+          <a class="button tiny inline" nb-click="EditZone()" ng-show="ConfigureMode">Edit</a>
+          <a class="button tiny inline success" nb-click="SetOverride(true)" ng-show="!zone.Options.overrideActive" ng-show="!ConfigureMode" ng-class="{secondary:IsOverridden()}">Disarmed</a>
+          <a class="button tiny inline alert" nb-click="SetOverride(false)" ng-show="zone.Options.overrideActive" ng-show="!ConfigureMode" ng-class="{secondary:IsOverridden()}">Armed</a>
+        </div>
+        <h5><small ng-show="IsOverridden()">(Override <span ng-show="Override">ARMED</span><span ng-show="!Override">DISARMED</span>)</small></h5>
+        <div class="triggers">
+          <div class="panel trigger" ng-repeat="trigger in zone.Triggers" ng-controller="TriggerCtrl" trigger-listen>
+            <h6>{{ trigger.Options.name }}</h6>
+            <h6><small>({{ trigger.Options.type }})</small>
+                      <small class="lastActuated"></small></h6>
+            
+          </div>
         </div>
       </div>
     </div>
