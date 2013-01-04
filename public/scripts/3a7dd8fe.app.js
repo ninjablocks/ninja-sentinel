@@ -2,7 +2,7 @@
 
 var DEBUG = false;
 
-var yeomanApp = angular.module('yeomanApp', ['ngResource'])
+var yeomanApp = angular.module('yeomanApp', ['ngResource', 'ui'])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/', {
@@ -45,6 +45,12 @@ yeomanApp.run([
   '$rootScope', '$http', '$location', 'UIEvents', 'NinjaService', 'UserService', 'PusherService', 'DeviceService', 'ZoneService', 'AlertService'
   ,function($rootScope, $http, $location, UIEvents, NinjaService, UserService, PusherService,  DeviceService, ZoneService, AlertService) {
 
+
+    // iPhone 5 detection
+    if (window.screen.height==568) { // iPhone 4"
+    document.querySelector("meta[name=viewport]").content="width=320.1";
+    }
+    
 
     $rootScope.Override = null;
 

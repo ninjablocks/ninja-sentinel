@@ -4741,6 +4741,33 @@ textarea[contenteditable] {
   float: right;
   margin: 0; }
 
+.alerts .alert {
+  margin-bottom: 10px;
+  position: relative; }
+  .alerts .alert h6 {
+    font-size: 12px; }
+  .alerts .alert .actions {
+    position: absolute;
+    right: 32px;
+    top: 6px; }
+  .alerts .alert .delete {
+    -webkit-border-radius: 20em;
+    -moz-border-radius: 20em;
+    -ms-border-radius: 20em;
+    -o-border-radius: 20em;
+    border-radius: 20em;
+    border: 1px solid white;
+    background: black;
+    font-weight: 800;
+    text-align: center;
+    color: white;
+    position: absolute;
+    top: 8px;
+    right: 5px;
+    line-height: 1.2em;
+    width: 1.3em;
+    height: 1.3em; }
+
 .top-bar {
   margin-bottom: 0px; }
   .top-bar .toggle-edit {
