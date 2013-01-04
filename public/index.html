@@ -31,7 +31,7 @@
         
         <script>(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")</script>
         
-        <link rel="stylesheet" href="styles/988a0d2a.sentinel-app.css"/>
+        <link rel="stylesheet" href="styles/f86981f8.sentinel-app.css"/>
 
         <script src="javascripts/foundation/modernizr.foundation.js"></script>
 
@@ -80,20 +80,20 @@
 
         <div class="container" ng-view></div>
 
-        <div class="fixed bottom">
-
-            <ul class="nav-bar" ng-controller="UtilitybarCtrl">
-                <li><a ng-click="SetOverride(true)" ng-show="!Override">Set Override On</a></li>
-                <li><a ng-click="SetOverride(false)" ng-show="Override">Set Override Off</a></li>
-                <!-- <li><a ng-click="SetOverride(null)">Use Schedule</a></li> -->
-            </ul>
+        <div class="fixed bottom panel">
+            <dl class="sub-nav" ng-controller="UtilitybarCtrl" foundation-sub-nav>
+                <dt>Override</dt>
+                <dd ng-class="{active:Override}"><a ng-click="SetOverride(true)">All On</a></dd>
+                <dd ng-class="{active:IsOverrideFalse()}"><a ng-click="SetOverride(false)">All Off</a></dd>
+                <dd ng-class="{active:IsOverrideNull()}"><a ng-click="SetOverride(null)">Use Zone Setting</a></dd>
+            </dl>
         </div>
 
         <script src="components/jquery/jquery.min.js"></script>
         <script src="scripts/vendor/9337e323.angular.min.js"></script>
         <script src="components/moment/min/moment.min.js"></script>
 
-        <script src="scripts/44698739.scripts.js"></script>
+        <script src="scripts/331b1af3.scripts.js"></script>
 
         <!-- Google Analytics: -->
         <script type="text/javascript">

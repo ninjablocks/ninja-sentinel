@@ -51,6 +51,17 @@ a.button {
   bottom: 0px !important;
   top: auto;
   
+  dd {
+
+    a {
+      color: #555;
+      background: #CCC;
+      padding: 3px 9px;
+      font-weight: bold;
+    }
+   
+  }
+
   .nav-bar {
     margin: 0px;
   }
