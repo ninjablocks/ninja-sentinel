@@ -161,7 +161,7 @@ exports.handleDeviceCallback = function(req,res) {
 
         zoneOverride: function(miniCb) {
 
-          miniCb(null,(zoneData.overrideActive=='true'));
+          miniCb(null,(zoneData.overrideActive===true));
         },
 
         zoneActive: function(miniCb) {
@@ -251,7 +251,7 @@ exports.setGlobalOverride = function(req,res) {
     return;
   }
 
-  if (req.body.override != "false" && req.body.override != "true") {
+  if (req.body.override !== false && req.body.override !== true) {
     res.json({error:'Parameter `override` must be true or false'},400);
     return;
   }
