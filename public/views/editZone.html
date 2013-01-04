@@ -1,5 +1,5 @@
 <ul class="breadcrumbs">
-    <li><a ng-click="setRoute('/')">Home</a></li>
+    <li><a nb-click="setRoute('/')">Home</a></li>
     <li><span class="current">Edit Zone <em>{{ Zone.Options.name }}</em></span></li>
 </ul>
 <div class="columns">
@@ -11,15 +11,15 @@
 
   <div class="triggers" ng-show="Zone.id">
     
-    <a class="button success " ng-click="AddNewTrigger()">Add New Trigger</a>
+    <a class="button success " nb-click="AddNewTrigger()">Add New Trigger</a>
 
     <div class="panel trigger" ng-repeat="trigger in Zone.Triggers">
       {{ trigger.Options.name }} 
       <small>({{ trigger.Options.type }})</small>
       <div class="actions">
-        <a class="button tiny edit inline" ng-click="EditTrigger(trigger)">Edit</a>
+        <a class="button tiny edit inline" nb-click="EditTrigger(trigger)">Edit</a>
       </div>
-      <a class="delete" ng-click="trigger.Delete()">&times;</a>
+      <a class="delete" nb-click="trigger.Delete()">&times;</a>
     </div>
 
   </div>
@@ -27,8 +27,8 @@
 </div>
 <br>
 <ul class="button-group radius even two-up">
-  <li><a class="button large cancel radius" ng-click="setRoute('/')">Cancel</a></li>
-  <li><a class="button large success radius" ng-click="Save()">Save</a></li>
+  <li><a class="button large cancel radius" nb-click="setRoute('/')">Cancel</a></li>
+  <li><a class="button large success radius" nb-click="Save()">Save</a></li>
 </ul>
 
-<a class="button alert" ng-click="Delete()" ng-show="Zone.id">Delete this Zone</a>
+<a class="button alert" nb-click="Delete()" ng-show="Zone.id">Delete this Zone</a>

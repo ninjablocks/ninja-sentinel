@@ -1,6 +1,6 @@
 <ul class="breadcrumbs">
-    <li><a ng-click="setRoute('/')">Home</a></li>
-    <li><a ng-click="setRoute('/alerts')">Alerts</a></li>
+    <li><a nb-click="setRoute('/')">Home</a></li>
+    <li><a nb-click="setRoute('/alerts')">Alerts</a></li>
     <li><span class="current">Edit Alert</span></li>
 </ul>
 <div class="columns">
@@ -20,8 +20,8 @@
 </form>
 <br>
 <ul class="button-group radius even two-up">
-  <li><a class="button large cancel radius" ng-click="setRoute('/alerts')">Cancel</a></li>
-  <li><a class="button large success radius" ng-click="Save()">Save</a></li>
+  <li><a class="button large cancel radius" nb-click="setRoute('/alerts')">Cancel</a></li>
+  <li><a class="button large success radius" nb-click="Save()">Save</a></li>
 </ul>
 
-<a class="button alert" ng-click="Delete()" ng-show="Trigger.IsValid()">Delete this Zone</a>
+<a class="button alert" nb-click="Delete()" ng-show="Trigger.IsValid()">Delete this Zone</a>

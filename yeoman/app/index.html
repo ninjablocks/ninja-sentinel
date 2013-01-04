@@ -56,14 +56,14 @@
             <nav class="top-bar" ng-controller="HeaderCtrl" foundation-header>
                 <ul>
                     <li class="name">
-                        <h1 ng-click="GoHome()"><a href="#">Ninja Sentinel</a></h1>
+                        <h1 nb-click="GoHome()"><a href="#">Ninja Sentinel</a></h1>
                     </li>
                     <li class="toggle-topbar"><a href="#"></a></li>
                 </ul>
                 <section>
                     <ul class="left">
-                        <li><a ng-click="ConfigureAlerts()">Alerts</a></li>
-                        <li><a ng-click="GoHistory()">History</a></li>
+                        <li><a nb-click="ConfigureAlerts()">Alerts</a></li>
+                        <li><a nb-click="GoHistory()">History</a></li>
                     </ul>
                     <ul class="right">
 
@@ -78,9 +78,9 @@
         <div class="fixed bottom panel">
             <dl class="sub-nav" ng-controller="UtilitybarCtrl" foundation-sub-nav>
                 <dt>Override</dt>
-                <dd class="success" ng-class="{active:Override}"><a ng-click="SetOverride(true)">All On</a></dd>
-                <dd class="alert" ng-class="{active:IsOverrideFalse()}"><a ng-click="SetOverride(false)">All Off</a></dd>
-                <dd ng-class="{active:IsOverrideNull()}"><a ng-click="SetOverride(null)">Use Zone Setting</a></dd>
+                <dd class="success" ng-class="{active:Override}"><a nb-click="SetOverride(true)">All On</a></dd>
+                <dd class="alert" ng-class="{active:IsOverrideFalse()}"><a nb-click="SetOverride(false)">All Off</a></dd>
+                <dd ng-class="{active:IsOverrideNull()}"><a nb-click="SetOverride(null)">Use Zone Setting</a></dd>
             </dl>
         </div>
 
@@ -141,6 +141,7 @@
         <script src="scripts/controllers/history.js"></script>
         <script src="scripts/controllers/trigger.js"></script>
         <script src="scripts/directives/triggerListen.js"></script>
+        <script src="scripts/directives/nbClick.js"></script>
         <!-- endbuild -->
 
         <!-- Google Analytics: -->
