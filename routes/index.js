@@ -291,15 +291,27 @@ exports.removeGlobalOverride = function(req,res) {
 exports.getGlobalOverride = function(req,res) {
 
   var globalOverrideKey = 'user:'+req.session.ninja.id+':override';
-  req.redisClient.get(globalOverrideKey,function(err,data) {
+  req.redisClient.exists(globalOverrideKey,function(err,exists) {
 
     if (err) {
       res.json({error:'Unknown database error'},500);
       return;
     }
 
+    if (!exists) {
+      res.json({override:null},200);
+      return;
+    }
 
-    res.json({override:(data==='true')},200);
+    req.redisClient.get(globalOverrideKey,function(err,data) {
+
+      if (err) {
+        res.json({error:'Unknown database error'},500);
+        return;
+      }
+
+      res.json({override:(data==='true')},200);
+    });
   });
 };
 
