@@ -2,16 +2,18 @@
     <li><a ng-click="setRoute('/')">Home</a></li>
     <li><a class="current">History</a></li>
 </ul>
-<h4>History</h4>
-<br>
+<div class="columns">
+  <h4>History</h4>
+  <br>
+</div>
 <div class="row">
   <div class="panel" ng-repeat="history in History">
     <div class="icon {{history.type}}"></div>
-    <div class="date">
-      {{ history.timestamp | date}}
-    </div>
     <div class="message">
-      {{ history.message }}
+      <h6>{{ history.message }}</h6>
+    </div>
+    <div class="date">
+      <h6><small>{{ history.timestamp | fromNow }}</small></h6>
     </div>
   </div>
 </div>

@@ -2,8 +2,10 @@
     <li><a ng-click="setRoute('/')">Home</a></li>
     <li><span class="current">Edit Zone <em>{{ Zone.Options.name }}</em></span></li>
 </ul>
-<h4>Zone</h4>
-<br>
+<div class="columns">
+  <h4>Zone</h4>
+  <br>
+</div>
 <div class="panel">
   <input type="text" placeholder="Name this zone" ng-model="Zone.Options.name" required>
 

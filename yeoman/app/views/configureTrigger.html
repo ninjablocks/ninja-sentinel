@@ -3,8 +3,10 @@
     <li><a ng-click="setRoute('/editZone')">{{ Zone.Options.name }}</a></li>
     <li><span class="current">Edit Trigger</span></li>
 </ul>
-<h4>Trigger</h4>
-<br>
+<div class="columns">
+  <h4>Trigger</h4>
+  <br>
+</div>
 <form name="configureTrigger" class="panel">
   <div class="alert-box alert" ng-show="!configureTrigger.$valid">Please fill in all values</div>
   <input type="text" placeholder="Name this Trigger" ng-model="Trigger.Options.name" required>
