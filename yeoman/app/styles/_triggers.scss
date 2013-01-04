@@ -16,6 +16,11 @@
     text-align: center;
     position: relative;
     
+    .name {
+      float: none;
+      width: 76%;
+    }
+
     .actions {
       position: absolute;
       right: 20px;

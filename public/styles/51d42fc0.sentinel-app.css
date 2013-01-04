@@ -4711,6 +4711,9 @@ textarea[contenteditable] {
   .triggers .trigger {
     text-align: center;
     position: relative; }
+    .triggers .trigger .name {
+      float: none;
+      width: 76%; }
     .triggers .trigger .actions {
       position: absolute;
       right: 20px;
