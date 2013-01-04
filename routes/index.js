@@ -246,7 +246,7 @@ exports.setGlobalOverride = function(req,res) {
 
   var globalOverrideKey = 'user:'+req.session.ninja.id+':override';
 
-  if (!req.body.override) {
+  if (!req.body.override && req.body.override !== false) {
     res.json({error:'Parameter `override` is required'},400);
     return;
   }

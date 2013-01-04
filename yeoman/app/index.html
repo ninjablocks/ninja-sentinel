@@ -81,12 +81,12 @@
         <div class="container" ng-view></div>
 
         <div class="fixed bottom">
-
-            <ul class="nav-bar" ng-controller="UtilitybarCtrl">
-                <li><a ng-click="SetOverride(true)" ng-show="!Override">Set Override On</a></li>
-                <li><a ng-click="SetOverride(false)" ng-show="Override">Set Override Off</a></li>
-                <!-- <li><a ng-click="SetOverride(null)">Use Schedule</a></li> -->
-            </ul>
+            <dl class="sub-nav" ng-controller="UtilitybarCtrl" foundation-sub-nav>
+                <dt>Global Override</dt>
+                <dd ng-class="{active:Override}"><a ng-click="SetOverride(true)">All On</a></dd>
+                <dd ng-class="{active:IsOverrideFalse()}"><a ng-click="SetOverride(false)">All Off</a></dd>
+                <dd ng-class="{active:IsOverrideNull()}"><a ng-click="SetOverride(null)">Use Zone Setting</a></dd>
+            </dl>
         </div>
 
         <script src="components/jquery/jquery.min.js"></script>
