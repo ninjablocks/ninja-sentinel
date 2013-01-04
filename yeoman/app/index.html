@@ -66,17 +66,12 @@
                             <a ng-show="!ConfigureMode" ng-click="SetConfigureMode(true)" class="configure">Configure Mode</a>
                             <a ng-show="ConfigureMode" ng-click="SetConfigureMode(false)" class="configure">Normal Mode</a>
                         </li>
+                                <li><a ng-click="AddZone()">Create New Zones</a></li>
+                                <li><a ng-click="ConfigureAlerts()">Alerts</a></li>
+                                <li><a ng-click="GoHistory()">History</a></li>
                     </ul>
                     <ul class="right">
-                        <li class="has-dropdown">
-                            <a href="#">Settings</a>
 
-                            <ul class="dropdown">
-                                <li><a ng-click="AddZone()">Add New Zone</a></li>
-                                <li><a ng-click="ConfigureAlerts()">Configure Alerts</a></li>
-                                <li><a>History</a></li>
-                            </ul>
-                        </li>
                     </ul>
                 </section>
             </nav>
@@ -88,14 +83,15 @@
         <div class="fixed bottom">
 
             <ul class="nav-bar" ng-controller="UtilitybarCtrl">
-                <li><a ng-click="SetOverride(true)" ng-show="!Override">Override On</a></li>
-                <li><a ng-click="SetOverride(false)" ng-show="Override">Override Off</a></li>
+                <li><a ng-click="SetOverride(true)" ng-show="!Override">Set Override On</a></li>
+                <li><a ng-click="SetOverride(false)" ng-show="Override">Set Override Off</a></li>
                 <!-- <li><a ng-click="SetOverride(null)">Use Schedule</a></li> -->
             </ul>
         </div>
 
         <script src="components/jquery/jquery.min.js"></script>
         <script src="scripts/vendor/angular.min.js"></script>
+        <script src="components/moment/min/moment.min.js"></script>
 
         <!-- build:js scripts/scripts.js -->
         <script src="javascripts/foundation/jquery.event.move.js"></script>
@@ -105,11 +101,15 @@
         <script src="javascripts/foundation/jquery.foundation.topbar.js"></script>
         <script src="javascripts/foundation/app.js"></script>
 
+        <script src="components/jquery-ui/ui/jquery.ui.core.js"></script>
+        <script src="components/jquery-ui/ui/jquery.ui.effect.js"></script>
+        <script src="components/jquery-ui/ui/jquery.ui.effect-highlight.js"></script>
         <script src="components/angular-ui/build/angular-ui.min.js"></script>
         <script src="components/angular-complete/angular-resource.js"></script>
         <script src="components/browser-ninja-blocks/lib/ninja.js"></script>
 
         <script src="scripts/vendor/pusher.min.js"></script>
+        <script src="scripts/vendor/jquery.highlightspectrum.js"></script>
 
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
@@ -142,6 +142,9 @@
         <script src="scripts/services/EditAlertService.js"></script>
         <script src="scripts/controllers/configureAlert.js"></script>
         <script src="scripts/directives/foundationHeader.js"></script>
+        <script src="scripts/controllers/history.js"></script>
+        <script src="scripts/controllers/trigger.js"></script>
+        <script src="scripts/directives/triggerListen.js"></script>
         <!-- endbuild -->
 
         <!-- Google Analytics: -->

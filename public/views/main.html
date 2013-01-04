@@ -13,8 +13,11 @@
         <a class="button tiny inline alert" ng-click="SetOverride(false)" ng-show="zone.Options.overrideActive" ng-show="!ConfigureMode">Disarm</a>
       </div>
       <div class="triggers">
-        <div class="panel trigger" ng-repeat="trigger in zone.Triggers">
-          <h6>{{ trigger.Options.name }} <small>({{ trigger.Options.type }})</small></h6>
+        <div class="panel trigger" ng-repeat="trigger in zone.Triggers" ng-controller="TriggerCtrl" trigger-listen>
+          <h6>{{ trigger.Options.name }}</h6>
+          <h6><small>({{ trigger.Options.type }})</small>
+                    <small class="lastActuated"></small></h6>
+          
         </div>
       </div>
     </div>
