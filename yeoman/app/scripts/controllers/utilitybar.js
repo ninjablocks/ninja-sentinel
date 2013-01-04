@@ -8,23 +8,43 @@ yeomanApp.controller('UtilitybarCtrl'
     $scope.Override = false;
 
     /**
+     * Checks the see if the override is null
+     */
+    $scope.IsOverrideNull = function() {
+      return ($scope.Override === null);
+    };
+
+    /**
+     * Checks to see if the override is false
+     */
+    $scope.IsOverrideFalse = function() {
+      return ($scope.Override === false);
+    };
+
+    /**
      * Sets the system override
      * @param {bool|null} value true|false|null
      */
     $scope.SetOverride = function(value) {
 
-      var data = {
-        override: (value === null) ? "null" : value.toString()
-      };
+      if (value !== null) {
+        var data = {
+          override: value
+        };
 
 
+        $http.put('/override', data).success(function(response) {
+          if (DEBUG) console.log("PUT /override", response);
+          $scope.Override = value;
 
-      $http.put('/override', data).success(function(response) {
-        // console.log("PUT /override", response);
-        $scope.Override = value;
-      }).error(function(response) {
-        // console.log("PUT /override", response);
-      });
+        }).error(function(response) {
+          if (DEBUG) console.log("PUT /override", response);
+        });
+      } else {
+        $http.delete('/override').success(function(response) {
+          $scope.Override = null;
+        });
+      }
     };
 
     /**
@@ -33,13 +53,13 @@ yeomanApp.controller('UtilitybarCtrl'
     $scope.GetOverride = function() {
 
       $http.get('/override').success(function(response) {
-        // console.log("GET /override", response);
+        if (DEBUG) console.log("GET /override", response);
 
         $scope.$broadcast(UIEvents.OverrideUpdate, response.override);
         $scope.Override = response.override;
 
       }).error(function(response) {
-        // console.log("GET /override", response);
+        if (DEBUG) console.log("GET /override", response);
 
       });
     };
