@@ -5,7 +5,7 @@ yeomanApp.controller('MainCtrl'
   , function($scope, $rootScope, UIEvents, ZoneFactory, ZoneService, EditZoneService) {
 
     $scope.ConfigureMode = false;
-
+    $scope.Override = null;
     $scope.Zones = ZoneService.Zones;
 
     /**
@@ -38,6 +38,13 @@ yeomanApp.controller('MainCtrl'
      */
     $scope.$on(UIEvents.SetConfigureMode, function(event, modeSwitch) {
       $scope.ConfigureMode = modeSwitch;
+    });
+
+    /**
+     * Listen for Override
+     */
+    $scope.$on(UIEvents.OverrideUpdate, function(event, override) {
+      $scope.Override = override;
     });
 
 

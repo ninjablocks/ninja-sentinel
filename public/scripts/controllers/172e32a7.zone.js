@@ -31,5 +31,25 @@ yeomanApp.controller('ZoneCtrl'
     };
 
 
+    /**
+     * Determines if the zone is armed (either manually or by override)
+     */
+    $scope.IsArmed = function() {
+        if ($rootScope.Override === null) {
+            return $scope.zone.Options.overrideActive;
+        } else{
+            return $rootScope.Override;
+        }
+    };
+
+
+    /**
+     * Determines if the Zone is overridden
+     */
+    $scope.IsOverridden = function() {
+        return ($rootScope.Override !== null);
+    };
+
+
 
 }]);

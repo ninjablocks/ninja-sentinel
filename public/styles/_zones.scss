@@ -3,6 +3,7 @@
 
 
   .utility-actions {
+    margin-bottom: 10px;
     .sub-nav {
       margin: 0;
       padding: 10px;
@@ -16,12 +17,16 @@
   .zone {
     position: relative;
     min-height: 48px;
+    border-bottom-color: #DDD;
+    opacity: 0.6;
+    margin-bottom: 10px;
+
 
     .actions {
       position: absolute;
       top: 7px;
       right: 0px;
-      width: 120px;
+      width: 130px;
       display: block;
       text-align: right;
       padding-right: 10px;
@@ -33,6 +38,11 @@
       .trigger {
         text-align: center;
       }
+    }
+
+    &.armed {
+      // color: hsl(0, 0%, 13%);
+      opacity: 1;
     }
   }
 

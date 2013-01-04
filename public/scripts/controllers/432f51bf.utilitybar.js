@@ -1,24 +1,22 @@
 'use strict';
 
 yeomanApp.controller('UtilitybarCtrl'
-  , ['$scope', '$http', 'UIEvents'
-  , function($scope, $http, UIEvents) {
+  , ['$scope', '$rootScope', '$http', 'UIEvents'
+  , function($scope, $rootScope, $http, UIEvents) {
   
-
-    $scope.Override = false;
 
     /**
      * Checks the see if the override is null
      */
     $scope.IsOverrideNull = function() {
-      return ($scope.Override === null);
+      return ($rootScope.Override === null);
     };
 
     /**
      * Checks to see if the override is false
      */
     $scope.IsOverrideFalse = function() {
-      return ($scope.Override === false);
+      return ($rootScope.Override === false);
     };
 
     /**
@@ -35,39 +33,19 @@ yeomanApp.controller('UtilitybarCtrl'
 
         $http.put('/override', data).success(function(response) {
           if (DEBUG) console.log("PUT /override", response);
-          $scope.Override = value;
+          $rootScope.Override = value;
+          $rootScope.$broadcast(UIEvents.OverrideUpdate, $scope.Override);
 
         }).error(function(response) {
           if (DEBUG) console.log("PUT /override", response);
         });
       } else {
         $http.delete('/override').success(function(response) {
-          $scope.Override = null;
+          $rootScope.Override = null;
+          $rootScope.$broadcast(UIEvents.OverrideUpdate, $scope.Override);
         });
       }
     };
 
-    /**
-     * Gets the override value from the system
-     */
-    $scope.GetOverride = function() {
 
-      $http.get('/override').success(function(response) {
-        if (DEBUG) console.log("GET /override", response);
-
-        $scope.$broadcast(UIEvents.OverrideUpdate, response.override);
-        $scope.Override = response.override;
-
-      }).error(function(response) {
-        if (DEBUG) console.log("GET /override", response);
-
-      });
-    };
-
-    $scope.GetOverride();
-
-
-    $scope.$on(UIEvents.OverrideUpdate, function(event, override) {
-      $scope.Override = override;
-    });
 }]);
