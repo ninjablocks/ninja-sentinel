@@ -2,7 +2,7 @@
 
 var DEBUG = false;
 
-var yeomanApp = angular.module('yeomanApp', ['ngResource'])
+var yeomanApp = angular.module('yeomanApp', ['ngResource', 'ui'])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/', {
