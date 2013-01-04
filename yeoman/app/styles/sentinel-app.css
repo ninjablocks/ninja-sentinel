@@ -4711,6 +4711,9 @@ textarea[contenteditable] {
   .triggers .trigger {
     text-align: center;
     position: relative; }
+    .triggers .trigger .name {
+      float: none;
+      width: 76%; }
     .triggers .trigger .actions {
       position: absolute;
       right: 20px;
@@ -4782,7 +4785,7 @@ a.button {
   color: white; }
 
 .container {
-  margin-bottom: 45px; }
+  padding-bottom: 80px; }
 
 .panel {
   padding: 10px;

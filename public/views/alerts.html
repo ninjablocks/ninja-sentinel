@@ -2,17 +2,19 @@
     <li><a nb-click="setRoute('/')">Home</a></li>
     <li><span class="current">Alerts</span></li>
 </ul>
-<div class="columns">
-  <h4>Alerts</h4>
-  <br>
-</div>
-<a class="button success" nb-click="AddAlert()">Add New Alert</a>
-<div class="panel" ng-repeat="alert in Alerts">
-  {{ alert.Options.type }} {{ alert.Options.alertee }}
-  <div class="actions">
-    <a class="button tiny success inline round" nb-click="Activate(alert)" ng-show="!alert.Options.active">Activate</a>
-    <a class="button tiny alert inline round" nb-click="Deactivate(alert)" ng-show="alert.Options.active">Deactivate</a>
-    <a class="button tiny inline" nb-click="EditAlert(alert)">Edit</a>
-    <a class="button alert tiny inline" nb-click="Delete(alert)">Delete</a>
+<div class="row">
+  <div class="twelve columns">
+    <h4>Alerts</h4>
+    <br>
+    <a class="button success" nb-click="AddAlert()">Add New Alert</a>
+    <div class="panel" ng-repeat="alert in Alerts">
+      {{ alert.Options.type }} {{ alert.Options.alertee }}
+      <div class="actions">
+        <a class="button tiny success inline round" nb-click="Activate(alert)" ng-show="!alert.Options.active">Activate</a>
+        <a class="button tiny alert inline round" nb-click="Deactivate(alert)" ng-show="alert.Options.active">Deactivate</a>
+        <a class="button tiny inline" nb-click="EditAlert(alert)">Edit</a>
+        <a class="button alert tiny inline" nb-click="Delete(alert)">Delete</a>
+      </div>
+    </div>
   </div>
 </div>

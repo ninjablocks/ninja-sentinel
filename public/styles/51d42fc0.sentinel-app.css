@@ -4673,7 +4673,7 @@ textarea[contenteditable] {
     margin-bottom: 10px; }
     .zones .utility-actions .sub-nav {
       margin: 0;
-      padding: 10px; }
+      padding: 10px 0px; }
       .zones .utility-actions .sub-nav dd {
         margin-bottom: 0px; }
   .zones .zone {
@@ -4711,6 +4711,9 @@ textarea[contenteditable] {
   .triggers .trigger {
     text-align: center;
     position: relative; }
+    .triggers .trigger .name {
+      float: none;
+      width: 76%; }
     .triggers .trigger .actions {
       position: absolute;
       right: 20px;
@@ -4782,7 +4785,7 @@ a.button {
   color: white; }
 
 .container {
-  margin-bottom: 45px; }
+  padding-bottom: 80px; }
 
 .panel {
   padding: 10px;
