@@ -4737,6 +4737,9 @@ textarea[contenteditable] {
     .top-bar .toggle-edit a {
       display: inline-block; }
 
+@media only screen and (max-width: 767px) {
+  .fixed.bottom dt {
+    display: none; } }
 /**
  * ------------------------------
  */
@@ -4763,5 +4766,10 @@ a.button {
 .fixed.bottom {
   bottom: 0px !important;
   top: auto; }
+  .fixed.bottom dd a {
+    color: #555;
+    background: #CCC;
+    padding: 3px 9px;
+    font-weight: bold; }
   .fixed.bottom .nav-bar {
     margin: 0px; }

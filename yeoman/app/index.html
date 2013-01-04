@@ -80,9 +80,9 @@
 
         <div class="container" ng-view></div>
 
-        <div class="fixed bottom">
+        <div class="fixed bottom panel">
             <dl class="sub-nav" ng-controller="UtilitybarCtrl" foundation-sub-nav>
-                <dt>Global Override</dt>
+                <dt>Override</dt>
                 <dd ng-class="{active:Override}"><a ng-click="SetOverride(true)">All On</a></dd>
                 <dd ng-class="{active:IsOverrideFalse()}"><a ng-click="SetOverride(false)">All Off</a></dd>
                 <dd ng-class="{active:IsOverrideNull()}"><a ng-click="SetOverride(null)">Use Zone Setting</a></dd>
