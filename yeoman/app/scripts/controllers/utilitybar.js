@@ -1,9 +1,14 @@
 'use strict';
 
 yeomanApp.controller('UtilitybarCtrl'
-  , ['$scope', '$rootScope', '$http', 'UIEvents'
-  , function($scope, $rootScope, $http, UIEvents) {
+  , ['$scope', '$rootScope', '$http', '$location', 'UIEvents'
+  , function($scope, $rootScope, $http, $location, UIEvents) {
   
+
+    $scope.IsOnHomepage = function() {
+      console.log("Location:", $location);
+      return $location.$$path == "/";
+    };
 
     /**
      * Checks the see if the override is null

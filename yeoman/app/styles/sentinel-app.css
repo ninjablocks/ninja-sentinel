@@ -4779,6 +4779,9 @@ textarea[contenteditable] {
     .top-bar .toggle-edit a {
       display: inline-block; }
 
+.note {
+  font-family: 'Waiting for the Sunrise', cursive; }
+
 @media only screen and (max-width: 767px) {
   .fixed.bottom dt {
     display: none; } }

@@ -21,6 +21,8 @@
 
         <!-- Google Fonts -->
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,800,600,700' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Waiting+for+the+Sunrise' rel='stylesheet' type='text/css'>
+
 
         <!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
         <meta name="apple-mobile-web-app-capable" content="yes">
@@ -75,8 +77,8 @@
 
         <div class="container" ng-view></div>
 
-        <div class="fixed bottom panel">
-            <dl class="sub-nav" ng-controller="UtilitybarCtrl" foundation-sub-nav>
+        <div class="fixed bottom panel" ng-controller="UtilitybarCtrl" ng-show="IsOnHomepage()">
+            <dl class="sub-nav" foundation-sub-nav>
                 <dt>Override</dt>
                 <dd class="success" ng-class="{active:Override}"><a nb-click="SetOverride(true)">All On</a></dd>
                 <dd class="alert" ng-class="{active:IsOverrideFalse()}"><a nb-click="SetOverride(false)">All Off</a></dd>
