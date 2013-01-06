@@ -12,7 +12,9 @@ yeomanApp.controller('MainCtrl'
      * Handler for Add New Zone button
      */
     $scope.AddZone = function() {
-      var newZone = new ZoneFactory({});
+      var newZone = new ZoneFactory({
+        name: 'My Zone'
+      });
       EditZoneService.Zone = newZone;
       $rootScope.$broadcast(UIEvents.ZoneAdding, newZone);
       $scope.setRoute('/editZone');

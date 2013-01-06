@@ -4785,10 +4785,11 @@ textarea[contenteditable] {
 /**
  * ------------------------------
  */
-html, body {
+html {
+  background: #aaa; }
+
+body {
   margin: 0;
-  height: 100%;
-  background: #d9d9d9;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #eeeeee), color-stop(100%, #aaaaaa));
   background-image: -webkit-linear-gradient(#eeeeee, #aaaaaa);
   background-image: -moz-linear-gradient(#eeeeee, #aaaaaa);
