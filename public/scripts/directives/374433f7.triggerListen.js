@@ -18,12 +18,12 @@ yeomanApp.directive('triggerListen'
           // This trigger is being actuated
           // element.stop(true, true).effect("highlight", { color: highlightColor}, highlightDuration);
           element.stop(true, false);
-          element.animate({backgroundColor: '#e59191'}, 100).spectrum(["#edecb2", "#daeaba", "transparent"], [60000, 60000, 60000]);
+          element.animate({backgroundColor: 'hsl(353,77%,57%)'}, 100).spectrum(["#e59191", "#edecb2", "#daeaba", "transparent"], [100, 60000, 60000, 60000]);
           
           var lastActuated = new moment(data.timestamp);
           // lastActuated = lastActuated.format("YYYY-MM-DD h:mm:ssa");
 
-          element.find(".lastActuated").html(lastActuated.fromNow());
+          element.find(".lastActuated").html(lastActuated.format("YYYY-MM-DD h:mm:ssa"));
         }
       });
 

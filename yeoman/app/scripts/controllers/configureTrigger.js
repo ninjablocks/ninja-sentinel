@@ -13,7 +13,7 @@ yeomanApp.controller('ConfigureTriggerCtrl'
     $scope.Save = function() {
       if ($scope.configureTrigger.$valid) {
         $scope.Trigger.Save(function() {
-          if ($scope.Alerts.length === 0) {
+          if ($rootScope.Alerts.length === 0) {
             var newAlert = new AlertFactory({
               type: 'sms'
             });

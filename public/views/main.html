@@ -1,5 +1,6 @@
 <div id="main" class="row">
   <div class="twelve zones">
+
     <div class="utility-actions">
       <dl class="sub-nav panel">
         <dd><a class="button success" ng-click="AddZone()">Add New Zone</a></dd>
@@ -8,7 +9,24 @@
       </dl>
     </div>
 
-    <div class="twelve columns">
+
+
+    <div class="twelve columns zone-listing">
+
+    <div class="panel alert-box help-box note" ng-show="Zones.length && !Alerts.length">
+      No alerts are currently set up. You will not receive any notifications
+      <br>
+      <a ng-click="setRoute('/alerts')">Create an alert</a>
+    </div>
+
+      <div class="alert-box note secondary" ng-show="!Zones.length">
+        <h6>Getting Started</h6>
+        <ol>
+          <li>Create a zone.</li>
+          <li>Create a trigger for the zone.</li>
+          <li>Create an alert</li>
+        </ol>
+      </div>
       
       <div class="panel zone" ng-repeat="zone in Zones" ng-controller="ZoneCtrl" ng-class="{armed:IsArmed()}">
         <h5>{{ zone.Options.name }}</h5>

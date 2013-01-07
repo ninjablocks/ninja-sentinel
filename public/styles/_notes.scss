@@ -1,3 +1,26 @@
 .note {
-  font-family: 'Waiting for the Sunrise', cursive;
+  font-family: 'Bad Script', cursive;
+}
+
+
+
+.alert-box.help-box {
+  background: hsl(54,70%,67%);
+  border-top: 1px solid hsl(54,70%,54%);
+  border-bottom: 1px solid hsl(54,70%,44%);
+  border-left: none;
+  border-right: none;
+  color: hsl(45, 70%, 30%);
+  font-weight: normal;
+  font-size: 16px;
+  
+  a {
+    @extend label;
+    @include border-radius(8px);
+    padding: 1px 6px 0px;
+    color: hsl(54,70%,87%);;
+    background-color: hsl(45, 70%, 43%);
+    font-weight: bold;
+    display: inline-block;
+  }
 }

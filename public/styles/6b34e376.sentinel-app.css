@@ -307,17 +307,17 @@ form {
     .row form .row.collapse .column, .row form .row.collapse .columns {
       padding: 0; }
 
-label {
+label, .alert-box.help-box a {
   font-size: 14px;
   color: #4d4d4d;
   cursor: pointer;
   display: block;
   font-weight: 500;
   margin-bottom: 3px; }
-  label.right {
+  label.right, .alert-box.help-box a.right {
     float: none;
     text-align: right; }
-  label.inline {
+  label.inline, .alert-box.help-box a.inline {
     line-height: 32px;
     margin: 0 0 12px 0; }
 
@@ -421,7 +421,7 @@ fieldset {
   border-color: #c60f13;
   background-color: rgba(198, 15, 19, 0.1); }
 
-.error label, label.error {
+.error label, .error .alert-box.help-box a, .alert-box.help-box .error a, label.error, .alert-box.help-box a.error {
   color: #c60f13; }
 
 .error small, small.error {
@@ -1704,7 +1704,7 @@ ul.flyout, .nav-bar li ul {
                 border: none; }
               .top-bar ul > li.has-dropdown .dropdown li a:hover, .top-bar ul > li.has-dropdown .dropdown li a:focus {
                 background: #3c3c3c; }
-            .top-bar ul > li.has-dropdown .dropdown li label {
+            .top-bar ul > li.has-dropdown .dropdown li label, .top-bar ul > li.has-dropdown .dropdown li .alert-box.help-box a, .alert-box.help-box .top-bar ul > li.has-dropdown .dropdown li a {
               color: #6f6f6f;
               font-size: 10px;
               font-weight: bold;
@@ -3484,7 +3484,7 @@ table.hide-for-medium {
   /* Forms --- */
   /*           */
   /* Label alignment */
-  label.right {
+  label.right, .alert-box.help-box a.right {
     text-align: left; }
 
   /* Extend width of all inputs */
@@ -4080,7 +4080,7 @@ table.hide-for-medium {
           .top-bar ul > li.has-dropdown.moved > .dropdown {
             top: 0;
             visibility: visible; }
-            .top-bar ul > li.has-dropdown.moved > .dropdown li label {
+            .top-bar ul > li.has-dropdown.moved > .dropdown li label, .top-bar ul > li.has-dropdown.moved > .dropdown li .alert-box.help-box a, .alert-box.help-box .top-bar ul > li.has-dropdown.moved > .dropdown li a {
               margin-bottom: 6px;
               padding-top: 6px !important;
               font-size: 11px; }
@@ -4089,7 +4089,7 @@ table.hide-for-medium {
               .top-bar ul > li.has-dropdown.moved > .dropdown li:not(.title) a {
                 padding: 8px 22.5px;
                 font-size: 14px; }
-            .top-bar ul > li.has-dropdown.moved > .dropdown li a, .top-bar ul > li.has-dropdown.moved > .dropdown li label {
+            .top-bar ul > li.has-dropdown.moved > .dropdown li a, .top-bar ul > li.has-dropdown.moved > .dropdown li label, .top-bar ul > li.has-dropdown.moved > .dropdown li .alert-box.help-box a, .alert-box.help-box .top-bar ul > li.has-dropdown.moved > .dropdown li a {
               padding: 0 22.5px; }
             .top-bar ul > li.has-dropdown.moved > .dropdown li a:hover {
               background: #3c3c3c;
@@ -4188,6 +4188,23 @@ table.hide-for-medium {
 
   .top-bar ul > li.has-button a.button {
     margin: 0; } }
+.panel {
+  padding: 10px;
+  margin: 0px;
+  border-top-color: #FAFAFA; }
+  .panel:first-of-type {
+    border-top-color: auto; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400; }
+  h1.subheader, h2.subheader, h3.subheader, h4.subheader, h5.subheader, h6.subheader {
+    font-weight: 100; }
+
+.container {
+  padding-bottom: 80px; }
+
 /**
  * Extra Foundation button styles 
  */
@@ -4669,20 +4686,20 @@ textarea[contenteditable] {
   /* Style adjustments for viewports that meet the condition */ }
 .zones {
   position: relative; }
-  .zones .utility-actions {
-    margin-bottom: 10px; }
-    .zones .utility-actions .sub-nav {
-      margin: 0;
-      padding: 10px 0px; }
-      .zones .utility-actions .sub-nav dd {
-        margin-bottom: 0px; }
+  .zones .utility-actions .sub-nav {
+    margin: 0;
+    padding: 10px 0px; }
+    .zones .utility-actions .sub-nav dd {
+      margin-bottom: 0px; }
+  .zones .zone-listing {
+    margin-top: 10px; }
   .zones .zone {
     position: relative;
     min-height: 48px;
     opacity: 0.6;
     margin-bottom: 10px;
     border-width: 0 0 0 10px;
-    border-color: #b5b5b5; }
+    border-color: #737373; }
     .zones .zone .actions {
       position: absolute;
       top: 7px;
@@ -4785,7 +4802,28 @@ textarea[contenteditable] {
       display: inline-block; }
 
 .note {
-  font-family: 'Waiting for the Sunrise', cursive; }
+  font-family: 'Bad Script', cursive; }
+
+.alert-box.help-box {
+  background: #e6da70;
+  border-top: 1px solid #dccb38;
+  border-bottom: 1px solid #bfaf22;
+  border-left: none;
+  border-right: none;
+  color: #826717;
+  font-weight: normal;
+  font-size: 16px; }
+  .alert-box.help-box a {
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    border-radius: 8px;
+    padding: 1px 6px 0px;
+    color: #f5f0c7;
+    background-color: #ba9421;
+    font-weight: bold;
+    display: inline-block; }
 
 @media only screen and (max-width: 767px) {
   .fixed.bottom dt {
@@ -4805,13 +4843,6 @@ body {
   background-image: -ms-linear-gradient(#eeeeee, #aaaaaa);
   background-image: linear-gradient(#eeeeee, #aaaaaa); }
 
-h1, h2, h3, h4, h5, h6 {
-  margin: 0;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 400; }
-  h1.subheader, h2.subheader, h3.subheader, h4.subheader, h5.subheader, h6.subheader {
-    font-weight: 100; }
-
 a.button {
   -webkit-transition: none;
   -moz-transition: none;
@@ -4819,16 +4850,6 @@ a.button {
   -o-transition: none;
   transition: none;
   color: white; }
-
-.container {
-  padding-bottom: 80px; }
-
-.panel {
-  padding: 10px;
-  margin: 0px;
-  border-top-color: #FAFAFA; }
-  .panel:first-of-type {
-    border-top-color: auto; }
 
 .fixed.bottom {
   bottom: 0px !important;
