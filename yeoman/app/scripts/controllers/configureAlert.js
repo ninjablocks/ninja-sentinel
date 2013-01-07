@@ -11,7 +11,7 @@ yeomanApp.controller('ConfigureAlertCtrl'
   $scope.Save = function() {
     if ($scope.configureAlert.$valid) {
       $scope.Alert.Save(function() {
-        $scope.setRoute('/alerts'); 
+        $scope.setRoute('/alerts');
       });
       
     }
