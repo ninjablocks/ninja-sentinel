@@ -4,8 +4,8 @@
     <div class="utility-actions">
       <dl class="sub-nav panel">
         <dd><a class="button success" ng-click="AddZone()">Add New Zone</a></dd>
-        <dd><a class="button mediary" ng-click="SetConfigureMode(true)" ng-show="!ConfigureMode">Configure</a></dd>
-        <dd><a class="button secondary" ng-click="SetConfigureMode(false)" ng-show="ConfigureMode">End Configure</a></dd>
+        <dd><a class="button mediary" ng-click="SetConfigureMode(true)" ng-show="!ConfigureMode && Zones.length">Configure</a></dd>
+        <dd><a class="button secondary" ng-click="SetConfigureMode(false)" ng-show="ConfigureMode && Zones.length">End Configure</a></dd>
       </dl>
     </div>
 
