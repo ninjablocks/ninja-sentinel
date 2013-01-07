@@ -11,7 +11,7 @@ yeomanApp.factory('AlertFactory'
       this.Options = {
         type: '',
         alertee: '',
-        active: false
+        active: true
       };
 
       this.Options = NinjaUtilities.ObjectMerge(this.Options, options);
