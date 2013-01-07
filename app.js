@@ -131,7 +131,8 @@ app.all('/rest/v0/*', requiresAuthentication, routes.proxy);
  */
 
 app.get('/', requiresAuthentication, routes.index);
-app.get('/nuke',requiresAuthentication, routes.nukeUser);
+app.get('/signout',routes.signout);
+app.get('/seppuku',requiresAuthentication, routes.nukeUser);
 app.post('/callback', setupTransports, routes.handleDeviceCallback);
 app.get('/history', requiresAuthentication, routes.fetchHistory);
 

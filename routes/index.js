@@ -336,6 +336,11 @@ exports.fetchHistory = function(req,res) {
   });
 };
 
+exports.signout = function(req,res) {
+  req.session.destroy();
+  res.redirect('/');
+}
+
 exports.nukeUser = function(req,res) {
   var keys = [
     'user:'+req.session.ninja.id+':zones',
