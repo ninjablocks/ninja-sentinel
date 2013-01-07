@@ -1,8 +1,8 @@
 'use strict';
 
 yeomanApp.controller('MainCtrl'
-  , ['$scope', '$rootScope', 'UIEvents', 'ZoneFactory', 'ZoneService', 'EditZoneService'
-  , function($scope, $rootScope, UIEvents, ZoneFactory, ZoneService, EditZoneService) {
+  , ['$scope', '$rootScope', 'UIEvents', 'ZoneFactory', 'ZoneService', 'EditZoneService', 'AlertService'
+  , function($scope, $rootScope, UIEvents, ZoneFactory, ZoneService, EditZoneService, AlertService) {
 
     $scope.ConfigureMode = false;
     $scope.Override = null;
@@ -34,7 +34,7 @@ yeomanApp.controller('MainCtrl'
       }
     };
 
-    
+
     /**
      * Watch for ConfigureMode switches
      */

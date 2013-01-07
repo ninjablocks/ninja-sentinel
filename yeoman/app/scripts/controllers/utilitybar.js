@@ -6,7 +6,6 @@ yeomanApp.controller('UtilitybarCtrl'
   
 
     $scope.IsOnHomepage = function() {
-      console.log("Location:", $location);
       return $location.$$path == "/";
     };
 
