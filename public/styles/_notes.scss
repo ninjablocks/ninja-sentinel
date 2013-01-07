@@ -15,12 +15,33 @@
   font-size: 16px;
   
   a {
-    @extend label;
-    @include border-radius(8px);
-    padding: 1px 6px 0px;
+    font-family: 'Helvetica Neue', Helvetica, Helvetica, Arial, sans-serif;
     color: hsl(54,70%,87%);;
     background-color: hsl(45, 70%, 43%);
+    border-color: hsl(45, 70%, 33%);
     font-weight: bold;
-    display: inline-block;
+  }
+}
+
+.getting-started {
+  border-color: transparent !important;
+  background: transparent !important;
+  color: #444;
+  
+  h1,h2,h3,h4,h5,h6 {
+    @include text-shadow(1px 1px 0 #EEE);
+    font-size: 130%;
+    margin-bottom: 10px;
+    
+    img {
+      vertical-align: baseline;
+    }
+  }
+
+  ol,ul {
+    li {
+      @include text-shadow(1px 1px 0 #EEE);
+      color: #444;
+    }
   }
 }

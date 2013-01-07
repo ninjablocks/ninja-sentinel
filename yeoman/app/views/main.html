@@ -13,19 +13,14 @@
 
     <div class="twelve columns zone-listing">
 
-    <div class="panel alert-box help-box note" ng-show="Zones.length && !Alerts.length">
-      No alerts are currently set up. You will not receive any notifications
-      <br>
-      <a ng-click="setRoute('/alerts')">Create an alert</a>
-    </div>
+      <div class="panel alert-box help-box note" ng-show="!Alerts.length && Zones.length">
+        No alerts are currently set up. To receive notification please set up an alert.
+        <br>
+        <a class="button radius" ng-click="setRoute('/alerts')">Create an alert</a>
+      </div>
 
-      <div class="alert-box note secondary" ng-show="!Zones.length">
-        <h6>Getting Started</h6>
-        <ol>
-          <li>Create a zone.</li>
-          <li>Create a trigger for the zone.</li>
-          <li>Create an alert</li>
-        </ol>
+      <div class="alert-box getting-started" ng-show="!Zones.length">
+        <h6><img src="img/arrow-curveup.png" alt=""> Create a zone to get started</h6>
       </div>
       
       <div class="panel zone" ng-repeat="zone in Zones" ng-controller="ZoneCtrl" ng-class="{armed:IsArmed()}">

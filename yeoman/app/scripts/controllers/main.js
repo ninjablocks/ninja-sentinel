@@ -7,6 +7,7 @@ yeomanApp.controller('MainCtrl'
     $scope.ConfigureMode = false;
     $scope.Override = null;
     $scope.Zones = ZoneService.Zones;
+    $scope.Alerts = AlertService.Alerts;
 
     /**
      * Handler for Add New Zone button

@@ -1,8 +1,8 @@
 'use strict';
 
 yeomanApp.controller('AlertsCtrl'
-  , ['$scope', 'AlertService', 'AlertFactory', 'EditAlertService'
-  , function($scope, AlertService, AlertFactory, EditAlertService) {
+  , ['$scope', '$rootScope', 'AlertService', 'AlertFactory', 'EditAlertService'
+  , function($scope, $rootScope, AlertService, AlertFactory, EditAlertService) {
 
     $scope.Alerts = AlertService.Alerts;
 

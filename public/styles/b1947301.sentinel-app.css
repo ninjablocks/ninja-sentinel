@@ -307,17 +307,17 @@ form {
     .row form .row.collapse .column, .row form .row.collapse .columns {
       padding: 0; }
 
-label, .alert-box.help-box a {
+label {
   font-size: 14px;
   color: #4d4d4d;
   cursor: pointer;
   display: block;
   font-weight: 500;
   margin-bottom: 3px; }
-  label.right, .alert-box.help-box a.right {
+  label.right {
     float: none;
     text-align: right; }
-  label.inline, .alert-box.help-box a.inline {
+  label.inline {
     line-height: 32px;
     margin: 0 0 12px 0; }
 
@@ -421,7 +421,7 @@ fieldset {
   border-color: #c60f13;
   background-color: rgba(198, 15, 19, 0.1); }
 
-.error label, .error .alert-box.help-box a, .alert-box.help-box .error a, label.error, .alert-box.help-box a.error {
+.error label, label.error {
   color: #c60f13; }
 
 .error small, small.error {
@@ -1704,7 +1704,7 @@ ul.flyout, .nav-bar li ul {
                 border: none; }
               .top-bar ul > li.has-dropdown .dropdown li a:hover, .top-bar ul > li.has-dropdown .dropdown li a:focus {
                 background: #3c3c3c; }
-            .top-bar ul > li.has-dropdown .dropdown li label, .top-bar ul > li.has-dropdown .dropdown li .alert-box.help-box a, .alert-box.help-box .top-bar ul > li.has-dropdown .dropdown li a {
+            .top-bar ul > li.has-dropdown .dropdown li label {
               color: #6f6f6f;
               font-size: 10px;
               font-weight: bold;
@@ -3484,7 +3484,7 @@ table.hide-for-medium {
   /* Forms --- */
   /*           */
   /* Label alignment */
-  label.right, .alert-box.help-box a.right {
+  label.right {
     text-align: left; }
 
   /* Extend width of all inputs */
@@ -4080,7 +4080,7 @@ table.hide-for-medium {
           .top-bar ul > li.has-dropdown.moved > .dropdown {
             top: 0;
             visibility: visible; }
-            .top-bar ul > li.has-dropdown.moved > .dropdown li label, .top-bar ul > li.has-dropdown.moved > .dropdown li .alert-box.help-box a, .alert-box.help-box .top-bar ul > li.has-dropdown.moved > .dropdown li a {
+            .top-bar ul > li.has-dropdown.moved > .dropdown li label {
               margin-bottom: 6px;
               padding-top: 6px !important;
               font-size: 11px; }
@@ -4089,7 +4089,7 @@ table.hide-for-medium {
               .top-bar ul > li.has-dropdown.moved > .dropdown li:not(.title) a {
                 padding: 8px 22.5px;
                 font-size: 14px; }
-            .top-bar ul > li.has-dropdown.moved > .dropdown li a, .top-bar ul > li.has-dropdown.moved > .dropdown li label, .top-bar ul > li.has-dropdown.moved > .dropdown li .alert-box.help-box a, .alert-box.help-box .top-bar ul > li.has-dropdown.moved > .dropdown li a {
+            .top-bar ul > li.has-dropdown.moved > .dropdown li a, .top-bar ul > li.has-dropdown.moved > .dropdown li label {
               padding: 0 22.5px; }
             .top-bar ul > li.has-dropdown.moved > .dropdown li a:hover {
               background: #3c3c3c;
@@ -4765,7 +4765,10 @@ textarea[contenteditable] {
 
 .alerts .alert {
   margin-bottom: 10px;
-  position: relative; }
+  position: relative;
+  opacity: 0.6; }
+  .alerts .alert.active {
+    opacity: 1; }
   .alerts .alert h6 {
     font-size: 12px; }
   .alerts .alert .actions {
@@ -4801,6 +4804,9 @@ textarea[contenteditable] {
     .top-bar .toggle-edit a {
       display: inline-block; }
 
+.breadcrumbs a {
+  color: #2ba5ca; }
+
 .note {
   font-family: 'Bad Script', cursive; }
 
@@ -4814,16 +4820,25 @@ textarea[contenteditable] {
   font-weight: normal;
   font-size: 16px; }
   .alert-box.help-box a {
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    -ms-border-radius: 8px;
-    -o-border-radius: 8px;
-    border-radius: 8px;
-    padding: 1px 6px 0px;
+    font-family: 'Helvetica Neue', Helvetica, Helvetica, Arial, sans-serif;
     color: #f5f0c7;
     background-color: #ba9421;
-    font-weight: bold;
-    display: inline-block; }
+    border-color: #8f7219;
+    font-weight: bold; }
+
+.getting-started {
+  border-color: transparent !important;
+  background: transparent !important;
+  color: #444; }
+  .getting-started h1, .getting-started h2, .getting-started h3, .getting-started h4, .getting-started h5, .getting-started h6 {
+    text-shadow: 1px 1px 0 #eeeeee;
+    font-size: 130%;
+    margin-bottom: 10px; }
+    .getting-started h1 img, .getting-started h2 img, .getting-started h3 img, .getting-started h4 img, .getting-started h5 img, .getting-started h6 img {
+      vertical-align: baseline; }
+  .getting-started ol li, .getting-started ul li {
+    text-shadow: 1px 1px 0 #eeeeee;
+    color: #444; }
 
 @media only screen and (max-width: 767px) {
   .fixed.bottom dt {

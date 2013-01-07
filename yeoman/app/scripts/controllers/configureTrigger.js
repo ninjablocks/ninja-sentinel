@@ -1,19 +1,20 @@
 'use strict';
 
 yeomanApp.controller('ConfigureTriggerCtrl'
-  , ['$scope', '$rootScope', 'UIEvents', 'EditTriggerService', 'EditZoneService', 'AlertFactory', 'EditAlertService'
-  , function($scope, $rootScope, UIEvents, EditTriggerService, EditZoneService, AlertFactory, EditAlertService) {
+  , ['$scope', '$rootScope', 'UIEvents', 'EditTriggerService', 'EditZoneService', 'AlertFactory', 'EditAlertService', 'AlertService'
+  , function($scope, $rootScope, UIEvents, EditTriggerService, EditZoneService, AlertFactory, EditAlertService, AlertService) {
 
     $scope.Zone = EditZoneService.Zone;
     $scope.Trigger = EditTriggerService.Trigger;
-
+    $scope.Alerts = AlertService.Alerts;
     /**
      * Saves the Trigger
      */
     $scope.Save = function() {
       if ($scope.configureTrigger.$valid) {
         $scope.Trigger.Save(function() {
-          if ($rootScope.Alerts.length === 0) {
+
+          if ($scope.Alerts.length === 0) {
             var newAlert = new AlertFactory({
               type: 'sms'
             });

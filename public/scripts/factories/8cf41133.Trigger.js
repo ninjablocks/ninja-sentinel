@@ -54,24 +54,23 @@ yeomanApp.factory('TriggerFactory'
        * @param {Function} callback Optional callback function
        */
       this.Save = function(callback) {
-        console.log("Trigger.Save()", this);
+        if (DEBUG) console.log("Trigger.Save()", this);
         if (this.IsValid()) {
           var payload = this.Options;
           $http.put('/zone/' + this.Zone.id + '/trigger', payload).success(function(response) {
-            console.log(response);
             $rootScope.$broadcast(UIEvents.TriggerAdded, this);
             if (callback) {
               callback(response);
             }
           }.bind(this)).error(function(response) {
-            console.log("Error:", response);
+            if (DEBUG) console.log("Error:", response);
             if (callback) {
               callback(response);
             }
           });
           return true;
         } else {
-          console.log('Trigger not valid for saving')
+          if (DEBUG) console.log('Trigger not valid for saving')
           return false;
         }
       };
@@ -82,7 +81,7 @@ yeomanApp.factory('TriggerFactory'
        * @param {Function} callback [description]
        */
       this.Delete = function(callback) {
-        console.log("Trigger.Delete()", this);
+        if (DEBUG) console.log("Trigger.Delete()", this);
 
         var removedTrigger = this;
 
@@ -93,7 +92,7 @@ yeomanApp.factory('TriggerFactory'
             callback(response);
           }
         }).error(function(response) {
-          console.log('Error:', response);
+          if (DEBUG) console.log('Error:', response);
           if (callback) {
             callback(response);
           }

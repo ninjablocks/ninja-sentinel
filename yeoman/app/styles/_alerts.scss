@@ -5,7 +5,12 @@
   .alert {
     margin-bottom: 10px;
     position: relative;
+    opacity: 0.6;
     
+    &.active {
+      opacity: 1;
+    }
+
     h6 {
       font-size: 12px;
     }

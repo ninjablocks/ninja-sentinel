@@ -7,7 +7,7 @@
     <h4>Alerts</h4>
     <br>
     
-    <div class="panel alert" ng-repeat="alert in Alerts" ng-click="EditAlert(alert)">
+    <div class="panel alert" ng-repeat="alert in Alerts" ng-click="EditAlert(alert)" ng-class="{active:alert.Options.active}">
       <h6><small>{{ alert.Options.type }}</small> {{ alert.Options.alertee }}</h6>
       <div class="actions">
         <a class="button tiny success inline round" ng-click="Activate(alert)" ng-show="!alert.Options.active" stop-propagation>Activate</a>
