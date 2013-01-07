@@ -1,8 +1,8 @@
 'use strict';
 
 yeomanApp.controller('HeaderCtrl'
-  , ['$scope', '$rootScope', '$location', 'UIEvents', 'ZoneFactory', 'EditZoneService'
-  , function($scope, $rootScope, $location, UIEvents, ZoneFactory, EditZoneService) {
+  , ['$scope', '$rootScope', '$location', '$http', 'UIEvents', 'ZoneFactory', 'EditZoneService'
+  , function($scope, $rootScope, $location, $http, UIEvents, ZoneFactory, EditZoneService) {
 
 
     $scope.ConfigureMode = false;
@@ -49,9 +49,19 @@ yeomanApp.controller('HeaderCtrl'
       $rootScope.setRoute('/');
     };
 
+    /**
+     * Logout
+     */
     $scope.GoHistory = function() {
       $rootScope.$broadcast(UIEvents.TopBarClose);
       $rootScope.setRoute('/history');
+    };
+
+    /**
+     * Logout from the app
+     */
+    $scope.Logout = function() {
+      window.location.href = "/nuke";
     };
 
     /**
