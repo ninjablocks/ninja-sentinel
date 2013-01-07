@@ -73,14 +73,6 @@ yeomanApp.controller('ConfigureTriggerCtrl'
               var updateIndex = $scope.ListenEntries.indexOf(existingEntry);
               $scope.ListenEntries[updateIndex].Count ++;
 
-              // Check if value is detected
-              var detectedValue = $scope.GetDetectedValueFromEntries();
-              if (detectedValue) {
-                $scope.Trigger.Options.data = detectedValue.DA;
-                $scope.Stop();
-              }
-              console.log($scope.ListenEntries);
-
             } else {
               // New
               var entry = {
@@ -115,6 +107,16 @@ yeomanApp.controller('ConfigureTriggerCtrl'
     $scope.RemoveEntry = function(entry) {
       var index = $scope.ListenEntries.indexOf(entry);
       $scope.ListenEntries.splice(index, 1);
+    };
+
+
+    /**
+     * Selects the entry specified
+     * @param {Entry Object} entry The Entry to select
+     */
+    $scope.SelectEntry = function(entry) {
+      $scope.Trigger.Options.data = entry.DA;
+      $scope.Stop();
     };
 
     /**

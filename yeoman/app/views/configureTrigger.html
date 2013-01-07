@@ -9,7 +9,7 @@
   <div class="twelve columns">
     <h4>Trigger</h4>
     <br>
-    <form name="configureTrigger" class="panel">
+    <form name="configureTrigger" class="panel configureTrigger">
       <div class="alert-box alert" ng-show="!configureTrigger.$valid">Please fill in all values</div>
       <input type="text" placeholder="Name this Trigger" ng-model="Trigger.Options.name" ui-keydown="{'enter': 'Save()'}" required>
       <input type="hidden" ng-model="Trigger.Options.data" required>
@@ -20,18 +20,23 @@
       </select>
 
       <div class="panel">
-        <h6 class="subheader">Click 'listen' and actuate the trigger sensor 3 times to pair</h6>
-        <h5 class="three"> <span class="label success" ng-show="Trigger.Options.data">{{ Trigger.Options.data | rfHex }}</span> </h5>
+        <h6 class="subheader">Click 'listen' and actuate the trigger sensor. Select the corresponding sensor from the list shown</h6>
 
-        <div class="button-bar nine">
-          <span class="signal-actions" ng-show="!Trigger.Options.data">
-            <a class="button listen" nb-click="Listen()" ng-show="!IsListening">Listen</a>
-            <a class="button alert" nb-click="Stop()" ng-show="IsListening">Stop</a>
-          </span>
-          <ul class="button-group signal-actions" ng-show="Trigger.Options.data">
-            <li><a class="button alert" nb-click="Clear()">Clear</a></li>
-          </ul>
-        </div>
+        <table ng-show="IsListening" class="listening panel" width="100%">
+          <caption><h6 class="subheader">Detected Sensors</h6></caption>
+          <tbody>
+            <tr ng-repeat="entry in ListenEntries">
+              <td><h5><span class="label">{{ entry.DA | rfHex }}</span></h5></td>
+              <td>{{ entry.Count }}</td>
+              <td><a class="button tiny success" nb-click="SelectEntry(entry)">Select</a></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h5 class="three"> <span class="label success" ng-show="Trigger.Options.data">{{ Trigger.Options.data | rfHex }}</span><a class="button alert tiny inline" nb-click="Clear()" ng-show="Trigger.Options.data">Clear</a></h5>
+
+        <a class="button listen" nb-click="Listen()" ng-show="!IsListening && !Trigger.Options.data">Listen</a>
+        <a class="button alert" nb-click="Stop()" ng-show="IsListening && !Trigger.Options.data">Stop</a>
       </div>
 
     </form>
