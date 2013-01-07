@@ -1,7 +1,7 @@
-node-ninjapp-stub
-================
+Ninja Sentinel Security Webapp
+==============================
 
-Node.js + Ninja Blocks application stub
+
 
 ## License
 MIT

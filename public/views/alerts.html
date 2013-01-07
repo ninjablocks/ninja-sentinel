@@ -1,5 +1,5 @@
 <ul class="breadcrumbs">
-    <li><a nb-click="setRoute('/')">Home</a></li>
+    <li><a ng-click="setRoute('/')">Home</a></li>
     <li><span class="current">Alerts</span></li>
 </ul>
 <div class="row">
@@ -10,12 +10,12 @@
     <div class="panel alert" ng-repeat="alert in Alerts" ng-click="EditAlert(alert)">
       <h6><small>{{ alert.Options.type }}</small> {{ alert.Options.alertee }}</h6>
       <div class="actions">
-        <a class="button tiny success inline round" nb-click="Activate(alert)" ng-show="!alert.Options.active" stop-propagation>Activate</a>
-        <a class="button tiny alert inline round" nb-click="Deactivate(alert)" ng-show="alert.Options.active" stop-propagation>Deactivate</a>
+        <a class="button tiny success inline round" ng-click="Activate(alert)" ng-show="!alert.Options.active" stop-propagation>Activate</a>
+        <a class="button tiny alert inline round" ng-click="Deactivate(alert)" ng-show="alert.Options.active" stop-propagation>Deactivate</a>
       </div>
-      <a class="delete" nb-click="Delete(alert)" stop-propagation>&times;</a>
+      <a class="delete" ng-click="Delete(alert)" stop-propagation>&times;</a>
     </div>
 
-    <a class="button success" nb-click="AddAlert()">Add New Alert</a>
+    <a class="button success" ng-click="AddAlert()">Add New Alert</a>
   </div>
 </div>
