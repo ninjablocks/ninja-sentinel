@@ -4807,18 +4807,14 @@ textarea[contenteditable] {
 .breadcrumbs a {
   color: #2ba5ca; }
 
-.note {
-  font-family: 'Bad Script', cursive; }
-
 .alert-box.help-box {
+  text-shadow: none;
   background: #e6da70;
   border-top: 1px solid #dccb38;
   border-bottom: 1px solid #bfaf22;
   border-left: none;
   border-right: none;
-  color: #826717;
-  font-weight: normal;
-  font-size: 16px; }
+  color: #826717; }
   .alert-box.help-box a {
     font-family: 'Helvetica Neue', Helvetica, Helvetica, Arial, sans-serif;
     color: #f5f0c7;
