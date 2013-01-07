@@ -53,6 +53,9 @@ yeomanApp.run([
     
 
     $rootScope.Override = null;
+    $rootScope.Alerts = AlertService.Alerts;
+    $rootScope.Zones = ZoneService.Zones;
+    
 
     /**
      * Global Set Route routine. Used by nav.

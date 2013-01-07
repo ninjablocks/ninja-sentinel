@@ -21,6 +21,8 @@
 
         <!-- Google Fonts -->
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,800,600,700' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Waiting+for+the+Sunrise' rel='stylesheet' type='text/css'>
+
 
         <!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
         <meta name="apple-mobile-web-app-capable" content="yes">
@@ -31,7 +33,7 @@
         
         <script>(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")</script>
         
-        <link rel="stylesheet" href="styles/403bf36a.sentinel-app.css"/>
+        <link rel="stylesheet" href="styles/29ed3269.sentinel-app.css"/>
 
         <script src="javascripts/foundation/modernizr.foundation.js"></script>
 
@@ -75,8 +77,8 @@
 
         <div class="container" ng-view></div>
 
-        <div class="fixed bottom panel">
-            <dl class="sub-nav" ng-controller="UtilitybarCtrl" foundation-sub-nav>
+        <div class="fixed bottom panel" ng-controller="UtilitybarCtrl" ng-show="IsOnHomepage()">
+            <dl class="sub-nav" foundation-sub-nav>
                 <dt>Override</dt>
                 <dd class="success" ng-class="{active:Override}"><a nb-click="SetOverride(true)">All On</a></dd>
                 <dd class="alert" ng-class="{active:IsOverrideFalse()}"><a nb-click="SetOverride(false)">All Off</a></dd>
@@ -88,7 +90,7 @@
         <script src="scripts/vendor/9337e323.angular.min.js"></script>
         <script src="components/moment/min/moment.min.js"></script>
 
-        <script src="scripts/26edc999.scripts.js"></script>
+        <script src="scripts/2fa61841.scripts.js"></script>
 
         <!-- Google Analytics: -->
         <script type="text/javascript">

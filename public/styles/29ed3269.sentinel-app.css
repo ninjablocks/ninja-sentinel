@@ -4741,6 +4741,9 @@ textarea[contenteditable] {
   float: right;
   margin: 0; }
 
+.configureTrigger table.listening {
+  margin-bottom: 10px; }
+
 .alerts .alert {
   margin-bottom: 10px;
   position: relative; }
@@ -4779,16 +4782,20 @@ textarea[contenteditable] {
     .top-bar .toggle-edit a {
       display: inline-block; }
 
+.note {
+  font-family: 'Waiting for the Sunrise', cursive; }
+
 @media only screen and (max-width: 767px) {
   .fixed.bottom dt {
     display: none; } }
 /**
  * ------------------------------
  */
-html, body {
+html {
+  background: #aaa; }
+
+body {
   margin: 0;
-  height: 100%;
-  background: #d9d9d9;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #eeeeee), color-stop(100%, #aaaaaa));
   background-image: -webkit-linear-gradient(#eeeeee, #aaaaaa);
   background-image: -moz-linear-gradient(#eeeeee, #aaaaaa);

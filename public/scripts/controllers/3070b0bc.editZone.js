@@ -11,7 +11,15 @@ yeomanApp.controller('EditZoneCtrl'
      * Saves the zone to the backend
      */
     $scope.Save = function() {
-      $scope.Zone.Save();
+      // Detect if this is a new Zone
+      if ($scope.Zone.id) {
+        // Existing Zone;
+        $scope.Zone.Save();
+      } else {
+        $scope.Zone.Save();
+        $scope.AddNewTrigger();
+      }
+      
     };
 
 
@@ -28,7 +36,9 @@ yeomanApp.controller('EditZoneCtrl'
      */
     $scope.AddNewTrigger = function() {
       var newTrigger = new TriggerFactory({
-        zone: $scope.Zone
+        zone: $scope.Zone,
+        name: 'My Trigger',
+        type: 'PIR'
       });
       EditTriggerService.Trigger = newTrigger;
       $scope.setRoute('/configureTrigger');
