@@ -42,7 +42,10 @@ yeomanApp.factory('AlertFactory'
             if (callback) {
               callback(response);
             }
-          }.bind(this));
+          }.bind(this)).error(function(response) {
+            if (DEBUG) console.log("AlertFactory.Put Error:", response);
+            $rootScope.$broadcast(UIEvents.AlertUpdateFailed, response.error);
+          });
 
         } else { // CREATE NEW
           $http.post('/alert', this.Options).success(function(response) {
@@ -55,7 +58,10 @@ yeomanApp.factory('AlertFactory'
                 callback(response);
               }
             }
-          }.bind(this));
+          }.bind(this)).error(function(response) {
+            if (DEBUG) console.log("AlertFactory.Post Error:", response);
+            $rootScope.$broadcast(UIEvents.AlertUpdateFailed, response.error);
+          });
         }
       };
 
@@ -96,7 +102,7 @@ yeomanApp.factory('AlertFactory'
       this.Deactivate = function(callback) {
         var payload = {
           active: false
-        }
+        };
         $http.put('/alert/' + this.id, payload).success(function(response) {
           if (DEBUG) console.log("Alert.Activate", response);
           $rootScope.$broadcast(UIEvents.AlertActivated);

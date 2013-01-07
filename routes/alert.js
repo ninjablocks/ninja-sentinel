@@ -55,7 +55,7 @@ exports.createAlert = function(req,res) {
   // Returns string if invalid
   var isAlerteeValid = helpers.validateAlert(req.body.type,req.body.alertee);
   if (typeof isAlerteeValid === "string") {
-    res.json({error:"Value of parameter `alertee` and/or `type` is invalid, "+isAlerteeValid},400);
+    res.json({error:isAlerteeValid},400);
     return;
   }
 
@@ -151,7 +151,7 @@ exports.updateAlert = function(req,res) {
     // Validate the alertee
     var isAlerteeValid = helpers.validateAlert(alertData.type, alertData.alertee);
     if (typeof isAlerteeValid === "string") {
-      res.json({error:"Value of parameter `alertee` and/or `type` is invalid, "+isAlerteeValid},400);
+      res.json({error:isAlerteeValid},400);
       return;
     }
 

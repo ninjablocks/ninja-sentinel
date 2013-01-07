@@ -1,8 +1,8 @@
 'use strict';
 
 yeomanApp.controller('MainCtrl'
-  , ['$scope', '$rootScope', 'UIEvents', 'ZoneFactory', 'ZoneService', 'EditZoneService', 'AlertService'
-  , function($scope, $rootScope, UIEvents, ZoneFactory, ZoneService, EditZoneService, AlertService) {
+  , ['$scope', '$rootScope', 'UIEvents', 'ZoneFactory', 'ZoneService', 'EditZoneService', 'AlertService', 'AlertFactory', 'EditAlertService'
+  , function($scope, $rootScope, UIEvents, ZoneFactory, ZoneService, EditZoneService, AlertService, AlertFactory, EditAlertService) {
 
     $scope.ConfigureMode = false;
     $scope.Override = null;
@@ -33,6 +33,17 @@ yeomanApp.controller('MainCtrl'
       if (!modeSwitch) {
         $rootScope.setRoute('/');
       }
+    };
+
+    /**
+     * Create a new alert
+     */
+    $scope.CreateAlert = function() {
+      var newAlert = new AlertFactory({
+        type: 'sms'
+      });
+      EditAlertService.Alert = newAlert;
+      $scope.setRoute('/configureAlert');
     };
 
 

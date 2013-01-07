@@ -4,7 +4,7 @@
 # XMLHttpRequest cannot load http://localhost:8000/rest/v0/devices. Origin http://localhost:3501 is not allowed by Access-Control-Allow-Origin. (undefined, #undefined)
 CACHE MANIFEST
 
-# Time: Mon Jan 07 2013 16:58:25 GMT+1100 (EST)
+# Time: Mon Jan 07 2013 17:34:53 GMT+1100 (EST)
 # This manifest was created by confess.js, http://github.com/jamesgpearce/confess
 #
 # Retrieved URL: http://localhost:3501/#/
@@ -39,7 +39,7 @@ http://localhost:3501/images/foundation/orbit/bee4c225.timer-black.png
 http://www.google-analytics.com/ga.js
 img/arrow-curveup.png
 javascripts/foundation/modernizr.foundation.js
-scripts/8756c304.scripts.js
+scripts/d9058425.scripts.js
 scripts/vendor/9337e323.angular.min.js
 styles/f5a92772.sentinel-app.css
 
