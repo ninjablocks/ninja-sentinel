@@ -16,8 +16,8 @@
         <div class="actions">
           <a class="button tiny inline" ng-click="EditZone()" ng-show="ConfigureMode">Edit</a>
           <a class="button tiny alert inline" ng-click="Delete()" ng-show="ConfigureMode">Delete</a>
-          <a class="button tiny inline success" ng-click="SetOverride(true)" ng-show="!zone.Options.overrideActive && !ConfigureMode" ng-class="{secondary:IsOverridden()}">Disarmed</a>
-          <a class="button tiny inline alert" ng-click="SetOverride(false)" ng-show="zone.Options.overrideActive && !ConfigureMode" ng-class="{secondary:IsOverridden()}">Armed</a>
+          <a class="button tiny inline success" ng-click="SetOverride(true)" ng-show="!zone.Options.overrideActive && !ConfigureMode && !IsOverridden()" ng-class="{secondary:IsOverridden()}">Turn On</a>
+          <a class="button tiny inline alert" ng-click="SetOverride(false)" ng-show="zone.Options.overrideActive && !ConfigureMode && !IsOverridden()" ng-class="{secondary:IsOverridden()}">Turn Off</a>
         </div>
         <h5><small ng-show="IsOverridden()">(Override <span ng-show="Override">ARMED</span><span ng-show="!Override">DISARMED</span>)</small></h5>
         <div class="triggers">

@@ -15,6 +15,7 @@ yeomanApp.controller('EditZoneCtrl'
       if ($scope.Zone.id) {
         // Existing Zone;
         $scope.Zone.Save();
+        $scope.setRoute('/');
       } else {
         $scope.Zone.Save();
         $scope.AddNewTrigger();

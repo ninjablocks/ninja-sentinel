@@ -4679,9 +4679,10 @@ textarea[contenteditable] {
   .zones .zone {
     position: relative;
     min-height: 48px;
-    border-bottom-color: #DDD;
     opacity: 0.6;
-    margin-bottom: 10px; }
+    margin-bottom: 10px;
+    border-width: 0 0 0 10px;
+    border-color: #e28889; }
     .zones .zone .actions {
       position: absolute;
       top: 7px;
@@ -4695,7 +4696,8 @@ textarea[contenteditable] {
       .zones .zone .triggers .trigger {
         text-align: center; }
     .zones .zone.armed {
-      opacity: 1; }
+      opacity: 1;
+      border-color: #5da423; }
 
 .triggers {
   margin-top: 10px;
