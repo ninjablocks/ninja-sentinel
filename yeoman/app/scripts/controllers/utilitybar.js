@@ -1,12 +1,20 @@
 'use strict';
 
 yeomanApp.controller('UtilitybarCtrl'
-  , ['$scope', '$rootScope', '$http', '$location', 'UIEvents'
-  , function($scope, $rootScope, $http, $location, UIEvents) {
+  , ['$scope', '$rootScope', '$http', '$location', 'UIEvents', 'ZoneService'
+  , function($scope, $rootScope, $http, $location, UIEvents, ZoneService) {
   
 
+    /**
+     * Checks if the current page is the homepage
+     */
     $scope.IsOnHomepage = function() {
       return $location.$$path == "/";
+    };
+
+
+    $scope.HasZones = function() {
+      return ZoneService.Zones.length > 0;
     };
 
     /**
