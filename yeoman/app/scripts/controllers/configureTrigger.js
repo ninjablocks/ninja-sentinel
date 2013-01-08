@@ -7,6 +7,14 @@ yeomanApp.controller('ConfigureTriggerCtrl'
     $scope.Zone = EditZoneService.Zone;
     $scope.Trigger = EditTriggerService.Trigger;
     $scope.Alerts = AlertService.Alerts;
+
+
+    // Make sure there is a zone in memory
+    if ($scope.Zone.id === null || $scope.Zone.id === undefined) {
+      $scope.setRoute('/');
+    }
+
+
     /**
      * Saves the Trigger
      */
