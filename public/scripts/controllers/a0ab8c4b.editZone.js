@@ -17,8 +17,11 @@ yeomanApp.controller('EditZoneCtrl'
         $scope.Zone.Save();
         $scope.setRoute('/');
       } else {
-        $scope.Zone.Save();
-        $scope.AddNewTrigger();
+        $scope.Zone.Save(function() {
+          EditZoneService.Zone = $scope.Zone;
+          $scope.AddNewTrigger();
+        });
+        
       }
       
     };

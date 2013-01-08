@@ -68,9 +68,7 @@ yeomanApp.controller('HeaderCtrl'
      * Adds a new Zone, forwarding  user to editZone
      */
     $scope.AddZone = function() {
-      var newZone = new ZoneFactory({});
-      EditZoneService.Zone = newZone;
-      $rootScope.$broadcast(UIEvents.ZoneAdding, newZone);
+      EditZoneService.Reset();
       $rootScope.$broadcast(UIEvents.TopBarClose);
       $rootScope.setRoute('/editZone');
     };

@@ -10,6 +10,10 @@ yeomanApp.directive('itoggle', function() {
       });
 
 
+      var setOn = function() {
+
+      };
+
     }
   };
 });

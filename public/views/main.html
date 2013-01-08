@@ -16,28 +16,33 @@
       <div class="panel alert-box help-box note" ng-show="!Alerts.length && Zones.length">
         No alerts are currently set up. To receive notification please set up an alert.
         <br>
-        <a class="button radius" ng-click="CreateAlert()">Create an alert</a>
+        <a class="button round" ng-click="CreateAlert()">Create an alert</a>
       </div>
 
       <div class="alert-box getting-started" ng-show="!Zones.length">
         <h6><img src="img/arrow-curveup.png" alt=""> Create a zone to get started</h6>
       </div>
       
-      <div class="panel zone" ng-repeat="zone in Zones" ng-controller="ZoneCtrl" ng-class="{armed:IsArmed()}">
+      <div class="panel zone radius" ng-repeat="zone in Zones" ng-controller="ZoneCtrl" ng-class="{armed:IsArmed(), incomplete:!HasTriggers()}">
         <h5>{{ zone.Options.name }}</h5>
         <!-- <small>{{ zone.id }}</small> -->
         <div class="actions">
-          <a class="button tiny inline" ng-click="EditZone()" ng-show="ConfigureMode">Edit</a>
-          <a class="button tiny alert inline" ng-click="Delete()" ng-show="ConfigureMode">Delete</a>
+          <a class="button round tiny inline" ng-click="EditZone()" ng-show="ConfigureMode || !HasTriggers()">Edit</a>
+          <a class="button round tiny alert inline" ng-click="Delete()" ng-show="ConfigureMode || !HasTriggers()">Delete</a>
 
           <!-- <input id="arm" type="checkbox" name="arm" value="armed" itoggle> -->
 
-          <a class="button tiny inline success" ng-click="SetOverride(true)" ng-show="!zone.Options.overrideActive && !ConfigureMode && !IsOverridden()" ng-class="{secondary:IsOverridden()}">Turn On</a>
-          <a class="button tiny inline alert" ng-click="SetOverride(false)" ng-show="zone.Options.overrideActive && !ConfigureMode && !IsOverridden()" ng-class="{secondary:IsOverridden()}">Turn Off</a>
+          <a class="button round tiny inline success" ng-click="SetOverride(true)" ng-show="!zone.Options.overrideActive && !ConfigureMode && !IsOverridden() && HasTriggers()" ng-class="{secondary:IsOverridden()}">Turn On</a>
+          <a class="button round tiny inline alert" ng-click="SetOverride(false)" ng-show="zone.Options.overrideActive && !ConfigureMode && !IsOverridden() && HasTriggers()" ng-class="{secondary:IsOverridden()}">Turn Off</a>
+
+          <h5 ng-show="!ConfigureMode"><small ng-show="IsOverridden()">(Override <span ng-show="Override">ARMED</span><span ng-show="!Override">DISARMED</span>)</small></h5>
 
         </div>
-        <h5><small ng-show="IsOverridden()">(Override <span ng-show="Override">ARMED</span><span ng-show="!Override">DISARMED</span>)</small></h5>
+
         <div class="triggers">
+          <div class="panel alert-box help-box note" ng-show="!HasTriggers()">
+            <a class="button round" ng-click="AddNewTrigger()">Associate a Trigger Sensor</a>
+          </div>
           <div class="panel trigger" ng-repeat="trigger in zone.Triggers" ng-controller="TriggerCtrl" trigger-listen>
             <h6>{{ trigger.Options.name }}</h6>
             <h6><small>({{ trigger.Options.type }})</small>

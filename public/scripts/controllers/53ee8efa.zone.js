@@ -1,8 +1,8 @@
 'use strict';
 
 yeomanApp.controller('ZoneCtrl'
-  , ['$scope', '$rootScope', 'UIEvents', 'EditZoneService'
-  , function($scope, $rootScope, UIEvents, EditZoneService) {
+  , ['$scope', '$rootScope', 'UIEvents', 'EditZoneService', 'TriggerFactory', 'EditTriggerService'
+  , function($scope, $rootScope, UIEvents, EditZoneService, TriggerFactory, EditTriggerService) {
 
 
     /**
@@ -50,6 +50,28 @@ yeomanApp.controller('ZoneCtrl'
         return ($rootScope.Override !== null);
     };
 
+
+    /**
+     * Determine if the zone has any triggers assigned
+     */
+    $scope.HasTriggers = function() {
+        return ($scope.zone.Triggers.length > 0);
+    };
+
+
+    /**
+     * Add a new trigger to the zone
+     */
+    $scope.AddNewTrigger = function() {
+      EditZoneService.Zone = $scope.zone;
+      var newTrigger = new TriggerFactory({
+        zone: $scope.zone,
+        name: 'My Trigger',
+        type: 'PIR'
+      });
+      EditTriggerService.Trigger = newTrigger;
+      $scope.setRoute('/configureTrigger');
+    };
 
 
 }]);

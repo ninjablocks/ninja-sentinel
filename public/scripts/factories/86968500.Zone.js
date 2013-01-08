@@ -17,7 +17,7 @@ yeomanApp.factory('ZoneFactory'
         name: '',
         triggers: {},
         // activeTimes: [],
-        overrideActive: null
+        overrideActive: true
       };
 
       this.Options = NinjaUtilities.ObjectMerge(this.Options, options);
