@@ -8,7 +8,7 @@
   <div class="twelve columns">
     <h4>Alert <span class="label success round" ng-show="Alert.Options.active">Active</span></h4>
     <br>
-    <form name="configureAlert" class="panel">
+    <form name="configureAlert" class="panel radius">
       <div class="alert-box alert" ng-show="ErrorMessage">
         {{ ErrorMessage }}
       </div>
@@ -25,9 +25,9 @@
       <input type="text" ng-model="Alert.Options.alertee" ui-keydown="{'enter': 'Save()'}" placeholder="{{ Alert.Options.type | propercase }} recipient" required>
     </form>
     <br>
-    <ul class="button-group radius even two-up">
-      <li><a class="button radius" ng-click="setRoute('/alerts')">Back</a></li>
-      <li><a class="button success radius" ng-click="Save()">Save</a></li>
-    </ul>
+    <div class="button-group radius two-up">
+      <a class="button round" ng-click="setRoute('/alerts')">Back</a>
+      <a class="button success round" ng-click="Save()">Save</a>
+    </div>
   </div>
 </div>

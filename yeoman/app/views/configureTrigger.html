@@ -9,7 +9,7 @@
   <div class="twelve columns">
     <h4>Trigger</h4>
     <br>
-    <form name="configureTrigger" class="panel configureTrigger">
+    <form name="configureTrigger" class="panel radius configureTrigger">
       <div class="alert-box alert" ng-show="!configureTrigger.$valid">Please fill in all values</div>
       <input type="text" placeholder="Name this Trigger" ng-model="Trigger.Options.name" ui-keydown="{'enter': 'Save()'}" required>
       <input type="hidden" ng-model="Trigger.Options.data" required>
@@ -26,24 +26,24 @@
           <caption><h6 class="subheader">Detected Sensors</h6></caption>
           <tbody>
             <tr ng-repeat="entry in ListenEntries">
-              <td><h5><span class="label">{{ entry.DA | rfHex }}</span></h5></td>
+              <td><h5><span class="label radius">{{ entry.DA | rfHex }}</span></h5></td>
               <td>{{ entry.Count }}</td>
-              <td><a class="button tiny success" ng-click="SelectEntry(entry)">Select</a></td>
+              <td><a class="button round tiny success" ng-click="SelectEntry(entry)">Select</a></td>
             </tr>
           </tbody>
         </table>
 
-        <h5 class="three"> <span class="label success" ng-show="Trigger.Options.data">{{ Trigger.Options.data | rfHex }}</span><a class="button alert tiny inline" ng-click="Clear()" ng-show="Trigger.Options.data">Clear</a></h5>
+        <h5 class="three"> <span class="label success" ng-show="Trigger.Options.data">{{ Trigger.Options.data | rfHex }}</span><a class="button round tiny alert inline" ng-click="Clear()" ng-show="Trigger.Options.data">Clear</a></h5>
 
-        <a class="button listen" ng-click="Listen()" ng-show="!IsListening && !Trigger.Options.data">Listen</a>
-        <a class="button alert" ng-click="Stop()" ng-show="IsListening && !Trigger.Options.data">Stop</a>
+        <a class="button listen round" ng-click="Listen()" ng-show="!IsListening && !Trigger.Options.data">Listen</a>
+        <a class="button alert round" ng-click="Stop()" ng-show="IsListening && !Trigger.Options.data">Stop</a>
       </div>
 
     </form>
     <br>
-    <ul class="button-group radius even two-up">
-      <li><a class="button radius" ng-click="setRoute('/editZone')">Back</a></li>
-      <li><a class="button success radius" ng-click="Save()">Save</a></li>
-    </ul>
+    <div class="button-group two-up">
+      <a class="button round" ng-click="setRoute('/editZone')">Back</a>
+      <a class="button success round" ng-click="Save()">Save</a>
+    </div>
   </div>
 </div>

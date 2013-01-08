@@ -53,6 +53,28 @@
       opacity: 1;
       border-color: hsl(93,65%,39%);
     }
+
+    &.incomplete {
+      opacity: 1;
+      background: transparent;
+      @include background-image(linear-gradient(hsla(359,0%,55%,0.6), hsla(359,0%,25%,0.6)));
+      border-left-color: hsla(194,65%,48%, 0.2);
+      
+      .help-box {
+        background: transparent;
+        border: none;
+        padding: 0px;
+        
+        .button {
+          
+        }
+      }
+      
+      h5 { 
+        color: #EEE;
+        @include text-shadow(-1px -1px 0px #777);
+      }
+    }
   }
 
 }

@@ -2,6 +2,9 @@
  * Extra Foundation button styles 
  */
 
+$borderRadius: 4px;
+
+
 .button {
 
   &.inline {
@@ -13,5 +16,50 @@
     border: 1px solid hsl(0, 86%, 27%);
   }
 
+  &.round {
+    @include border-radius($borderRadius);
+    
+    &.tiny {
+      @include border-radius($borderRadius/2);
+    }
+  }
 
+
+}
+
+.button-group {
+
+  &.two-up {
+    .button {
+      width: 49%;
+      float: left;
+      margin-right: 2%;
+      
+      &:last-of-type {
+        margin-right: 0px;
+      }
+    }
+  }
+}
+
+/**
+ * Pill Buttons
+ */
+dl.sub-nav {
+  
+  dd {
+    
+    a {
+      @include border-radius($borderRadius);
+    }
+  }
+}
+
+/**
+ * Labels
+ */
+.label {
+  &.round {
+    @include border-radius($borderRadius/2);
+  }
 }
