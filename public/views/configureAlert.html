@@ -9,20 +9,22 @@
     <h4>Alert <span class="label success round" ng-show="Alert.Options.active">Active</span></h4>
     <br>
     <form name="configureAlert" class="panel radius">
-      <div class="alert-box alert" ng-show="ErrorMessage">
+      <div class="alert-box alert" ng-show="ErrorMessage && Submitted">
         {{ ErrorMessage }}
       </div>
-      <div class="alert-box alert" ng-show="!configureAlert.$valid">
-        Please fill in all fields
+      <div class="alert-box alert" ng-show="configureAlert.type.$error.required && Submitted">
+        Choose the type of alert to send
       </div>
-      <select name="" id="" ng-model="Alert.Options.type" ui-keydown="{'enter': 'Save()'}" required>
+      <select name="type" id="type" ng-model="Alert.Options.type" ui-keydown="{'enter': 'Save()'}" required>
         <option value="">Choose Alert Type</option>
         <option value="sms">SMS</option>
         <option value="call">Phone Call</option>
         <option value="email">Email</option>
       </select>
       <br><br>
-      <input type="text" ng-model="Alert.Options.alertee" ui-keydown="{'enter': 'Save()'}" placeholder="{{ Alert.Options.type | propercase }} recipient" required>
+      <div class="alert-box alert" ng-show="configureAlert.alertee.$error.required && Submitted">Please enter the {{ Alert.Options.type }} recipient for this alert</div>
+      <div class="alert-box secondary" ng-show="IsPhoneNumber()">Phone number must be of form +xxxxxxxxxxxx</div>
+      <input name="alertee" id="alertee" type="text" ng-model="Alert.Options.alertee" ui-keydown="{'enter': 'Save()'}" placeholder="{{ Alert.Options.type | propercase }} recipient" required>
     </form>
     <br>
     <div class="button-group radius two-up">

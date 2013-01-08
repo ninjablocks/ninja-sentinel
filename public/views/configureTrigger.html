@@ -10,9 +10,13 @@
     <h4>Trigger</h4>
     <br>
     <form name="configureTrigger" class="panel radius configureTrigger">
-      <div class="alert-box alert" ng-show="!configureTrigger.$valid">Please fill in all values</div>
-      <input type="text" placeholder="Name this Trigger" ng-model="Trigger.Options.name" ui-keydown="{'enter': 'Save()'}" required>
-      <input type="hidden" ng-model="Trigger.Options.data" required>
+
+      <div class="alert-box alert" ng-show="configureTrigger.name.$error.required && Submitted">Please give this trigger an name. eg: sensor location"</div>
+      <input name="name" id="name" type="text" placeholder="Name this Trigger" ng-model="Trigger.Options.name" ui-keydown="{'enter': 'Save()'}" required>
+
+      <input name="data" id="data" type="hidden" ng-model="Trigger.Options.data" required>
+
+      <div class="alert-box alert" ng-show="configureTrigger.type.$error.required && Submitted">Please select a type</div>
       <select name="type" id="type" ng-model="Trigger.Options.type" required>
         <option value="">Choose Type</option>
         <option value="PIR">PIR Sensor</option>
@@ -20,6 +24,7 @@
       </select>
 
       <div class="panel">
+        <div class="alert-box alert" ng-show="configureTrigger.data.$error.required && Submitted">Please pair a sensor</div>
         <h6 class="subheader">Click 'listen' and actuate the trigger sensor. Select the corresponding sensor from the list shown</h6>
 
         <table ng-show="IsListening" class="listening panel" width="100%">

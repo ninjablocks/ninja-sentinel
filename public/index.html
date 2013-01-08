@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-        <title>Security</title>
+        <title>Sentinel</title>
         <meta name="description" content=""/>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
         <meta name="HandheldFriendly" content="True">
@@ -78,7 +78,7 @@
 
         <div class="container" ng-view></div>
 
-        <div class="fixed bottom panel" ng-controller="UtilitybarCtrl" ng-show="IsOnHomepage()">
+        <div class="fixed bottom panel" ng-controller="UtilitybarCtrl" ng-show="IsOnHomepage() && HasZones()">
             <dl class="sub-nav" foundation-sub-nav>
                 <dt>Override</dt>
                 <dd class="success" ng-class="{active:Override}"><a ng-click="SetOverride(true)">All On</a></dd>
@@ -91,7 +91,7 @@
         <script src="scripts/vendor/9337e323.angular.min.js"></script>
         <script src="components/moment/min/moment.min.js"></script>
 
-        <script src="scripts/03d6adb6.scripts.js"></script>
+        <script src="scripts/c08fd4b4.scripts.js"></script>
 
         <!-- Google Analytics: -->
         <script type="text/javascript">
