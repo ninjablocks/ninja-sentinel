@@ -6,6 +6,7 @@ $borderRadius: 4px;
 
 
 .button {
+  @include transition(none);
 
   &.inline {
     display: inline;
