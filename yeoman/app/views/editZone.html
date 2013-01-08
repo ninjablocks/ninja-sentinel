@@ -7,8 +7,10 @@
   <div class="twelve columns">
     <h4>Zone</h4>
     <br>
-    <div class="panel radius">
-      <input type="text" placeholder="Name this zone" ng-model="Zone.Options.name" ui-keydown="{'enter': 'Save()'}" required>
+    <form name="editZone" class="panel radius">
+      <div class="alert-box alert" ng-show="editZone.name.$error.required && Submitted">Please give this zone a name. eg: "Living Room"</div>
+
+      <input name="name" id="name" type="text" placeholder="Name this zone" ng-model="Zone.Options.name" ui-keydown="{'enter': 'Save()'}" required>
 
       <div class="triggers" ng-show="Zone.id">
         
@@ -27,7 +29,7 @@
         <a class="button success round" ng-click="AddNewTrigger()">Add New Trigger</a>
       </div>
 
-    </div>
+    </form>
     <br>
     <div class="button-group radius two-up">
       <a class="button round" ng-click="setRoute('/')">Back</a>

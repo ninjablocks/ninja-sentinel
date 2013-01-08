@@ -7,6 +7,7 @@ yeomanApp.controller('ConfigureTriggerCtrl'
     $scope.Zone = EditZoneService.Zone;
     $scope.Trigger = EditTriggerService.Trigger;
     $scope.Alerts = AlertService.Alerts;
+    $scope.Submitted = false;
 
 
     // Make sure there is a zone in memory
@@ -19,6 +20,7 @@ yeomanApp.controller('ConfigureTriggerCtrl'
      * Saves the Trigger
      */
     $scope.Save = function() {
+      $scope.Submitted = true;
       if ($scope.configureTrigger.$valid) {
         $scope.Trigger.Save(function() {
 

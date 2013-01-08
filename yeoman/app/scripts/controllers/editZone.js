@@ -6,22 +6,27 @@ yeomanApp.controller('EditZoneCtrl'
 
 
     $scope.Zone = EditZoneService.Zone;
+    $scope.Submitted = false;
 
     /**
      * Saves the zone to the backend
      */
     $scope.Save = function() {
+      $scope.Submitted = true;
       // Detect if this is a new Zone
-      if ($scope.Zone.id) {
-        // Existing Zone;
-        $scope.Zone.Save();
-        $scope.setRoute('/');
-      } else {
-        $scope.Zone.Save(function() {
-          EditZoneService.Zone = $scope.Zone;
-          $scope.AddNewTrigger();
-        });
-        
+      if (editZone.$valid) {
+
+        if ($scope.Zone.id) {
+          // Existing Zone;
+          $scope.Zone.Save();
+          $scope.setRoute('/');
+        } else {
+          $scope.Zone.Save(function() {
+            EditZoneService.Zone = $scope.Zone;
+            $scope.AddNewTrigger();
+          });
+          
+        }
       }
       
     };
