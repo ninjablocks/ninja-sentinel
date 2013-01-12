@@ -14,7 +14,7 @@ yeomanApp.controller('EditZoneCtrl'
     $scope.Save = function() {
       $scope.Submitted = true;
       // Detect if this is a new Zone
-      if (editZone.$valid) {
+      if ($scope.editZone.$valid) {
 
         if ($scope.Zone.id) {
           // Existing Zone;
