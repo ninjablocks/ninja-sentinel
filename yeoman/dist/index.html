@@ -6,10 +6,36 @@
     <head>
         <meta charset="utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-        <title></title>
+        <title>Sentinel</title>
         <meta name="description" content=""/>
-        <meta name="viewport" content="width=device-width"/>
-        <link rel="stylesheet" href="styles/051c0509.main.css"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta http-equiv="cleartype" content="on">
+
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/touch/apple-touch-icon-144x144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/touch/apple-touch-icon-114x114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/touch/apple-touch-icon-72x72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="img/touch/apple-touch-icon-57x57-precomposed.png">
+        <link rel="shortcut icon" href="img/touch/apple-touch-icon.png">
+
+        <!-- Google Fonts -->
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,800,600,700' rel='stylesheet' type='text/css'>
+
+
+        <!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        
+
+        <!-- This script prevents links from opening in Mobile Safari. https://gist.github.com/1042026 -->
+        
+        <script>(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")</script>
+        
+        <link rel="stylesheet" href="styles/3979c0e4.sentinel-app.css"/>
+
+        <script src="javascripts/foundation/modernizr.foundation.js"></script>
+
 
     </head>
     <body ng-app="yeomanApp">
@@ -24,18 +50,62 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
+
+        <!-- Navigation -->
+        <div class="fixed">
+            
+            <nav class="top-bar" ng-controller="HeaderCtrl" foundation-header>
+                <ul>
+                    <li class="name">
+                        <h1 ng-click="GoHome()"><a href="#">Ninja Sentinel</a></h1>
+                    </li>
+                    <li class="toggle-topbar"><a href="#"></a></li>
+                </ul>
+                <section>
+                    <ul class="left">
+                        <li><a ng-click="GoHome()">Zones</a></li>
+                        <li><a ng-click="ConfigureAlerts()">Alerts</a></li>
+                        <li><a ng-click="GoHistory()">History</a></li>
+                        <li><a ng-click="Logout()">Logout</a></li>
+                    </ul>
+                    <ul class="right">
+
+                    </ul>
+                </section>
+            </nav>
+
+        </div>
+
         <div class="container" ng-view></div>
 
-        <script src="scripts/vendor/d10639ae.angular.js"></script>
+        <div class="fixed bottom panel" ng-controller="UtilitybarCtrl" ng-show="IsOnHomepage() && HasZones()">
+            <dl class="sub-nav" foundation-sub-nav>
+                <dt>Override</dt>
+                <dd class="success" ng-class="{active:Override}"><a ng-click="SetOverride(true)">All On</a></dd>
+                <dd class="alert" ng-class="{active:IsOverrideFalse()}"><a ng-click="SetOverride(false)">All Off</a></dd>
+                <dd ng-class="{active:IsOverrideNull()}"><a ng-click="SetOverride(null)">Use Zone Setting</a></dd>
+            </dl>
+        </div>
 
-        <script src="scripts/af7dbd98.scripts.js"></script>
+        <script src="components/jquery/jquery.min.js"></script>
+        <script src="scripts/vendor/9337e323.angular.min.js"></script>
+        <script src="components/moment/min/moment.min.js"></script>
 
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-            s.parentNode.insertBefore(g,s)}(document,'script'));
+        <script src="scripts/fb5027b0.scripts.js"></script>
+
+        <!-- Google Analytics: -->
+        <script type="text/javascript">
+
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-37208807-3']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+
         </script>
     </body>
 </html>

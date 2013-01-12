@@ -1,1 +1,10 @@
 *.coffee
+components/html5-mobile-boilerplate
+components/browser-ninja-blocks/example
+components/foundation/templates
+components/foundation/test
+components/foundation/marketing
+components/foundation/lib
+components/jquery-ui/themes
+components/moment/lang
+components/moment/test

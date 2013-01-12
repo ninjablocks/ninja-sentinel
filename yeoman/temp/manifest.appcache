@@ -1,16 +1,10 @@
-# Error: Unknown provider: aProvider <- a
-    at http://localhost:3501/scripts/vendor/d10639ae.angular.js:2627
-    at getService (http://localhost:3501/scripts/vendor/d10639ae.angular.js:2755)
-    at http://localhost:3501/scripts/vendor/d10639ae.angular.js:2632
-    at getService (http://localhost:3501/scripts/vendor/d10639ae.angular.js:2755)
-    at invoke (http://localhost:3501/scripts/vendor/d10639ae.angular.js:2773)
-    at instantiate (http://localhost:3501/scripts/vendor/d10639ae.angular.js:2805)
-    at http://localhost:3501/scripts/vendor/d10639ae.angular.js:4620
-    at update (http://localhost:3501/scripts/vendor/d10639ae.angular.js:13692)
-    at http://localhost:3501/scripts/vendor/d10639ae.angular.js:8002 (undefined, #undefined)
+# XMLHttpRequest cannot load http://localhost:8000/rest/v0/user. Origin http://localhost:3501 is not allowed by Access-Control-Allow-Origin. (undefined, #undefined)
+# XMLHttpRequest cannot load http://localhost:8000/rest/v0/user. Origin http://localhost:3501 is not allowed by Access-Control-Allow-Origin. (undefined, #undefined)
+# XMLHttpRequest cannot load http://localhost:8000/rest/v0/devices. Origin http://localhost:3501 is not allowed by Access-Control-Allow-Origin. (undefined, #undefined)
+# XMLHttpRequest cannot load http://localhost:8000/rest/v0/devices. Origin http://localhost:3501 is not allowed by Access-Control-Allow-Origin. (undefined, #undefined)
 CACHE MANIFEST
 
-# Time: Fri Dec 21 2012 11:15:31 GMT+1100 (EST)
+# Time: Sat Jan 12 2013 15:26:14 GMT+1100 (EST)
 # This manifest was created by confess.js, http://github.com/jamesgpearce/confess
 #
 # Retrieved URL: http://localhost:3501/#/
@@ -31,10 +25,25 @@ CACHE MANIFEST
 #  configFile: /usr/local/lib/node_modules/yeoman/lib/support/confess.json
 
 CACHE:
+components/jquery/jquery.min.js
+components/moment/min/moment.min.js
+http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,800,600,700
+http://localhost:3501/global/images/console.gif
+http://localhost:3501/images/foundation/orbit/38b3ae10.bullets.jpg
+http://localhost:3501/images/foundation/orbit/561b1eb2.right-arrow-small.png
+http://localhost:3501/images/foundation/orbit/73b5457e.left-arrow.png
+http://localhost:3501/images/foundation/orbit/82154c20.rotator-black.png
+http://localhost:3501/images/foundation/orbit/b2f6d053.pause-black.png
+http://localhost:3501/images/foundation/orbit/b7bdc9d0.left-arrow-small.png
+http://localhost:3501/images/foundation/orbit/ba0fce87.right-arrow.png
+http://localhost:3501/images/foundation/orbit/bee4c225.timer-black.png
+http://localhost:3501/img/itoggle.png
 http://www.google-analytics.com/ga.js
-scripts/af7dbd98.scripts.js
-scripts/vendor/d10639ae.angular.js
-styles/051c0509.main.css
+img/arrow-curveup.png
+javascripts/foundation/modernizr.foundation.js
+scripts/fb5027b0.scripts.js
+scripts/vendor/9337e323.angular.min.js
+styles/3979c0e4.sentinel-app.css
 
 NETWORK:
 *
