@@ -107,9 +107,12 @@ var setupTransports = function(req,res,next) {
 
 authom.createServer({
   service:"ninjablocks",
-  id:process.env.NINJA_CLIENT_ID,
-  secret:process.env.NINJA_CLIENT_SECRET,
-  scope:['all']
+
+  scope:['all'],
+  id: 81343,
+  secret: 'cnbYWG8rMOn5OdyaaWq4QGugZUfeMiYxuXXjRH6Ik68='
+
+
 });
 
 authom.on('auth', routes.handleNinjaAuthentication);
