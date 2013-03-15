@@ -35,7 +35,7 @@ var authom = require('authom');
 
 
 app.configure(function(){
-  app.set('port', process.env.PORT || 8000);
+  app.set('port', process.env.PORT || 8008);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
   app.use(express.favicon());
@@ -109,8 +109,8 @@ authom.createServer({
   service:"ninjablocks",
 
   scope:['all'],
-  id: 81343,
-  secret: 'cnbYWG8rMOn5OdyaaWq4QGugZUfeMiYxuXXjRH6Ik68='
+  id: 81363,
+  secret: 'ojOTTtaacbdt3fHs9zi6kHNq16Pjk+Z4XGwLqzZcOkY='
 
 
 });
