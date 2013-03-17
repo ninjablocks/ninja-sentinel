@@ -13,9 +13,9 @@ yeomanApp.controller('EditZoneCtrl'
      */
     $scope.Save = function() {
       $scope.Submitted = true;
-      // Detect if this is a new Zone
       if ($scope.editZone.$valid) {
 
+        // Detect if this is a new Zone
         if ($scope.Zone.id) {
           // Existing Zone;
           $scope.Zone.Save();
@@ -39,10 +39,10 @@ yeomanApp.controller('EditZoneCtrl'
      */
     $scope.SetExternalTrigger = function(mode, rfString) {
       if (mode) { // Activate
-        $scope.ActivateTrigger = rfString;
+        $scope.Zone.Options.externalActivate = rfString;
         console.log("Activate", $scope.ActivateTrigger);
       } else { // Deactivate
-        $scope.DeactivateTrigger = rfString;
+        $scope.Zone.Options.externalDeactivate = rfString;
         console.log("Deactivate", $scope.DeactivateTrigger);
       }
     };

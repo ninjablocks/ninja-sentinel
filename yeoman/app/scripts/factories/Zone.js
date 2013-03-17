@@ -16,6 +16,8 @@ yeomanApp.factory('ZoneFactory'
       this.Options = {
         name: '',
         triggers: {},
+        externalActivate: '',
+        externalDeactivate: '',
         // activeTimes: [],
         overrideActive: true
       };

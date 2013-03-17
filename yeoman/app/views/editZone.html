@@ -43,7 +43,7 @@
 
         <!-- Activate -->
         <div class="panel activate" ng-controller="RfListenerCtrl">
-          <h6 class="subheader">Activate</h6>
+          <h6 class="subheader">Activate <span ng-show="Zone.Options.externalActivate">zone with RF</span> <span class="label radius">{{ Zone.Options.externalActivate | rfHex }}</span></h6>
 
           <table ng-show="IsListening" class="listening panel" width="100%">
             <caption><h6 class="subheader">Detected Sensors</h6></caption>
@@ -64,7 +64,7 @@
 
         <!-- Deactivate -->
         <div class="panel deactivate" ng-controller="RfListenerCtrl">
-          <h6 class="subheader">Deactivate</h6>
+          <h6 class="subheader">Deactivate <span ng-show="Zone.Options.externalDeactivate">zone with RF</span> <span class="label radius">{{ Zone.Options.externalDeactivate | rfHex }}</span></h6>
 
           <table ng-show="IsListening" class="listening panel" width="100%">
             <caption><h6 class="subheader">Detected Sensors</h6></caption>
