@@ -1,8 +1,10 @@
 @import "../components/foundation/scss/foundation.scss";
 
 @import "compass/css3";
+@import "compass/css3/user-interface";
 
 @import "itoggle";
+@import "arrows";
 
 @import "overrides";
 @import "buttons";
@@ -29,6 +31,7 @@ html {
 body {
   margin: 0;
   // height: 100%;
+  @include user-select(none);
   
   @include background-image(linear-gradient(#eee, #aaa));
 }

@@ -57,16 +57,16 @@
             <nav class="top-bar" ng-controller="HeaderCtrl" foundation-header>
                 <ul>
                     <li class="name">
-                        <h1 ng-click="GoHome()"><a href="#">Ninja Sentinel</a></h1>
+                        <h1 ng-tap="GoHome()"><a href="#">Ninja Sentinel</a></h1>
                     </li>
                     <li class="toggle-topbar"><a href="#"></a></li>
                 </ul>
                 <section>
                     <ul class="left">
-                        <li><a ng-click="GoHome()">Zones</a></li>
-                        <li><a ng-click="ConfigureAlerts()">Alerts</a></li>
-                        <li><a ng-click="GoHistory()">History</a></li>
-                        <li><a ng-click="Logout()">Logout</a></li>
+                        <li><a ng-tap="GoHome()">Zones</a></li>
+                        <li><a ng-tap="ConfigureAlerts()">Alerts</a></li>
+                        <li><a ng-tap="GoHistory()">History</a></li>
+                        <li><a ng-tap="Logout()">Logout</a></li>
                     </ul>
                     <ul class="right">
 
@@ -81,9 +81,9 @@
         <div class="fixed bottom panel" ng-controller="UtilitybarCtrl" ng-show="IsOnHomepage() && HasZones()">
             <dl class="sub-nav" foundation-sub-nav>
                 <dt>Override</dt>
-                <dd class="success" ng-class="{active:Override}"><a ng-click="SetOverride(true)">All On</a></dd>
-                <dd class="alert" ng-class="{active:IsOverrideFalse()}"><a ng-click="SetOverride(false)">All Off</a></dd>
-                <dd ng-class="{active:IsOverrideNull()}"><a ng-click="SetOverride(null)">Use Zone Setting</a></dd>
+                <dd class="success" ng-class="{active:Override}"><a ng-tap="SetOverride(true)">All On</a></dd>
+                <dd class="alert" ng-class="{active:IsOverrideFalse()}"><a ng-tap="SetOverride(false)">All Off</a></dd>
+                <dd ng-class="{active:IsOverrideNull()}"><a ng-tap="SetOverride(null)">Use Zone Setting</a></dd>
             </dl>
         </div>
 
@@ -118,6 +118,13 @@
         <script src="scripts/controllers/header.js"></script>
         <script src="scripts/controllers/zone.js"></script>
         <script src="scripts/controllers/editZone.js"></script>
+        <script src="scripts/controllers/utilitybar.js"></script>
+        <script src="scripts/controllers/alerts.js"></script>
+        <script src="scripts/controllers/configureAlert.js"></script>
+        <script src="scripts/controllers/history.js"></script>
+        <script src="scripts/controllers/trigger.js"></script>
+        <script src="scripts/controllers/rfListener.js"></script>
+        <script src="scripts/controllers/configureTrigger.js"></script>
         
         <script src="scripts/factories/Zone.js"></script>
         <script src="scripts/factories/Trigger.js"></script>
@@ -132,25 +139,22 @@
         <script src="scripts/services/UserService.js"></script>
         <script src="scripts/services/ZoneService.js"></script>
         <script src="scripts/services/EditZoneService.js"></script>
-        <script src="scripts/controllers/configureTrigger.js"></script>
         <script src="scripts/services/EditTriggerService.js"></script>
+        <script src="scripts/services/AlertService.js"></script>
+        <script src="scripts/services/EditAlertService.js"></script>
 
         <script src="scripts/filters/rfHex.js"></script>
         <script src="scripts/filters/propercase.js"></script>
         <script src="scripts/filters/moment.js"></script>
 
-        <script src="scripts/controllers/utilitybar.js"></script>
-        <script src="scripts/controllers/alerts.js"></script>
-        <script src="scripts/services/AlertService.js"></script>
-        <script src="scripts/services/EditAlertService.js"></script>
-        <script src="scripts/controllers/configureAlert.js"></script>
         <script src="scripts/directives/foundationHeader.js"></script>
-        <script src="scripts/controllers/history.js"></script>
-        <script src="scripts/controllers/trigger.js"></script>
         <script src="scripts/directives/triggerListen.js"></script>
         <script src="scripts/directives/nbClick.js"></script>
         <script src="scripts/directives/stopPropagation.js"></script>
         <script src="scripts/directives/itoggle.js"></script>
+        <script src="scripts/directives/ngTap.js"></script>
+        <script src="scripts/directives/toggle.js"></script>
+        <script src="scripts/directives/selectTo.js"></script>
         <!-- endbuild -->
 
         <!-- Google Analytics: -->

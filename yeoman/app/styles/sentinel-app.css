@@ -4280,12 +4280,15 @@ input.iT_checkbox {
   -moz-border-radius:6px;
   -webkit-border-radius:6px;
 */
-.panel {
-  padding: 10px;
-  margin: 0px;
-  border-top-color: #FAFAFA; }
-  .panel:first-of-type {
-    border-top-color: auto; }
+.arrow {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: solid 8px;
+  border-color: transparent transparent #555555 transparent; }
+  .arrow.closed {
+    border-color: transparent #555555 transparent transparent; }
 
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
@@ -4293,6 +4296,27 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 400; }
   h1.subheader, h2.subheader, h3.subheader, h4.subheader, h5.subheader, h6.subheader {
     font-weight: 100; }
+
+.panel {
+  padding: 10px;
+  margin: 0 0 10px;
+  border-top-color: #FAFAFA;
+  position: relative; }
+  .panel h5 {
+    font-weight: bold;
+    color: #b3b3b3;
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+    position: relative; }
+    .panel h5 .arrow {
+      position: absolute;
+      right: 0px;
+      top: 0px; }
+      .panel h5 .arrow.open {
+        border-color: #555555 transparent transparent transparent; }
+  .panel:first-of-type {
+    border-top-color: auto; }
 
 .container {
   padding-bottom: 80px; }
@@ -4870,6 +4894,9 @@ textarea[contenteditable] {
         color: #EEE;
         text-shadow: -1px -1px 0px #777777; }
 
+.editZone .extraContent {
+  display: none; }
+
 .triggers {
   margin-top: 10px;
   position: relative; }
@@ -5001,6 +5028,9 @@ html {
 
 body {
   margin: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #eeeeee), color-stop(100%, #aaaaaa));
   background-image: -webkit-linear-gradient(#eeeeee, #aaaaaa);
   background-image: -moz-linear-gradient(#eeeeee, #aaaaaa);

@@ -1,0 +1,15 @@
+
+$arrowColor: #555;
+
+.arrow {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: solid 8px;
+  border-color: transparent transparent $arrowColor transparent;
+  
+  &.closed {
+    border-color: transparent $arrowColor transparent transparent;
+  }
+}

@@ -52,7 +52,7 @@ yeomanApp.service('Config'
                 case 'localhost':
                     if ($location.$$port === 3501) {
                         platform = PLATFORMS.YEOMAN;
-                    } else if ($location.$$port === 8000) {
+                    } else if ($location.$$port >= 8000) {
                         platform = PLATFORMS.LOCALHOST;
                     }
                     break;

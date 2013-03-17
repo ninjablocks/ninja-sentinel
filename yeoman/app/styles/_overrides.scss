@@ -1,14 +1,4 @@
-.panel {
-  padding: 10px;
-  margin: 0px;
-  border-top-color: #FAFAFA;
-  // background-color: hsla(0,0%,95%, 0.5);
-  // border-color: hsla(0,0%,95%, 0.5);
-  
-  &:first-of-type {
-    border-top-color: auto;
-  }
-}
+
 
 h1,h2,h3,h4,h5,h6 { 
   margin: 0; 
@@ -19,6 +9,43 @@ h1,h2,h3,h4,h5,h6 {
     font-weight: 100;
   }
 }
+
+
+.panel {
+  padding: 10px;
+  margin: 0 0 10px;
+  border-top-color: #FAFAFA;
+  position: relative;
+  // background-color: hsla(0,0%,95%, 0.5);
+  // border-color: hsla(0,0%,95%, 0.5);
+
+  h5 {
+    font-weight: bold;
+    color: hsl(60,0%,70%);
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+    position: relative;
+
+    .arrow {
+      position: absolute;
+      right: 0px;
+      top: 0px;
+      
+      &.open {
+        border-color: $arrowColor transparent transparent transparent;
+      }
+    }
+    
+  }
+  
+  &:first-of-type {
+    border-top-color: auto;
+  }
+
+
+}
+
 
 
 

@@ -109,8 +109,8 @@ authom.createServer({
   service:"ninjablocks",
 
   scope:['all'],
-  id: 81363,
-  secret: 'ojOTTtaacbdt3fHs9zi6kHNq16Pjk+Z4XGwLqzZcOkY='
+  id: 81393,
+  secret: 'cZ0+Pv35sDjNBPgOflRlr6EEOCOJ2phi0CEWNkNHdE0='
 
 
 });

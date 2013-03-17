@@ -33,6 +33,30 @@ yeomanApp.controller('EditZoneCtrl'
 
 
     /**
+     * Sets an external trigger to activate/deactivate this zone
+     * @param {bool} mode     True = activate, False = deactivate
+     * @param {string} rfString Binary string to respond to
+     */
+    $scope.SetExternalTrigger = function(mode, rfString) {
+      if (mode) { // Activate
+        $scope.ActivateTrigger = rfString;
+        console.log("Activate", $scope.ActivateTrigger);
+      } else { // Deactivate
+        $scope.DeactivateTrigger = rfString;
+        console.log("Deactivate", $scope.DeactivateTrigger);
+      }
+    };
+
+
+    $scope.SetActivateTrigger = function(rfString) {
+      $scope.SetExternalTrigger(true, rfString);
+    };
+
+    $scope.SetDeactivateTrigger = function(rfString) {
+      $scope.SetExternalTrigger(false, rfString);
+    };
+
+    /**
      * Deletes this zone
      */
     $scope.Delete = function() {
@@ -64,5 +88,21 @@ yeomanApp.controller('EditZoneCtrl'
       $scope.setRoute('/configureTrigger');
     };
 
+
+
+    /**
+     * Determine if this zone has triggers
+     */
+    $scope.HasTriggers = function() {
+      return $scope.Zone.Triggers.length > 0;
+    };
+
+
+    /**
+     * Toggling Extra panel
+     */
+    $scope.ToggleExtra = function() {
+
+    }
 
 }]);
