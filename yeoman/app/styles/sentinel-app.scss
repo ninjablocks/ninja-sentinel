@@ -1,4 +1,6 @@
 @import "../components/foundation/scss/foundation.scss";
+@import "../components/foundation-icons/foundation_icons_general_enclosed/sass/general_enclosed_foundicons.scss";
+@import "../components/foundation-icons/foundation_icons_social/sass/social_foundicons.scss";
 
 @import "compass/css3";
 @import "compass/css3/user-interface";
@@ -11,6 +13,7 @@
 @import "normalize";
 @import "main";
 @import "zones";
+@import "webcams";
 @import "triggers";
 @import "alerts";
 
