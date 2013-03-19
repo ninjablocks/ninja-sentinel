@@ -88,11 +88,11 @@
   }
   
   .webcamBanner {
-    position: relative;
+    position: fixed;
     width: 100%;
     min-height: 100px;
-    top: -18px;
-    margin-bottom: -90px;
+    top: 45px;
+    // margin-bottom: -90px;
     
     img {
       @include transition(all 0.3s);
@@ -114,9 +114,20 @@
       z-index: 10;
       font-size: 50px;
       color: hsla(0,0%,96%, 1);
+      cursor: pointer;
       @include text-shadow(0 0 12px rgba(0,0,0,0.4));
       
+      
+      &.pause {
+        background: url(/img/webcam-pause.png) center bottom no-repeat;
+        width: 50px;
+        height: 50px;
+      }
     }
+  }
+
+  .hasWebcamImage {
+    margin-top: 100px;
   }
 
   .extraContent { display: none; }

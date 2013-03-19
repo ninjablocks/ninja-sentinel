@@ -5189,11 +5189,10 @@ textarea[contenteditable] {
   .editZone h4 {
     text-shadow: 0 0 5px #d4d4d4; }
   .editZone .webcamBanner {
-    position: relative;
+    position: fixed;
     width: 100%;
     min-height: 100px;
-    top: -18px;
-    margin-bottom: -90px; }
+    top: 45px; }
     .editZone .webcamBanner img {
       -webkit-transition: all 0.3s;
       -moz-transition: all 0.3s;
@@ -5213,7 +5212,14 @@ textarea[contenteditable] {
       z-index: 10;
       font-size: 50px;
       color: whitesmoke;
+      cursor: pointer;
       text-shadow: 0 0 12px rgba(0, 0, 0, 0.4); }
+      .editZone .webcamBanner .play.pause {
+        background: url(/img/webcam-pause.png) center bottom no-repeat;
+        width: 50px;
+        height: 50px; }
+  .editZone .hasWebcamImage {
+    margin-top: 100px; }
   .editZone .extraContent {
     display: none; }
 

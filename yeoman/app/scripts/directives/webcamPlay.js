@@ -41,7 +41,6 @@ yeomanApp.directive('webcamPlay', function() {
 
 
         element.onLoad = function() {
-          console.log("Snapshot loaded");
         };
 
 

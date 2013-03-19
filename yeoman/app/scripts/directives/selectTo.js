@@ -8,8 +8,6 @@ yeomanApp.directive('selectTo', function() {
       var tapping = false;
       var targetFn = attrs['selectTo'];
 
-      console.log("target", targetFn);
-
       var selectFn = function() {
               scope[targetFn](scope.entry.DA);
             };

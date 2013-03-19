@@ -24,13 +24,6 @@ yeomanApp.controller('EditZoneWebcamsCtrl',
       }
     };
 
-    /**
-     * Plays the webcam video image
-     * @param {Device} webcam Webcam device
-     */
-    $scope.PlayWebcam = function(webcam) {
-
-    };
 
     /**
      * Watch for changes to webcams

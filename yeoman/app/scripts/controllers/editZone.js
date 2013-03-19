@@ -38,7 +38,7 @@ yeomanApp.controller('EditZoneCtrl'
     $scope.GetWebcamBanner = function() {
       if ($scope.Zone.HasAnyWebcam()) {
         var webcam = DeviceService.GetDeviceByGuid($scope.Zone.Options.webcams[0]);
-        return "https://stream.ninja.is/rest/v0/camera/" + webcam.GUID() + "/snapshot";
+        return "https://stream.ninja.is/rest/v0/camera/" + webcam.GUID() + "/snapshot?" + new Date().getTime();
       } else {
         return '/img/webcam-default.png';
       }

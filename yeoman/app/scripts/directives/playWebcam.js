@@ -1,58 +1,78 @@
 'use strict';
 
-yeomanApp.directive('playWebcam', function() {
+yeomanApp.directive('playWebcam',
+[ '$timeout'
+, function($timeout) {
   return {
     restrict: 'A',
     link: function postLink(scope, element, attrs) {
-      
-      var targetWebcam = jQuery(attrs["playWebcam"]);
-      var webcamSrc = targetWebcam.attr("src");
+        
+        $timeout(function() {
 
-      console.log("Play for", targetWebcam, webcamSrc);
+          var targetWebcam = jQuery(attrs["playWebcam"]);
+          var webcamSrc = attrs["playWebcamSrc"];
 
-      var playing = false;
+          if (DEBUG) console.log("Play for", targetWebcam, webcamSrc);
 
-      var tapping = false;
+          targetWebcam.attr("src", scope[webcamSrc]());
 
-      if (Modernizr.touch) {
+          var updateWebcam = function() {
+            targetWebcam.attr("src", scope[webcamSrc]());
+            targetWebcam.imagesLoaded(updateWebcam);
+          };
 
-        element.bind('touchstart', function(event) {
-          tapping = true;
-        });
+          var stopWebcam = function() {
+            $.removeData(targetWebcam, 'imagesLoaded');
+          };
 
-        element.bind('touchmove', function(event) {
-          tapping = false;
-        });
 
-        element.bind('touchend', function(event) {
-          if (tapping) {
-            scope.$apply(function() {
-              playing = !playing;
+          var playing = false;
 
-              if (playing) {
-                targetWebcam.imagesLoaded(function() {
-                  targetWebcam.attr("src", webcamSrc);
+          var tapping = false;
+
+          if (Modernizr.touch) {
+
+            element.bind('touchstart', function(event) {
+              tapping = true;
+            });
+
+            element.bind('touchmove', function(event) {
+              tapping = false;
+            });
+
+            element.bind('touchend', function(event) {
+              if (tapping) {
+                scope.$apply(function() {
+                  playing = !playing;
+
+                  if (playing) {
+                    element.addClass("pause").removeClass("foundicon-youtube");
+                    updateWebcam();
+                  } else {
+                    element.removeClass("pause").addClass("foundicon-youtube");
+                    stopWebcam();
+                  }
                 });
               }
             });
-          }
-        });
 
 
-      } else {
-        element.bind('click', function(event) {
-          scope.$apply(function() {
-            playing = !playing;
+          } else {
+            element.bind('click', function(event) {
+              scope.$apply(function() {
+                playing = !playing;
 
-            if (playing) {
-              targetWebcam.imagesLoaded(function() {
-                targetWebcam.attr("src", webcamSrc);
+                if (playing) {
+                  targetWebcam.imagesLoaded(function() {
+                    targetWebcam.attr("src", webcamSrc);
+                  });
+                }
               });
-            }
-          });
-        });
-      }
+            });
+          }
+
+      });
 
     }
   };
-});
+}]);

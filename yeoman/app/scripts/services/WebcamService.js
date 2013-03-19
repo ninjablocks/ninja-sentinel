@@ -18,7 +18,6 @@ yeomanApp.factory('WebcamService'
 
     $rootScope.$on(UIEvents.DevicesLoaded, function(event) {
       webcamService.Webcams = DeviceService.GetDeviceByType('webcam');
-      console.log("Webcams updated", webcamService.Webcams);
     });
 
 
