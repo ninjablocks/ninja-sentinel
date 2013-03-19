@@ -4,6 +4,12 @@
 </ul>
 <div class="row editZone">
 
+  <div class="webcamBanner" ng-show="Zone.HasAnyWebcam()">
+    <img ng-src="{{ GetWebcamBanner() }}" class="webcamImage" alt="{{ Zone.Options.webcams.length }}" />
+    <div class="gradient"></div>
+    <div class="play foundicon-youtube"></div>
+  </div>
+
   <div class="twelve columns">
     <h4>Zone</h4>
     <br>
@@ -13,11 +19,16 @@
       <h5>Name</h5>
       <input name="name" id="name" type="text" placeholder="Name this zone" ng-model="Zone.Options.name" ui-keydown="{'enter': 'Save()'}" required>
 
-      <div class="triggers panel" ng-show="Zone.id">
-        <h5>Triggers</h5>
-        <p ng-show="!HasTriggers()">Configure the RF sensors that will trigger an alert for this zone</p>
+    </form>
 
+
+    <div class="panel triggers" ng-show="Zone.id">
+      <h5 toggle=".panel.triggerContent">Triggers<div class="arrow open"></div></h5>
+
+      <div class="panel triggerContent content">
+        <p ng-show="!HasTriggers()">Configure the RF sensors that will trigger an alert for this zone</p>
         <div class="panel trigger" ng-repeat="trigger in Zone.Triggers">
+
           <div class="name">
             {{ trigger.Options.name }}
             <h6><small>({{ trigger.Options.type }})</small></h6>
@@ -29,16 +40,41 @@
         </div>
 
         <a class="button success round" ng-tap="AddNewTrigger()">Add New Trigger</a>
+
       </div>
 
-    </form>
+
+    </div>
+
+
+    <div class="panel schedule" ng-show="Zone.id">
+      <h5 toggle=".panel.scheduleContent">Schedule<div class="arrow closed"></div></h5>
+
+      <div class="panel scheduleContent content" style="display: none">
+        <p>Set a schedule to arm this zone</p>
+        <a href="#" class="button radius success" ng-tap="AddNewSchedule()">Add New Schedule</a>
+      </div>
+    </div>
+
+    <div class="panel webcams" ng-show="Zone.id">
+      <h5 ng-tap="setRoute('/editZoneWebcams')">Webcams
+      </h5>
+
+      <div class="webcamContent">
+        <div class="webcam mobile-two columns" ng-repeat="WebcamGuid in Zone.Options.webcams">
+          <img src="https://stream.ninja.is/rest/v0/camera/{{ WebcamGuid }}/snapshot" alt="{{ WebcamGuid }}">
+        </div>
+        <div class="clearfix"></div>
+      </div>
+
+    </div>
 
     <div class="panel extra" ng-show="Zone.id">
-      <h5 toggle=".panel.extraContent">Extra
+      <h5 toggle=".panel.extraContent">External
         <div class="arrow closed"></div>
       </h5>
 
-      <div class="panel extraContent">
+      <div class="panel extraContent content">
         <p>Add external RF buttons that activate and/or deactivate the zone</p>
 
         <!-- Activate -->

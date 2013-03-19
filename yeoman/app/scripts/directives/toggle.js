@@ -35,6 +35,13 @@ yeomanApp.directive('toggle', function() {
 
       function toggleElement() {
         jQuery(targetElement).toggle();
+
+        // Set indicator to open
+        if (jQuery(targetElement).css("display") === "block") {
+          element.find(".arrow").addClass("open").removeClass("closed");
+        } else {
+          element.find(".arrow").addClass("closed").removeClass("open");
+        }
       }
 
 

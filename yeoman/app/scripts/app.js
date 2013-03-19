@@ -1,6 +1,6 @@
 'use strict';
 
-var DEBUG = false;
+var DEBUG = true;
 
 var yeomanApp = angular.module('yeomanApp', ['ngResource', 'ui'])
   .config(['$routeProvider', function($routeProvider) {
@@ -28,6 +28,10 @@ var yeomanApp = angular.module('yeomanApp', ['ngResource', 'ui'])
       .when('/history', {
         templateUrl: 'views/history.html',
         controller: 'HistoryCtrl'
+      })
+      .when('/editZoneWebcams', {
+        templateUrl: 'views/editZoneWebcams.html',
+        controller: 'EditZoneWebcamsCtrl'
       })
       .otherwise({
         redirectTo: '/'

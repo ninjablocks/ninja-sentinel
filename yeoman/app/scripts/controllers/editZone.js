@@ -1,8 +1,8 @@
 'use strict';
 
 yeomanApp.controller('EditZoneCtrl'
-  , ['$scope', '$rootScope', 'UIEvents', 'ZoneFactory', 'ZoneService', 'EditZoneService', 'EditTriggerService', 'TriggerFactory'
-  , function($scope, $rootScope, UIEvents, ZoneFactory, ZoneService, EditZoneService, EditTriggerService, TriggerFactory) {
+  , ['$scope', '$rootScope', 'UIEvents', 'ZoneFactory', 'ZoneService', 'EditZoneService', 'EditTriggerService', 'TriggerFactory', 'DeviceService'
+  , function($scope, $rootScope, UIEvents, ZoneFactory, ZoneService, EditZoneService, EditTriggerService, TriggerFactory, DeviceService) {
 
 
     $scope.Zone = EditZoneService.Zone;
@@ -29,6 +29,20 @@ yeomanApp.controller('EditZoneCtrl'
         }
       }
       
+    };
+
+
+    /**
+     * Gets the webcam banner image
+     */
+    $scope.GetWebcamBanner = function() {
+      if ($scope.Zone.HasAnyWebcam()) {
+        var webcam = DeviceService.GetDeviceByGuid($scope.Zone.Options.webcams[0]);
+        console.log("Has Webcam Banner");
+        return "https://stream.ninja.is/rest/v0/camera/" + webcam.GUID() + "/snapshot";
+      } else {
+        return '/img/webcam-default.png';
+      }
     };
 
 

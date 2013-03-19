@@ -11,6 +11,11 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 
+p {
+  font-weight: 500;
+}
+
+
 .panel {
   padding: 10px;
   margin: 0 0 10px;
@@ -34,6 +39,8 @@ h1,h2,h3,h4,h5,h6 {
       
       &.open {
         border-color: $arrowColor transparent transparent transparent;
+        top: 3px;
+        right: -3px;
       }
     }
     
@@ -41,6 +48,10 @@ h1,h2,h3,h4,h5,h6 {
   
   &:first-of-type {
     border-top-color: auto;
+  }
+
+  &.content {
+    margin-top: 10px;
   }
 
 
