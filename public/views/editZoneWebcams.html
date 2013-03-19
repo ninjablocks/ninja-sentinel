@@ -1,0 +1,19 @@
+<ul class="breadcrumbs">
+    <li><a ng-tap="setRoute('/')">Home</a></li>
+    <li><a ng-tap="setRoute('/editZone')"><em>{{ Zone.Options.name }}</em></a></li>
+    <li><span class="current">Webcams</span></li>
+</ul>
+<div class="row editZone">
+
+  <div class="twelve columns">
+    <h4>Webcams</h4>
+    <p>Select the webcams associated with the zone</p>
+    <div class="row">
+      <div class="four mobile-two columns webcam" ng-repeat="Webcam in Webcams" ng-tap="ToggleWebcam(Webcam)" ng-class="{selected:Zone.HasWebcam(Webcam)}">
+        <img src="https://stream.ninja.is/rest/v0/camera/{{ Webcam.GUID() }}/snapshot" webcam-play onerror="$(this).attr('src', '/img/webcam-default.png')">
+        <div class="tick foundicon-checkmark"></div>
+        <div class="play foundicon-video" ></div>
+      </div>
+    </div>
+  </div>
+</div>

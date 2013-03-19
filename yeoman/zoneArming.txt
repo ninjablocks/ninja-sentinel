@@ -1,0 +1,17 @@
+
+Examples of alarm scheduling
+
+-- Within a single day
+8am-5pm everyday
+  * 8-17 * * * 
+
+8am-5pm weekdays
+  * 8-17 * * 1-5
+
+8am-5pm weekends
+  * 8-17 * * 0,6
+
+-- across days
+10pm-7am everyday  (repeating)
+9am Friday - 9pm Sunday (once off, weekly?)
+

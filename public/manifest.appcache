@@ -1,10 +1,10 @@
-# XMLHttpRequest cannot load http://localhost:8000/rest/v0/user. Origin http://localhost:3501 is not allowed by Access-Control-Allow-Origin. (undefined, #undefined)
-# XMLHttpRequest cannot load http://localhost:8000/rest/v0/user. Origin http://localhost:3501 is not allowed by Access-Control-Allow-Origin. (undefined, #undefined)
-# XMLHttpRequest cannot load http://localhost:8000/rest/v0/devices. Origin http://localhost:3501 is not allowed by Access-Control-Allow-Origin. (undefined, #undefined)
-# XMLHttpRequest cannot load http://localhost:8000/rest/v0/devices. Origin http://localhost:3501 is not allowed by Access-Control-Allow-Origin. (undefined, #undefined)
+# LoadUserDevices (undefined, #undefined)
+# GET /override [object Object] (undefined, #undefined)
+# GetZones (FAILED): [object Object] (undefined, #undefined)
+# GetAlerts (FAILED) [object Object] (undefined, #undefined)
 CACHE MANIFEST
 
-# Time: Thu Mar 14 2013 11:06:27 GMT+1100 (EST)
+# Time: Tue Mar 19 2013 15:43:19 GMT+1100 (EST)
 # This manifest was created by confess.js, http://github.com/jamesgpearce/confess
 #
 # Retrieved URL: http://localhost:3501/#/
@@ -38,12 +38,14 @@ http://localhost:3501/images/foundation/orbit/b7bdc9d0.left-arrow-small.png
 http://localhost:3501/images/foundation/orbit/ba0fce87.right-arrow.png
 http://localhost:3501/images/foundation/orbit/bee4c225.timer-black.png
 http://localhost:3501/img/itoggle.png
+http://localhost:3501/img/webcam-noise.png
+http://localhost:3501/img/zone-webcam-gradient.png
 http://www.google-analytics.com/ga.js
 img/arrow-curveup.png
 javascripts/foundation/modernizr.foundation.js
-scripts/fb5027b0.scripts.js
+scripts/cc4b07a9.scripts.js
 scripts/vendor/9337e323.angular.min.js
-styles/3979c0e4.sentinel-app.css
+styles/24b5bd52.sentinel-app.css
 
 NETWORK:
 *

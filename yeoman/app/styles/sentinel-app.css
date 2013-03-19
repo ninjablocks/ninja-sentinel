@@ -5186,11 +5186,20 @@ textarea[contenteditable] {
 
 .editZone {
   position: relative; }
+  .editZone h4 {
+    text-shadow: 0 0 5px #d4d4d4; }
   .editZone .webcamBanner {
     position: relative;
     width: 100%;
+    min-height: 100px;
     top: -18px;
     margin-bottom: -90px; }
+    .editZone .webcamBanner img {
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      -ms-transition: all 0.3s;
+      -o-transition: all 0.3s;
+      transition: all 0.3s; }
     .editZone .webcamBanner .gradient {
       position: absolute;
       width: 100%;

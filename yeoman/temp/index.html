@@ -32,7 +32,7 @@
         
         <script>(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")</script>
         
-        <link rel="stylesheet" href="styles/3979c0e4.sentinel-app.css"/>
+        <link rel="stylesheet" href="styles/24b5bd52.sentinel-app.css"/>
 
         <script src="javascripts/foundation/modernizr.foundation.js"></script>
 
@@ -57,16 +57,16 @@
             <nav class="top-bar" ng-controller="HeaderCtrl" foundation-header>
                 <ul>
                     <li class="name">
-                        <h1 ng-click="GoHome()"><a href="#">Ninja Sentinel</a></h1>
+                        <h1 ng-tap="GoHome()"><a href="#">Ninja Sentinel</a></h1>
                     </li>
                     <li class="toggle-topbar"><a href="#"></a></li>
                 </ul>
                 <section>
                     <ul class="left">
-                        <li><a ng-click="GoHome()">Zones</a></li>
-                        <li><a ng-click="ConfigureAlerts()">Alerts</a></li>
-                        <li><a ng-click="GoHistory()">History</a></li>
-                        <li><a ng-click="Logout()">Logout</a></li>
+                        <li><a ng-tap="GoHome()">Zones</a></li>
+                        <li><a ng-tap="ConfigureAlerts()">Alerts</a></li>
+                        <li><a ng-tap="GoHistory()">History</a></li>
+                        <li><a ng-tap="Logout()">Logout</a></li>
                     </ul>
                     <ul class="right">
 
@@ -81,9 +81,9 @@
         <div class="fixed bottom panel" ng-controller="UtilitybarCtrl" ng-show="IsOnHomepage() && HasZones()">
             <dl class="sub-nav" foundation-sub-nav>
                 <dt>Override</dt>
-                <dd class="success" ng-class="{active:Override}"><a ng-click="SetOverride(true)">All On</a></dd>
-                <dd class="alert" ng-class="{active:IsOverrideFalse()}"><a ng-click="SetOverride(false)">All Off</a></dd>
-                <dd ng-class="{active:IsOverrideNull()}"><a ng-click="SetOverride(null)">Use Zone Setting</a></dd>
+                <dd class="success" ng-class="{active:Override}"><a ng-tap="SetOverride(true)">All On</a></dd>
+                <dd class="alert" ng-class="{active:IsOverrideFalse()}"><a ng-tap="SetOverride(false)">All Off</a></dd>
+                <dd ng-class="{active:IsOverrideNull()}"><a ng-tap="SetOverride(null)">Use Zone Setting</a></dd>
             </dl>
         </div>
 
@@ -91,7 +91,7 @@
         <script src="scripts/vendor/9337e323.angular.min.js"></script>
         <script src="components/moment/min/moment.min.js"></script>
 
-        <script src="scripts/fb5027b0.scripts.js"></script>
+        <script src="scripts/cc4b07a9.scripts.js"></script>
 
         <!-- Google Analytics: -->
         <script type="text/javascript">

@@ -1,14 +1,19 @@
 @import "../components/foundation/scss/foundation.scss";
+@import "../components/foundation-icons/foundation_icons_general_enclosed/sass/general_enclosed_foundicons.scss";
+@import "../components/foundation-icons/foundation_icons_social/sass/social_foundicons.scss";
 
 @import "compass/css3";
+@import "compass/css3/user-interface";
 
 @import "itoggle";
+@import "arrows";
 
 @import "overrides";
 @import "buttons";
 @import "normalize";
 @import "main";
 @import "zones";
+@import "webcams";
 @import "triggers";
 @import "alerts";
 
@@ -29,6 +34,7 @@ html {
 body {
   margin: 0;
   // height: 100%;
+  @include user-select(none);
   
   @include background-image(linear-gradient(#eee, #aaa));
 }

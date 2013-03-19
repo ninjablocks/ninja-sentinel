@@ -7,13 +7,14 @@
   <div class="webcamBanner" ng-show="Zone.HasAnyWebcam()">
     <img ng-src="{{ GetWebcamBanner() }}" class="webcamImage" alt="{{ Zone.Options.webcams.length }}" />
     <div class="gradient"></div>
-    <div class="play foundicon-youtube"></div>
+    <div class="play foundicon-youtube" play-webcam=".webcamBanner .webcamImage"></div>
   </div>
 
   <div class="twelve columns">
-    <h4>Zone</h4>
+    <h4 ui-if="Zone.id">{{ Zone.Options.name }}</h4>
+    <h4 ui-if="!Zone.id">New Zone</h4>
     <br>
-    <form name="editZone" class="panel radius">
+    <form name="editZone" class="panel radius" ui-if="!Zone.id">
       <div class="alert-box alert" ng-show="editZone.name.$error.required && Submitted">Please give this zone a name. eg: "Living Room"</div>
 
       <h5>Name</h5>
@@ -47,7 +48,7 @@
     </div>
 
 
-    <div class="panel schedule" ng-show="Zone.id">
+    <div class="panel schedule" ng-show="Zone.id && false">
       <h5 toggle=".panel.scheduleContent">Schedule<div class="arrow closed"></div></h5>
 
       <div class="panel scheduleContent content" style="display: none">

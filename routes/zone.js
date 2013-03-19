@@ -32,7 +32,7 @@ exports.fetchAllZones = function(req,res) {
 exports.createZone = function(req,res) {
 
   var requiredParams = ['name']
-    , optionalParams = ['activeTimes','overrideActive']
+    , optionalParams = ['activeTimes','overrideActive', 'externalActivate', 'externalDeactivate', 'webcams']
     , forbiddenParams = ['triggers'];
 
   // Check they have only given us what we've asked for
@@ -111,7 +111,7 @@ exports.fetchZone = function(req,res) {
 
 exports.updateZone = function(req,res) {
 
-  var allowedParams = ['name','activeTimes','overrideActive'];
+  var allowedParams = ['name','activeTimes','overrideActive', 'externalActivate', 'externalDeactivate', 'webcams'];
   var forbiddenParams = ['triggers'];
 
 

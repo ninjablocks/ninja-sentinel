@@ -1,39 +1,132 @@
 <ul class="breadcrumbs">
-    <li><a ng-click="setRoute('/')">Home</a></li>
+    <li><a ng-tap="setRoute('/')">Home</a></li>
     <li><span class="current">Edit Zone <em>{{ Zone.Options.name }}</em></span></li>
 </ul>
-<div class="row">
-  
+<div class="row editZone">
+
+  <div class="webcamBanner" ng-show="Zone.HasAnyWebcam()">
+    <img ng-src="{{ GetWebcamBanner() }}" class="webcamImage" alt="{{ Zone.Options.webcams.length }}" />
+    <div class="gradient"></div>
+    <div class="play foundicon-youtube" play-webcam=".webcamBanner .webcamImage"></div>
+  </div>
+
   <div class="twelve columns">
-    <h4>Zone</h4>
+    <h4 ui-if="Zone.id">{{ Zone.Options.name }}</h4>
+    <h4 ui-if="!Zone.id">New Zone</h4>
     <br>
-    <form name="editZone" class="panel radius">
+    <form name="editZone" class="panel radius" ui-if="!Zone.id">
       <div class="alert-box alert" ng-show="editZone.name.$error.required && Submitted">Please give this zone a name. eg: "Living Room"</div>
 
+      <h5>Name</h5>
       <input name="name" id="name" type="text" placeholder="Name this zone" ng-model="Zone.Options.name" ui-keydown="{'enter': 'Save()'}" required>
 
-      <div class="triggers" ng-show="Zone.id">
-        
+    </form>
 
+
+    <div class="panel triggers" ng-show="Zone.id">
+      <h5 toggle=".panel.triggerContent">Triggers<div class="arrow open"></div></h5>
+
+      <div class="panel triggerContent content">
+        <p ng-show="!HasTriggers()">Configure the RF sensors that will trigger an alert for this zone</p>
         <div class="panel trigger" ng-repeat="trigger in Zone.Triggers">
+
           <div class="name">
             {{ trigger.Options.name }}
             <h6><small>({{ trigger.Options.type }})</small></h6>
           </div>
           <div class="actions">
-            <a class="button round tiny edit inline" ng-click="EditTrigger(trigger)">Edit</a>
+            <a class="button round tiny edit inline" ng-tap="EditTrigger(trigger)">Edit</a>
           </div>
-          <a class="delete" ng-click="trigger.Delete()">&times;</a>
+          <a class="delete" ng-tap="trigger.Delete()">&times;</a>
         </div>
 
-        <a class="button success round" ng-click="AddNewTrigger()">Add New Trigger</a>
+        <a class="button success round" ng-tap="AddNewTrigger()">Add New Trigger</a>
+
       </div>
 
-    </form>
+
+    </div>
+
+
+    <div class="panel schedule" ng-show="Zone.id && false">
+      <h5 toggle=".panel.scheduleContent">Schedule<div class="arrow closed"></div></h5>
+
+      <div class="panel scheduleContent content" style="display: none">
+        <p>Set a schedule to arm this zone</p>
+        <a href="#" class="button radius success" ng-tap="AddNewSchedule()">Add New Schedule</a>
+      </div>
+    </div>
+
+    <div class="panel webcams" ng-show="Zone.id">
+      <h5 ng-tap="setRoute('/editZoneWebcams')">Webcams
+      </h5>
+
+      <div class="webcamContent">
+        <div class="webcam mobile-two columns" ng-repeat="WebcamGuid in Zone.Options.webcams">
+          <img src="https://stream.ninja.is/rest/v0/camera/{{ WebcamGuid }}/snapshot" alt="{{ WebcamGuid }}">
+        </div>
+        <div class="clearfix"></div>
+      </div>
+
+    </div>
+
+    <div class="panel extra" ng-show="Zone.id">
+      <h5 toggle=".panel.extraContent">External
+        <div class="arrow closed"></div>
+      </h5>
+
+      <div class="panel extraContent content">
+        <p>Add external RF buttons that activate and/or deactivate the zone</p>
+
+        <!-- Activate -->
+        <div class="panel activate" ng-controller="RfListenerCtrl">
+          <h6 class="subheader">Activate <span ng-show="Zone.Options.externalActivate">zone with RF</span> <span class="label radius">{{ Zone.Options.externalActivate | rfHex }}</span></h6>
+
+          <table ng-show="IsListening" class="listening panel" width="100%">
+            <caption><h6 class="subheader">Detected Sensors</h6></caption>
+            <tbody>
+              <tr ng-repeat="entry in ListenEntries">
+                <td><h5><span class="label radius">{{ entry.DA | rfHex }}</span></h5></td>
+                <td>{{ entry.Count }}</td>
+                <td><a class="button round tiny success" ng-tap="SelectEntry(entry)" select-to="SetActivateTrigger">Select</a></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h5 class="three"> <span class="label success" ng-show="Trigger.Options.data">{{ Trigger.Options.data | rfHex }}</span><a class="button round tiny alert inline" ng-tap="Clear()" ng-show="Trigger.Options.data">Clear</a></h5>
+
+          <a class="button listen round" ng-tap="Listen()" ng-show="!IsListening && !Trigger.Options.data">Listen</a>
+          <a class="button alert round" ng-tap="Stop()" ng-show="IsListening && !Trigger.Options.data">Stop</a>
+        </div>
+
+        <!-- Deactivate -->
+        <div class="panel deactivate" ng-controller="RfListenerCtrl">
+          <h6 class="subheader">Deactivate <span ng-show="Zone.Options.externalDeactivate">zone with RF</span> <span class="label radius">{{ Zone.Options.externalDeactivate | rfHex }}</span></h6>
+
+          <table ng-show="IsListening" class="listening panel" width="100%">
+            <caption><h6 class="subheader">Detected Sensors</h6></caption>
+            <tbody>
+              <tr ng-repeat="entry in ListenEntries">
+                <td><h5><span class="label radius">{{ entry.DA | rfHex }}</span></h5></td>
+                <td>{{ entry.Count }}</td>
+                <td><a class="button round tiny success" ng-tap="SelectEntry(entry)" select-to="SetDeactivateTrigger">Select</a></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h5 class="three"> <span class="label success" ng-show="Trigger.Options.data">{{ Trigger.Options.data | rfHex }}</span><a class="button round tiny alert inline" ng-tap="Clear()" ng-show="Trigger.Options.data">Clear</a></h5>
+
+          <a class="button listen round" ng-tap="Listen()" ng-show="!IsListening && !Trigger.Options.data">Listen</a>
+          <a class="button alert round" ng-tap="Stop()" ng-show="IsListening && !Trigger.Options.data">Stop</a>
+        </div>
+
+      </div>
+    </div>
+
     <br>
     <div class="button-group radius two-up">
-      <a class="button round" ng-click="setRoute('/')">Back</a>
-      <a class="button success round" ng-click="Save()">Save</a>
+      <a class="button round" ng-tap="setRoute('/')">Back</a>
+      <a class="button success round" ng-tap="Save()">Save</a>
     </div>
   </div>
 </div>

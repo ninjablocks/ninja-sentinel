@@ -16,8 +16,11 @@ yeomanApp.factory('ZoneFactory'
       this.Options = {
         name: '',
         triggers: {},
+        externalActivate: '',
+        externalDeactivate: '',
         // activeTimes: [],
-        overrideActive: true
+        overrideActive: true,       // Array of Device Id's
+        webcams: []                 // Array of assigned webcams
       };
 
       this.Options = NinjaUtilities.ObjectMerge(this.Options, options);
@@ -142,6 +145,42 @@ yeomanApp.factory('ZoneFactory'
           this.Options.overrideActive = value;
           if (DEBUG) console.log("Zone.SetOverride", value);
         }.bind(this));
+      };
+
+      /**
+       * Checks if the webcam device is in the list
+       * @param {Device} webcam Webcam device object
+       */
+      this.HasWebcam = function(webcam) {
+        var webcamGuid = webcam.GUID();
+
+        var hasWebcam = this.Options.webcams.indexOf(webcamGuid) >= 0;
+
+        return hasWebcam;
+      };
+
+
+      /**
+       * Checks if any webcams are available
+       */
+      this.HasAnyWebcam = function() {
+        return this.Options.webcams.length >= 1;
+      };
+
+      /**
+       * Removes a webcam guid from the Options.webcams array
+       * @param {Device} webcam Webcam device to remove
+       */
+      this.RemoveWebcam = function(webcam) {
+
+        var webcamGuid = webcam.GUID();
+
+        var removeIndex = this.Options.webcams.indexOf(webcamGuid);
+
+        if (removeIndex >=0) {
+          this.Options.webcams.splice(removeIndex, 1);
+        }
+
       };
 
       /**
