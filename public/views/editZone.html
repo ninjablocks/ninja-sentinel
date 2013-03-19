@@ -5,22 +5,22 @@
 <div class="row editZone">
 
   <div class="webcamBanner" ng-show="Zone.HasAnyWebcam()">
-    <img ng-src="{{ GetWebcamBanner() }}" class="webcamImage" alt="{{ Zone.Options.webcams.length }}" />
+    <img class="webcamImage" />
     <div class="gradient"></div>
-    <div class="play foundicon-youtube" play-webcam=".webcamBanner .webcamImage"></div>
+    <div class="play foundicon-youtube" play-webcam=".webcamBanner .webcamImage" play-webcam-src="GetWebcamBanner"></div>
   </div>
 
-  <div class="twelve columns">
+  <form name="editZone" class="twelve columns" ng-class="{hasWebcamImage:Zone.HasAnyWebcam()}">
     <h4 ui-if="Zone.id">{{ Zone.Options.name }}</h4>
     <h4 ui-if="!Zone.id">New Zone</h4>
     <br>
-    <form name="editZone" class="panel radius" ui-if="!Zone.id">
+    <div class="panel radius" ng-show="!Zone.id">
       <div class="alert-box alert" ng-show="editZone.name.$error.required && Submitted">Please give this zone a name. eg: "Living Room"</div>
 
       <h5>Name</h5>
       <input name="name" id="name" type="text" placeholder="Name this zone" ng-model="Zone.Options.name" ui-keydown="{'enter': 'Save()'}" required>
 
-    </form>
+    </div>
 
 
     <div class="panel triggers" ng-show="Zone.id">
@@ -128,5 +128,5 @@
       <a class="button round" ng-tap="setRoute('/')">Back</a>
       <a class="button success round" ng-tap="Save()">Save</a>
     </div>
-  </div>
+  </form>
 </div>

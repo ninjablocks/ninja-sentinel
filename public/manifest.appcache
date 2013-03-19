@@ -1,10 +1,6 @@
-# LoadUserDevices (undefined, #undefined)
-# GET /override [object Object] (undefined, #undefined)
-# GetZones (FAILED): [object Object] (undefined, #undefined)
-# GetAlerts (FAILED) [object Object] (undefined, #undefined)
 CACHE MANIFEST
 
-# Time: Tue Mar 19 2013 15:43:19 GMT+1100 (EST)
+# Time: Tue Mar 19 2013 16:38:18 GMT+1100 (EST)
 # This manifest was created by confess.js, http://github.com/jamesgpearce/confess
 #
 # Retrieved URL: http://localhost:3501/#/
@@ -39,13 +35,14 @@ http://localhost:3501/images/foundation/orbit/ba0fce87.right-arrow.png
 http://localhost:3501/images/foundation/orbit/bee4c225.timer-black.png
 http://localhost:3501/img/itoggle.png
 http://localhost:3501/img/webcam-noise.png
+http://localhost:3501/img/webcam-pause.png
 http://localhost:3501/img/zone-webcam-gradient.png
 http://www.google-analytics.com/ga.js
 img/arrow-curveup.png
 javascripts/foundation/modernizr.foundation.js
-scripts/cc4b07a9.scripts.js
+scripts/2b60b584.scripts.js
 scripts/vendor/9337e323.angular.min.js
-styles/24b5bd52.sentinel-app.css
+styles/771b5473.sentinel-app.css
 
 NETWORK:
 *

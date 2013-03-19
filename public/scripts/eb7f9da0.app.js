@@ -1,6 +1,6 @@
 'use strict';
 
-var DEBUG = true;
+var DEBUG = false;
 
 var yeomanApp = angular.module('yeomanApp', ['ngResource', 'ui'])
   .config(['$routeProvider', function($routeProvider) {
