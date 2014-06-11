@@ -1,9 +1,10 @@
 {
-  "name": "node-ninjapp-stub",
-  "version": "0.0.1",
+  "name": "node-sentinal",
+  "description": "Security application which illustrates how to integrate with the Ninja Blocks platform",
+  "version": "1.0.0",
   "private": false,
   "dependencies": {
-    "express": "3.0.2",
+    "express": "3.10.4",
     "jade": "*",
     "request":"latest",
     "authom":"https://github.com/thatguydan/authom/tarball/master",
@@ -19,7 +20,6 @@
 
   },
   "engines": {
-    "node":"0.8.x",
-    "npm":"1.1.x"
+    "node":"0.10.x"
   }
 }
