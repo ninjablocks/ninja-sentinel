@@ -2,50 +2,47 @@
  * Application configuration.
  */
 
-var requiredEnv = [
-  'NINJA_CLIENT_ID','NINJA_CLIENT_SECRET', 'HOSTNAME',
-  'TWILIO_SID', 'TWILIO_TOKEN',  'TWILIO_PHONE',
-  'EMAIL_HOST', 'EMAIL_PORT', 'EMAIL_DOMAIN', 'EMAIL_USER', 'EMAIL_PASS'
-], neededEnv = [];
-
-for (var i=0;i<requiredEnv.length;i++)
-  if (!process.env[requiredEnv[i]])
-    neededEnv.push(requiredEnv[i]);
-
-if (neededEnv.length>0)
-  throw new Error("Environment variables "+neededEnv.join(',')+" required");
-
-
-/**
- * Module dependencies.
- */
-
-var express = require('express')
-  , routes = require('./routes/index')
-  , zoneRoutes = require('./routes/zone')
-  , alertRoutes = require('./routes/alert')
-  , http = require('http')
-  , path = require('path')
-  , redisClient = require('redis-url').connect(process.env.REDISTOGO_URL)
-  , RedisStore = require('connect-redis')(express)
-  , mailer = require('nodemailer');
+var express = require('express');
+var routes = require('./routes/index');
+var zoneRoutes = require('./routes/zone');
+var alertRoutes = require('./routes/alert');
+var http = require('http');
+var path = require('path');
+var redisClient = require('redis-url').connect(process.env.REDISTOGO_URL);
+var RedisStore = require('connect-redis')(express);
+var mailer = require('nodemailer');
 
 var app = express();
 var authom = require('authom');
 
+var requiredEnv = [
+  'NINJA_CLIENT_ID', 'NINJA_CLIENT_SECRET', 'HOSTNAME',
+  'TWILIO_SID', 'TWILIO_TOKEN', 'TWILIO_PHONE',
+  'EMAIL_HOST', 'EMAIL_PORT', 'EMAIL_DOMAIN', 'EMAIL_USER', 'EMAIL_PASS', 'EXPRESS_SESSION_KEY'
+], neededEnv = [];
 
-app.configure(function(){
+for (var i = 0; i < requiredEnv.length; i++) {
+  if (!process.env[requiredEnv[i]]) {
+    neededEnv.push(requiredEnv[i]);
+  }
+}
+
+if (neededEnv.length > 0) {
+  throw new Error("Environment variables " + neededEnv.join(',') + " required");
+}
+
+app.configure(function() {
   app.set('port', process.env.PORT || 8008);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
   app.use(express.favicon());
-  app.use(express.cookieParser())
-  app.use(express.session({secret:"ninjaALLTHETHINGS",store: new RedisStore({client:redisClient})}));
+  app.use(express.cookieParser());
+  app.use(express.session({secret: process.env.EXPRESS_SESSION_KEY, store: new RedisStore({client: redisClient})}));
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
-  app.use(function(req,res,next) {
-    res.setHeader( 'X-Powered-By', "A bad-ass mother who don't take no crap off of nobody!" );
+  app.use(function(req, res, next) {
+    res.setHeader('X-Powered-By', "A bad-ass mother who don't take no crap off of nobody!");
     req.app = app;
     req.redisClient = redisClient;
     // Setup the Twilio callbacks
@@ -58,66 +55,62 @@ app.configure(function(){
   app.use(express.static(path.join(__dirname, 'public')));
 });
 
-app.configure('development', function(){
+app.configure('development', function() {
   app.use(express.errorHandler());
 });
 
 /**
  * Middleware
  */
-
-var requiresAuthentication = function(req,res,next) {
+var requiresAuthentication = function(req, res, next) {
   if (!req.session || !req.session.token || !req.session.ninja) {
     if (req.accepts('html')) {
       res.redirect('/auth/ninjablocks');
     } else {
-      res.json({error:'Unauthorized'},401)
+      res.json({error: 'Unauthorized'}, 401)
     }
     return;
   }
   next();
-}
+};
 
-var TwilioClient = require('twilio').Client
-, twilioClient = new TwilioClient(process.env.TWILIO_SID, process.env.TWILIO_TOKEN, process.env.HOSTNAME, {express: app})
-, phone = twilioClient.getPhoneNumber(process.env.TWILIO_PHONE);
+var TwilioClient = require('twilio').Client;
+var twilioClient = new TwilioClient(process.env.TWILIO_SID, process.env.TWILIO_TOKEN, process.env.HOSTNAME, {express: app});
+var phone = twilioClient.getPhoneNumber(process.env.TWILIO_PHONE);
 
-var setupTransports = function(req,res,next) {
-  var transport = mailer.createTransport("SMTP", {
-      host : process.env.EMAIL_HOST,
-      port : process.env.EMAIL_PORT,
-      domain : process.env.EMAIL_DOMAIN,
-      secureConnection: true,
-      auth: {
-        user : process.env.EMAIL_USER,
-        pass : process.env.EMAIL_PASS
+var setupTransports = function(req, res, next) {
 
-      }
+  req.mailer = mailer.createTransport("SMTP", {
+    host: process.env.EMAIL_HOST,
+    port: process.env.EMAIL_PORT,
+    domain: process.env.EMAIL_DOMAIN,
+    secureConnection: true,
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS
+
+    }
   });
-  req.mailer = transport;
   phone.setup(function() {
     req.phone = phone;
     next();
   });
-}
+};
 
 /**
  * Authom configuration
  */
-
 authom.createServer({
-  service:"ninjablocks",
+  service: "ninjablocks",
 
-  scope:['all'],
-  id: 81393,
-  secret: 'cZ0+Pv35sDjNBPgOflRlr6EEOCOJ2phi0CEWNkNHdE0='
-
-
+  scope: ['all'],
+  id: process.env.NINJA_CLIENT_ID,
+  secret: process.env.NINJA_CLIENT_SECRET
 });
 
 authom.on('auth', routes.handleNinjaAuthentication);
 
-authom.on('error',function(req,res,data) {
+authom.on('error', function(req, res, data) {
   res.send('There was an error authenticating')
 });
 
@@ -132,10 +125,9 @@ app.all('/rest/v0/*', requiresAuthentication, routes.proxy);
 /**
  * App Routes
  */
-
 app.get('/', requiresAuthentication, routes.index);
-app.get('/signout',routes.signout);
-app.get('/seppuku',requiresAuthentication, routes.nukeUser);
+app.get('/signout', routes.signout);
+app.get('/seppuku', requiresAuthentication, routes.nukeUser);
 app.post('/callback', setupTransports, routes.handleDeviceCallback);
 app.get('/history', requiresAuthentication, routes.fetchHistory);
 
@@ -160,6 +152,6 @@ app.put('/zone/:zoneId/trigger', requiresAuthentication, zoneRoutes.registerTrig
 app.delete('/zone/:zoneId/trigger/:triggerData', requiresAuthentication, zoneRoutes.deleteTrigger);
 
 
-http.createServer(app).listen(app.get('port'), function(){
+http.createServer(app).listen(app.get('port'), function() {
   console.log("Ninja listening on port " + app.get('port'));
 });
