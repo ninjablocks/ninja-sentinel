@@ -79,22 +79,6 @@ var twilioClient = new TwilioClient(process.env.TWILIO_SID, process.env.TWILIO_T
 var phone = twilioClient.getPhoneNumber(process.env.TWILIO_PHONE);
 
 var setupTransports = function(req, res, next) {
-
-  req.mailer = mailer.createTransport("SMTP", {
-    host: process.env.EMAIL_HOST,
-    port: process.env.EMAIL_PORT,
-    domain: process.env.EMAIL_DOMAIN,
-    secureConnection: true,
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS
-
-    }
-
-  });
-
-  req.sendGrid = require('sendgrid')(process.env.SENDGRID_API_USER, process.env.SENDGRID_API_KEY);
-
   phone.setup(function() {
     req.phone = phone;
     next();

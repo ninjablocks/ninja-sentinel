@@ -12,14 +12,20 @@
     "moment": "1.7.2",
     "ninja-blocks": "latest",
     "node-uuid": "1.4.0",
-    "nodemailer": "0.3.35",
     "redis-url": "latest",
     "request": "latest",
     "sendgrid": "^1.0.5",
     "tempodb": "latest",
     "twilio": "git+https://github.com/StephaneP/node-twilio.git"
   },
+  "scripts": {
+    "test": "mocha -R spec ./test/node"
+  },
   "engines": {
     "node": "0.10.x"
+  },
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "mocha": "^1.20.1"
   }
 }
