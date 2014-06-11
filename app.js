@@ -90,7 +90,11 @@ var setupTransports = function(req, res, next) {
       pass: process.env.EMAIL_PASS
 
     }
+
   });
+
+  req.sendGrid = require('sendgrid')(process.env.SENDGRID_API_USER, process.env.SENDGRID_API_KEY);
+
   phone.setup(function() {
     req.phone = phone;
     next();
