@@ -4,19 +4,19 @@
   "version": "1.0.0",
   "private": false,
   "dependencies": {
-    "async": "0.1.22",
-    "authom": "https://github.com/thatguydan/authom/tarball/master",
-    "connect-redis": "latest",
-    "express": "3.10.4",
-    "jade": "*",
-    "moment": "1.7.2",
-    "ninja-blocks": "latest",
-    "node-uuid": "1.4.0",
-    "redis-url": "latest",
-    "request": "latest",
+    "async": "^0.1.22",
+    "authom": "thatguydan/authom",
+    "connect-redis": "^2.0.0",
+    "express": "^3.10.4",
+    "jade": "^0.26.3",
+    "moment": "^1.7.2",
+    "ninja-blocks": "^0.1.3",
+    "node-uuid": "^1.4.0",
+    "redis-url": "^0.2.0",
+    "request": "^2.36.0",
     "sendgrid": "^1.0.5",
-    "tempodb": "latest",
-    "twilio": "git+https://github.com/StephaneP/node-twilio.git"
+    "tempodb": "^1.0.0",
+    "twilio": "StephaneP/node-twilio"
   },
   "scripts": {
     "test": "mocha -R spec ./test/node"
