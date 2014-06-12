@@ -10,7 +10,6 @@ var http = require('http');
 var path = require('path');
 var redisClient = require('redis-url').connect(process.env.REDISTOGO_URL);
 var RedisStore = require('connect-redis')(express);
-var mailer = require('nodemailer');
 
 var app = express();
 var authom = require('authom');
@@ -79,6 +78,9 @@ var twilioClient = new TwilioClient(process.env.TWILIO_SID, process.env.TWILIO_T
 var phone = twilioClient.getPhoneNumber(process.env.TWILIO_PHONE);
 
 var setupTransports = function(req, res, next) {
+
+  req.sendGrid = require('sendgrid')(process.env.SENDGRID_API_USER, process.env.SENDGRID_API_KEY);
+
   phone.setup(function() {
     req.phone = phone;
     next();
