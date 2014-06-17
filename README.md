@@ -7,7 +7,7 @@ designed to be hosted in [Heroku](http://heroku.com) but has no specific depende
 
 To spin up this service yourself you will require:
 
-* Email account, at the moment this is designed to use sendgrid.
+* Email account, at the moment this is designed to use [sendgrid](http://sendgrid.com).
 * [Heroku](http://heroku.com) account
 * [Loggly](http://loggly.com) addon for heroku
 * [REDIS](http://redis.io) addon for heroku, we use [redistogo](http://redistogo.com/)
@@ -20,14 +20,14 @@ To spin up this service yourself you will require:
 Below are the environment variables we configure to provision the service, these will need to be set via the heroku command (see `heroku help config`).
 
 ```
-# Send grid configuration
+# Sendgrid configuration
 EMAIL_DOMAIN:        somedomain.com
 EMAIL_FROM:          noreply@somedomain.com
 EMAIL_USER:          noreply@somedomain.com
 SENDGRID_API_USER:   whatever@somedomain.com
 SENDGRID_API_KEY:    XXX
 
-# Available from portal
+# Available from Ninja Blocks portal
 NINJA_CLIENT_ID:     XXX
 NINJA_CLIENT_SECRET: XXX
 
